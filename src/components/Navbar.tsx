@@ -53,9 +53,22 @@ export default function Navbar() {
     setProfileDropdownOpen(false);
   }, [location.pathname]);
 
-  // Track scroll for frosted glass depth
+  // Track scroll for frosted glass depth with rAF throttling (zero redundant re-renders)
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 15);
+    let ticking = false;
+    let lastScrolled = window.scrollY > 15;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const isScrolled = window.scrollY > 15;
+        if (isScrolled !== lastScrolled) {
+          lastScrolled = isScrolled;
+          setScrolled(isScrolled);
+        }
+        ticking = false;
+      });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -110,8 +123,8 @@ export default function Navbar() {
           <header
             className={`w-full rounded-full transition-all duration-300 flex items-center justify-between px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 ${
               scrolled
-                ? "bg-white/95 backdrop-blur-xl shadow-xl shadow-slate-900/10 border border-slate-200/80"
-                : "bg-white/90 backdrop-blur-md shadow-md shadow-slate-900/5 border border-slate-200/60"
+                ? "bg-white/98 shadow-lg shadow-slate-900/8 border border-slate-200/90"
+                : "bg-white/95 shadow-md shadow-slate-900/5 border border-slate-200/70"
             }`}
           >
             {/* Left: Brand Logo */}
@@ -191,7 +204,7 @@ export default function Navbar() {
                   {/* iOS User Dropdown Menu Card */}
                   {profileDropdownOpen && (
                     <div 
-                      className="absolute right-0 mt-2 w-64 bg-white/98 backdrop-blur-2xl rounded-3xl p-3 shadow-2xl border border-slate-200/90 space-y-2 animate-in fade-in zoom-in-95 duration-150 z-50 text-left"
+                      className="absolute right-0 mt-2 w-64 bg-white rounded-3xl p-3 shadow-2xl border border-slate-200/90 space-y-2 animate-in fade-in zoom-in-95 duration-150 z-50 text-left"
                       style={{ boxShadow: "0 20px 50px -10px rgba(0,0,0,0.15)" }}
                     >
                       {/* User Info Header */}
@@ -295,7 +308,7 @@ export default function Navbar() {
 
           {/* ── Mobile Expandable Dropdown Menu Card ── */}
           <div
-            className={`md:hidden mt-2 rounded-3xl bg-white/98 backdrop-blur-2xl border border-slate-200/90 shadow-2xl overflow-hidden transition-all duration-300 ease-out origin-top ${
+            className={`md:hidden mt-2 rounded-3xl bg-white border border-slate-200/90 shadow-2xl overflow-hidden transition-all duration-300 ease-out origin-top ${
               mobileMenuOpen
                 ? "opacity-100 scale-100 translate-y-0 max-h-[580px] pointer-events-auto"
                 : "opacity-0 scale-95 -translate-y-4 max-h-0 pointer-events-none"

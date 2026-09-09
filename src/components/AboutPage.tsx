@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 const Solar3DAbout = lazy(() => import("./3d/Solar3DAbout"));
+import LazyCanvasInView from "./3d/LazyCanvasInView";
 import { Plus, CheckCircle2 } from "lucide-react";
 
 export default function AboutPage() {
@@ -75,17 +76,19 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Right 3D Solar Panel */}
-          <div className="flex justify-center items-center min-h-[380px]">
-            <Suspense
-              fallback={
-                <div className="w-full h-[380px] flex items-center justify-center rounded-3xl bg-slate-900/10 border border-slate-200/50">
-                  <div className="w-7 h-7 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
-                </div>
-              }
-            >
-              <Solar3DAbout height="380px" />
-            </Suspense>
+          {/* Right 3D Solar Panel (Deferred until near viewport) */}
+          <div className="flex justify-center items-center min-h-[380px] w-full">
+            <LazyCanvasInView height="380px">
+              <Suspense
+                fallback={
+                  <div className="w-full h-[380px] flex items-center justify-center rounded-3xl bg-slate-900/10 border border-slate-200/50">
+                    <div className="w-7 h-7 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
+                  </div>
+                }
+              >
+                <Solar3DAbout height="380px" />
+              </Suspense>
+            </LazyCanvasInView>
           </div>
 
         </div>

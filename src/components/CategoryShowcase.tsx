@@ -5,7 +5,6 @@ import {
   Building2, 
   Factory, 
   ArrowRight, 
-  CheckCircle2, 
   PhoneCall
 } from "lucide-react";
 
@@ -109,20 +108,20 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <p className="text-xs font-semibold uppercase tracking-wider text-blue-700 mb-2">
+        <div className="max-w-3xl mb-8 sm:mb-10">
+          <p className="text-xs font-semibold text-blue-700 mb-1.5">
             Targeted Solar Solutions
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
             Tailored Engineering for Every Application
           </h2>
-          <p className="text-slate-600 text-base mt-3 leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
             From residential rooftops benefiting from central subsidies to high-tension captive power plants for heavy manufacturing, we deliver end-to-end turnkey solar EPC services.
           </p>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex flex-col sm:flex-row border-b border-slate-200 mb-10 gap-2 sm:gap-6">
+        <div className="flex flex-col sm:flex-row border-b border-slate-200 mb-8 sm:mb-10 gap-2 sm:gap-6">
           {categories.map((cat) => {
             const Icon = cat.icon;
             const isSelected = activeTab === cat.id;
@@ -130,15 +129,15 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
-                className={`flex items-center gap-2.5 pb-4 px-1 text-sm font-bold transition-all border-b-2 cursor-pointer ${
+                className={`flex items-center gap-2 pb-3.5 px-1 text-sm font-semibold transition-all border-b-2 cursor-pointer ${
                   isSelected
-                    ? "border-blue-700 text-blue-900"
-                    : "border-transparent text-slate-500 hover:text-slate-800"
+                    ? "border-blue-600 text-blue-700"
+                    : "border-transparent text-slate-600 hover:text-slate-900"
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isSelected ? "text-blue-700" : "text-slate-400"}`} />
+                <Icon className={`w-4 h-4 ${isSelected ? "text-blue-600" : "text-slate-400"}`} />
                 <span>{cat.shortTitle}</span>
-                <span className="text-xs font-normal text-slate-400">({cat.capacity})</span>
+                <span className="text-xs font-normal text-slate-500">({cat.capacity})</span>
               </button>
             );
           })}
@@ -187,7 +186,7 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
 
                 {/* Highlights */}
                 <div className="space-y-3 mb-6">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  <h4 className="text-xs font-semibold text-slate-600">
                     Key Financial & Technical Specifications
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-3">
@@ -202,13 +201,12 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
 
                 {/* Deliverables Checklist */}
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
+                  <h4 className="text-xs font-semibold text-slate-600 mb-2.5">
                     Scope of Work & Deliverables
                   </h4>
-                  <ul className="grid sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                  <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-xs text-slate-700 list-disc pl-4">
                     {current.features.map((feat, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-700 shrink-0 mt-0.5" />
+                      <li key={idx}>
                         <span>{feat}</span>
                       </li>
                     ))}

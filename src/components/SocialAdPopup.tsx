@@ -3,29 +3,34 @@ import { Play, X } from "lucide-react";
 
 export default function SocialAdPopup() {
   const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(() => {
+    try {
+      return localStorage.getItem("runhitech_social_ad_dismissed") === "true";
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
-    // Check if user has already closed the ad in this session
-    const isClosed = sessionStorage.getItem("social-ad-dismissed");
-    if (isClosed) {
-      setDismissed(true);
-      return;
-    }
+    if (dismissed) return;
 
-    // Slide in after 10 seconds of site visit
+    // Slide in after 12 seconds of site visit
     const timer = setTimeout(() => {
       setVisible(true);
-    }, 10000);
+    }, 12000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [dismissed]);
 
   const closePopup = () => {
     setVisible(false);
     setTimeout(() => {
       setDismissed(true);
-      sessionStorage.setItem("social-ad-dismissed", "true");
+      try {
+        localStorage.setItem("runhitech_social_ad_dismissed", "true");
+      } catch {
+        // Safe fallback
+      }
     }, 300);
   };
 
@@ -33,7 +38,7 @@ export default function SocialAdPopup() {
 
   return (
     <div
-      className={`fixed bottom-20 sm:bottom-6 left-4 sm:left-6 z-40 w-[calc(100vw-32px)] sm:w-[320px] max-w-[340px] bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden transition-all duration-400 ease-out transform ${
+      className={`fixed bottom-20 sm:bottom-6 left-4 sm:left-6 z-40 w-[calc(100vw-32px)] sm:w-[320px] max-w-[340px] bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden transition-all duration-400 ease-out transform ${
         visible
           ? "translate-y-0 opacity-100 scale-100"
           : "translate-y-8 opacity-0 scale-95 pointer-events-none"

@@ -40,7 +40,7 @@ export default function InstagramNotificationBanner() {
   return (
     <div className="fixed top-3 sm:top-5 left-1/2 -translate-x-1/2 z-[99999] w-[94%] max-w-sm transition-all duration-300 animate-bounce-subtle pointer-events-auto">
       <div 
-        className="bg-white/95 backdrop-blur-2xl rounded-2xl p-3.5 border border-slate-200/90 text-slate-900"
+        className="bg-white rounded-2xl p-3.5 border border-slate-200/90 text-slate-900 shadow-2xl"
         style={{
           boxShadow: "0 20px 40px -10px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.05)"
         }}

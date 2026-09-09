@@ -24,11 +24,6 @@ export default function ContactPage() {
 
             <div className="relative z-10 space-y-6">
               
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-mono font-bold uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                Run Hi Tech Solar
-              </div>
 
               {/* Title & Subtitle */}
               <div>

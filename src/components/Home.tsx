@@ -3,12 +3,12 @@ import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 const RooftopSolarAnimation3D = lazy(() => import("./3d/RooftopSolarAnimation3D"));
+import LazyCanvasInView from "./3d/LazyCanvasInView";
 import CategoryShowcase from "./CategoryShowcase";
 import CategoryCalculator from "./CategoryCalculator";
 import { triggerLeadNotification } from "../services/notificationService";
 import {
   Sun,
-  Zap,
   ShieldCheck,
   Home as HomeIcon,
   Building2,
@@ -19,7 +19,6 @@ import {
   Quote,
   Plus,
   Layers,
-  Sparkles,
   Factory,
   BatteryCharging,
   CheckCircle2,
@@ -195,11 +194,6 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-[38px] sm:pt-28 pb-8 sm:pb-16 w-full">
           <div className="max-w-3xl bg-white/70 sm:bg-white/35 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-3.5 sm:p-7 md:p-0 rounded-3xl border border-white/50 md:border-0 shadow-sm md:shadow-none">
 
-            {/* Badge */}
-            <div data-animate="fade-up" data-delay="0" className="inline-flex items-center gap-2 bg-white/90 border border-slate-200/80 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full mb-2 sm:mb-8 backdrop-blur-md shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-              <span className="text-[11px] sm:text-xs font-bold text-slate-800">MNRE Approved Integrator — Tamil Nadu</span>
-            </div>
 
             {/* Heading */}
             <h1 data-animate="fade-up" data-delay="100" className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.22] sm:leading-[1.18] mb-3 sm:mb-6">
@@ -266,33 +260,28 @@ export default function Home() {
 
             {/* Left Content & Bullets */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] font-mono block">
+              <span className="text-xs font-bold text-blue-700 block">
                 Run Hi Tech Solar
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
                 Why Tamil Nadu Families Are Choosing Solar in 2025!
               </h2>
 
-              <ul className="space-y-3 text-slate-700 text-xs sm:text-sm md:text-base pt-1">
-                <li className="flex items-center gap-2.5 sm:gap-3">
-                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">✓</span>
-                  <span><strong>₹30,000–₹78,000 Govt Subsidy</strong> (PM Surya Ghar)</span>
+              <ul className="space-y-2.5 text-slate-700 text-xs sm:text-sm md:text-base pt-1 list-disc pl-5">
+                <li>
+                  <strong>₹30,000–₹78,000 Govt Subsidy</strong> (PM Surya Ghar)
                 </li>
-                <li className="flex items-center gap-2.5 sm:gap-3">
-                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">✓</span>
-                  <span><strong>Up to 90% reduction</strong> in electricity (EB) bills</span>
+                <li>
+                  <strong>Up to 90% reduction</strong> in electricity (EB) bills
                 </li>
-                <li className="flex items-center gap-2.5 sm:gap-3">
-                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">✓</span>
-                  <span><strong>One-time investment</strong> for 30+ years of free power</span>
+                <li>
+                  <strong>One-time investment</strong> for 30+ years of free power
                 </li>
-                <li className="flex items-center gap-2.5 sm:gap-3">
-                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">✓</span>
-                  <span><strong>Hybrid & Grid systems</strong> with battery backup</span>
+                <li>
+                  <strong>Hybrid & Grid systems</strong> with battery backup
                 </li>
-                <li className="flex items-center gap-2.5 sm:gap-3">
-                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px] sm:text-xs shrink-0">✓</span>
-                  <span><strong>Fast installation</strong> within 7 to 10 days</span>
+                <li>
+                  <strong>Fast installation</strong> within 7 to 10 days
                 </li>
               </ul>
 
@@ -317,7 +306,7 @@ export default function Home() {
               <div className="bg-white border border-slate-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-md relative overflow-hidden">
                 <div className="flex items-center justify-between pb-4 sm:pb-6 border-b border-slate-100 mb-4 sm:mb-6">
                   <div>
-                    <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">REAL SAVINGS BENCHMARK</span>
+                    <span className="text-xs font-semibold text-slate-500 block">Real Savings Benchmark</span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">Bi-Monthly EB Bill</h3>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[11px] sm:text-xs border border-emerald-200">
@@ -329,7 +318,7 @@ export default function Home() {
                   {/* Before */}
                   <div>
                     <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-600 mb-1.5 sm:mb-2">
-                      <span>BEFORE SOLAR</span>
+                      <span>Before Solar</span>
                       <span className="text-red-600">₹3,000 / bill</span>
                     </div>
                     <div className="w-full h-3.5 sm:h-4 bg-slate-100 rounded-full overflow-hidden p-0.5">
@@ -342,7 +331,7 @@ export default function Home() {
                   {/* After */}
                   <div>
                     <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-600 mb-1.5 sm:mb-2">
-                      <span>AFTER SOLAR (Run Hi Tech)</span>
+                      <span>After Solar (Run Hi Tech)</span>
                       <span className="text-emerald-600">₹200 / bill</span>
                     </div>
                     <div className="w-full h-3.5 sm:h-4 bg-slate-100 rounded-full overflow-hidden p-0.5">
@@ -376,36 +365,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
           {/* Section Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
-            <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-semibold mb-3">
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-                <span>Tier-1 Approved PV Technology</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
-                Types of Solar Panels We Install
-              </h2>
-              <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
-                Precision-engineered solar modules tested for Tamil Nadu's high ambient heat. Every installation includes CEIG & TNEB net-metering approvals with a 30-year linear performance guarantee.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3 text-xs font-semibold bg-white border border-slate-200/90 px-4 py-2.5 rounded-2xl shadow-sm">
-              <span className="flex items-center gap-1.5 text-slate-700">
-                <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>30-Yr Performance</span>
-              </span>
-              <span className="text-slate-300">|</span>
-              <span className="flex items-center gap-1.5 text-slate-700">
-                <Zap className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>MNRE Approved</span>
-              </span>
-              <span className="text-slate-300">|</span>
-              <span className="flex items-center gap-1.5 text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>CEIG Compliant</span>
-              </span>
-            </div>
+          <div className="max-w-2xl mb-10 sm:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
+              Types of Solar Panels We Install
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Precision-engineered solar modules tested for Tamil Nadu's high ambient heat. Every installation includes CEIG & TNEB net-metering approvals with a 30-year linear performance guarantee.
+            </p>
           </div>
 
           {/* 4 Technology Cards Grid */}
@@ -416,27 +382,22 @@ export default function Home() {
               <div>
                 {/* Visual Module Blueprint Header */}
                 <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white overflow-hidden">
-                  <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:16px_16px]" />
                   <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/15 rounded-full blur-2xl pointer-events-none" />
 
-                  <div className="relative z-10 flex items-start justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400 text-slate-950 text-[10px] font-bold uppercase tracking-wide shadow-sm">
-                      <Sparkles className="w-3 h-3 text-slate-950" />
-                      Popular for Homes
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-300">
+                  <div className="relative z-10 flex items-start justify-end gap-2">
+                    <span className="text-xs font-medium text-slate-300">
                       Mono PERC
                     </span>
                   </div>
 
                   <div className="relative z-10 mt-4 flex items-baseline justify-between">
                     <div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">540W – 580W</div>
-                      <div className="text-[11px] text-blue-200 font-medium">Half-Cut Cell Tech</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white">540W – 580W</div>
+                      <div className="text-xs text-blue-200 font-medium mt-0.5">Half-Cut Cell Tech</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs font-bold text-emerald-400">21.8%</div>
-                      <div className="text-[9px] text-slate-400 uppercase tracking-wider">Peak Efficiency</div>
+                      <div className="text-sm font-bold text-emerald-400">21.8%</div>
+                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Peak Efficiency</div>
                     </div>
                   </div>
                 </div>
@@ -493,27 +454,22 @@ export default function Home() {
               <div>
                 {/* Visual Module Blueprint Header */}
                 <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 text-white overflow-hidden">
-                  <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:16px_16px]" />
                   <div className="absolute top-0 right-0 w-28 h-28 bg-indigo-500/15 rounded-full blur-2xl pointer-events-none" />
 
-                  <div className="relative z-10 flex items-start justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-500/30 border border-indigo-400/40 text-indigo-200 text-[10px] font-bold uppercase tracking-wide">
-                      <Layers className="w-3 h-3 text-indigo-300" />
-                      +25% Rear Gain
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-300">
+                  <div className="relative z-10 flex items-start justify-end gap-2">
+                    <span className="text-xs font-medium text-slate-300">
                       Dual-Glass
                     </span>
                   </div>
 
                   <div className="relative z-10 mt-4 flex items-baseline justify-between">
                     <div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">550W – 600W</div>
-                      <div className="text-[11px] text-indigo-200 font-medium">Dual-Sided Absorption</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white">550W – 600W</div>
+                      <div className="text-xs text-indigo-200 font-medium mt-0.5">Dual-Sided Absorption</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs font-bold text-indigo-400">22.5%</div>
-                      <div className="text-[9px] text-slate-400 uppercase tracking-wider">Bifacial Yield</div>
+                      <div className="text-sm font-bold text-indigo-400">22.5%</div>
+                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Bifacial Yield</div>
                     </div>
                   </div>
                 </div>
@@ -570,27 +526,22 @@ export default function Home() {
               <div>
                 {/* Visual Module Blueprint Header */}
                 <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950 text-white overflow-hidden">
-                  <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:16px_16px]" />
                   <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none" />
 
-                  <div className="relative z-10 flex items-start justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 text-[10px] font-bold uppercase tracking-wide">
-                      <Factory className="w-3 h-3 text-emerald-300" />
-                      Industrial Duty
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-300">
+                  <div className="relative z-10 flex items-start justify-end gap-2">
+                    <span className="text-xs font-medium text-slate-300">
                       TOPCon N-Type
                     </span>
                   </div>
 
                   <div className="relative z-10 mt-4 flex items-baseline justify-between">
                     <div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">570W – 620W</div>
-                      <div className="text-[11px] text-emerald-200 font-medium">Ultra High Power</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white">570W – 620W</div>
+                      <div className="text-xs text-emerald-200 font-medium mt-0.5">Ultra High Power</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs font-bold text-emerald-400">Max Yield</div>
-                      <div className="text-[9px] text-slate-400 uppercase tracking-wider">Heat Tolerant</div>
+                      <div className="text-sm font-bold text-emerald-400">Max Yield</div>
+                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Heat Tolerant</div>
                     </div>
                   </div>
                 </div>
@@ -647,27 +598,22 @@ export default function Home() {
               <div>
                 {/* Visual Module Blueprint Header */}
                 <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-amber-950 text-white overflow-hidden">
-                  <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:16px_16px]" />
                   <div className="absolute top-0 right-0 w-28 h-28 bg-amber-500/15 rounded-full blur-2xl pointer-events-none" />
 
-                  <div className="relative z-10 flex items-start justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/30 border border-amber-400/40 text-amber-200 text-[10px] font-bold uppercase tracking-wide">
-                      <BatteryCharging className="w-3 h-3 text-amber-300" />
-                      Zero Diesel Genset
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-300">
+                  <div className="relative z-10 flex items-start justify-end gap-2">
+                    <span className="text-xs font-medium text-slate-300">
                       Hybrid Storage
                     </span>
                   </div>
 
                   <div className="relative z-10 mt-4 flex items-baseline justify-between">
                     <div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">3.6kW – 15kW+</div>
-                      <div className="text-[11px] text-amber-200 font-medium">Smart LiFePO4 Hub</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white">3.6kW – 15kW+</div>
+                      <div className="text-xs text-amber-200 font-medium mt-0.5">Smart LiFePO4 Hub</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs font-bold text-amber-400">&lt;10ms</div>
-                      <div className="text-[9px] text-slate-400 uppercase tracking-wider">Instant Cutover</div>
+                      <div className="text-sm font-bold text-amber-400">&lt;10ms</div>
+                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Instant Cutover</div>
                     </div>
                   </div>
                 </div>
@@ -889,11 +835,6 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
             <div data-animate="fade-right" className="lg:col-span-5 space-y-4 sm:space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-[10px] sm:text-xs font-semibold tracking-wide uppercase">
-                <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-400" />
-                Live 3D Rooftop Solar Simulation
-              </div>
-
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                 How Sunlight Powers Your Home with Solar
               </h2>
@@ -929,17 +870,19 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right 3D Canvas Seamless */}
+            {/* Right 3D Canvas Seamless (Deferred until within 300px of viewport) */}
             <div data-animate="zoom" className="lg:col-span-7 flex justify-center items-center w-full mt-4 lg:mt-0 min-h-[340px]">
-              <Suspense
-                fallback={
-                  <div className="w-full h-[340px] flex items-center justify-center rounded-3xl bg-slate-900/10 border border-slate-200/50">
-                    <div className="w-7 h-7 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
-                  </div>
-                }
-              >
-                <RooftopSolarAnimation3D height="340px" />
-              </Suspense>
+              <LazyCanvasInView height="340px">
+                <Suspense
+                  fallback={
+                    <div className="w-full h-[340px] flex items-center justify-center rounded-3xl bg-slate-900/10 border border-slate-200/50">
+                      <div className="w-7 h-7 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
+                    </div>
+                  }
+                >
+                  <RooftopSolarAnimation3D height="340px" />
+                </Suspense>
+              </LazyCanvasInView>
             </div>
           </div>
 
@@ -1270,54 +1213,66 @@ export default function Home() {
               <p className="text-slate-500 max-w-md mx-auto mb-6 sm:mb-10 text-xs sm:text-base md:text-lg">Request a free site assessment in Namakkal, Karur, Salem & Erode. No commitment.</p>
 
               {/* Form */}
-              <form onSubmit={handleSurveySubmit} className="max-w-xl mx-auto bg-white border border-slate-200 rounded-2xl p-2.5 shadow-md space-y-2.5 sm:space-y-0 sm:flex sm:items-center sm:gap-2 text-left mb-3">
-                <div className="flex-1">
-                  <input
-                    type="text"
-                    inputMode="text"
-                    pattern="[a-zA-Z\s.-]+"
-                    title="Please enter only letters (no numbers allowed)"
-                    placeholder="Your Full Name"
-                    value={surveyName}
-                    onChange={handleNameChange}
-                    onKeyDown={(e) => {
-                      if (e.key >= "0" && e.key <= "9") {
-                        e.preventDefault();
-                      }
-                    }}
-                    className="w-full bg-slate-50 sm:bg-transparent border border-slate-200 sm:border-0 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none rounded-xl"
-                    required
-                  />
+              <form onSubmit={handleSurveySubmit} className="max-w-2xl mx-auto mb-4 text-left">
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4 items-end">
+                  <div className="sm:col-span-5">
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      inputMode="text"
+                      pattern="[a-zA-Z\s.-]+"
+                      title="Please enter only letters (no numbers allowed)"
+                      placeholder="Your Full Name"
+                      value={surveyName}
+                      onChange={handleNameChange}
+                      onKeyDown={(e) => {
+                        if (e.key >= "0" && e.key <= "9") {
+                          e.preventDefault();
+                        }
+                      }}
+                      className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 shadow-xs transition-all"
+                      required
+                    />
+                  </div>
+
+                  <div className="sm:col-span-4">
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      Mobile Number
+                    </label>
+                    <input
+                      type="tel"
+                      inputMode="numeric"
+                      pattern="[0-9]{10}"
+                      maxLength={10}
+                      title="Please enter a 10-digit mobile number (no letters allowed)"
+                      placeholder="10-digit number"
+                      value={surveyPhone}
+                      onChange={handlePhoneChange}
+                      onKeyDown={(e) => {
+                        if (
+                          !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key) &&
+                          !/^[0-9]$/.test(e.key)
+                        ) {
+                          e.preventDefault();
+                        }
+                      }}
+                      className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 shadow-xs transition-all"
+                      required
+                    />
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <button
+                      type="submit"
+                      disabled={surveySuccess}
+                      className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-all shadow-sm active:scale-95 text-center flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      {surveySuccess ? "Requested ✓" : "Request Free Call"}
+                    </button>
+                  </div>
                 </div>
-                <div className="flex-1 sm:border-l border-slate-200 sm:pl-2">
-                  <input
-                    type="tel"
-                    inputMode="numeric"
-                    pattern="[0-9]{10}"
-                    maxLength={10}
-                    title="Please enter a 10-digit mobile number (no letters allowed)"
-                    placeholder="Mobile Number (10 digits)"
-                    value={surveyPhone}
-                    onChange={handlePhoneChange}
-                    onKeyDown={(e) => {
-                      if (
-                        !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key) &&
-                        !/^[0-9]$/.test(e.key)
-                      ) {
-                        e.preventDefault();
-                      }
-                    }}
-                    className="w-full bg-slate-50 sm:bg-transparent border border-slate-200 sm:border-0 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none rounded-xl font-mono"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={surveySuccess}
-                  className="w-full sm:w-auto bg-amber-500 text-slate-950 hover:bg-amber-600 px-6 py-3 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer shadow-md active:scale-95 text-center flex items-center justify-center gap-1.5"
-                >
-                  {surveySuccess ? "Requested ✓" : "Request Free Call"}
-                </button>
               </form>
 
               {/* Validation Warning */}

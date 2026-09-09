@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import Faq from "./Faq";
 
 export default function ServicesPage() {
@@ -116,11 +116,8 @@ export default function ServicesPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
           <div>
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-600 font-mono block">
-              SOLAR SOLUTIONS
-            </span>
-            <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-              ⚡ <span className="gradient-text-shine">Our Solar Services in Tamil Nadu</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
+              <span className="gradient-text-shine">Our Solar Services in Tamil Nadu</span>
             </h1>
             <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
               At Run Hi Tech Solar, we believe in powering Tamil Nadu with clean, affordable, and reliable solar energy. Since 2019, we have completed 550+ successful solar installations covering homes, petrol bunks, commercial spaces, and industries.
@@ -151,10 +148,6 @@ export default function ServicesPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-600/90 backdrop-blur-md text-[10px] font-mono font-bold uppercase tracking-wider mb-1">
-                  <ShieldCheck className="w-3 h-3 text-amber-400" />
-                  550+ Installations Since 2019
-                </div>
                 <h4 className="text-sm font-bold leading-tight drop-shadow-sm">
                   Run Hi Tech Solar Engineering
                 </h4>
@@ -185,7 +178,7 @@ export default function ServicesPage() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
-                    <span className="text-xs font-bold text-blue-700 font-mono">
+                    <span className="text-xs font-semibold text-blue-700">
                       {s.badge}
                     </span>
                   </div>
@@ -195,7 +188,7 @@ export default function ServicesPage() {
               {/* Copy */}
               <div className={`lg:col-span-6 space-y-4 sm:space-y-6 ${isEven ? "" : "lg:col-start-1"}`}>
                 <div>
-                  <span className="text-xs font-bold tracking-widest uppercase text-blue-600 font-mono block">
+                  <span className="text-sm font-semibold text-blue-600 block">
                     {s.subtitle}
                   </span>
                   <h2 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
@@ -218,9 +211,6 @@ export default function ServicesPage() {
                   ))}
                 </ul>
 
-                <p className="text-xs font-semibold text-blue-900 bg-blue-50 border border-blue-200/80 rounded-xl px-4 py-2.5 inline-block">
-                  {s.ideal}
-                </p>
 
                 <div className="pt-2">
                   <Link 
@@ -246,12 +236,6 @@ export default function ServicesPage() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 border-b border-slate-200">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 text-[11px] font-mono font-bold uppercase tracking-wider mb-2">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-red-600">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-              Real Installation Shorts & Reels
-            </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
               Watch Our Live On-Site Solar Projects
             </h2>

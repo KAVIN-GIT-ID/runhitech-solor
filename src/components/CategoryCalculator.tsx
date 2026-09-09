@@ -56,16 +56,59 @@ function getResidentialSystemCost(kw: number): number {
 export type CalcCategory = "residential" | "commercial" | "bulk";
 
 export default function CategoryCalculator() {
-  const [activeTab, setActiveTab] = useState<CalcCategory>("residential");
+  const [activeTab, setActiveTab] = useState<CalcCategory>(() => {
+    try {
+      const saved = localStorage.getItem("runhitech_calc_tab");
+      if (saved === "residential" || saved === "commercial" || saved === "bulk") return saved;
+    } catch {}
+    return "residential";
+  });
 
   // 1. Residential States (Bi-monthly TNEB Bill in INR)
-  const [resBill, setResBill] = useState<number>(3500);
+  const [resBill, setResBill] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem("runhitech_calc_res_bill");
+      if (saved) {
+        const n = Number(saved);
+        if (!isNaN(n) && n >= 1000 && n <= 20000) return n;
+      }
+    } catch {}
+    return 3500;
+  });
 
   // 2. Commercial States (Monthly Electricity Bill in INR)
-  const [commBill, setCommBill] = useState<number>(45000);
+  const [commBill, setCommBill] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem("runhitech_calc_comm_bill");
+      if (saved) {
+        const n = Number(saved);
+        if (!isNaN(n) && n >= 5000 && n <= 500000) return n;
+      }
+    } catch {}
+    return 45000;
+  });
 
   // 3. Bulk Industrial States (Sanctioned kVA / kW)
-  const [sanctionedKva, setSanctionedKva] = useState<number>(250);
+  const [sanctionedKva, setSanctionedKva] = useState<number>(() => {
+    try {
+      const saved = localStorage.getItem("runhitech_calc_kva");
+      if (saved) {
+        const n = Number(saved);
+        if (!isNaN(n) && n >= 50 && n <= 2000) return n;
+      }
+    } catch {}
+    return 250;
+  });
+
+  const handleTabChange = (t: CalcCategory) => {
+    setActiveTab(t);
+    try { localStorage.setItem("runhitech_calc_tab", t); } catch {}
+  };
+
+  const handleResBillChange = (val: number) => {
+    setResBill(val);
+    try { localStorage.setItem("runhitech_calc_res_bill", String(val)); } catch {}
+  };
 
   // ── 1. Residential Calculations (Tamil Nadu TNEB LT-1A & PM Surya Ghar) ──
   // Bi-monthly units consumed based on current bill
@@ -73,7 +116,7 @@ export default function CategoryCalculator() {
 
   // Sizing: In Tamil Nadu, 1 kW produces ~4.2 units/day -> ~252 units per 60-day bi-monthly cycle
   // Recommended size offsets ~100% of consumption (capped between 1 kW and 10 kW)
-  const idealKw = Math.ceil((resUnits * 0.95) / 252);
+  const idealKw = Math.round(resUnits / 252);
   const resKw = Math.min(10, Math.max(1, idealKw));
 
   // Bi-monthly solar generation (In TN: 4.2 units/kW/day * 60 days = 252 units/cycle)
@@ -97,19 +140,15 @@ export default function CategoryCalculator() {
   const newAnnualBill = newBiMonthlyBill * 6;
   const resAnnualSavings = Math.max(0, currentAnnualBill - newAnnualBill);
 
-  // Payback Period: Factoring standard ~4% annual TNEB tariff indexation
-  const simplePayback = resNetInvestment / (resAnnualSavings || 1);
-  const resPaybackYears = (simplePayback * 0.88).toFixed(1);
 
-  // 30-Year Lifetime Savings (Tier-1 30-year linear performance warranty with 3.5% historic tariff indexation)
-  const resLifetimeSavings = Math.round(resAnnualSavings * 51.6);
+  // 30-Year Lifetime Savings: 30-year Tier-1 panel linear performance yield
+  const resLifetimeSavings = Math.round(resAnnualSavings * 30);
 
   // ── 2. Commercial Calculations ──
   const commKw = Math.min(100, Math.max(5, Math.round(commBill / 1200)));
   const commEstCost = commKw * 52000;
   const commTaxBenefit = Math.round(commEstCost * 0.40 * 0.25);
   const commAnnualSavings = Math.round(commBill * 12 * 0.75);
-  const commPaybackYears = ((commEstCost - commTaxBenefit) / (commAnnualSavings || 1)).toFixed(1);
   const commDieselSavedLiters = Math.round(commKw * 28 * 12);
 
   // ── 3. Bulk Industrial Calculations ──
@@ -141,7 +180,7 @@ export default function CategoryCalculator() {
         {/* Tab Pills */}
         <div className="flex flex-wrap gap-2 mb-8">
           <button
-            onClick={() => setActiveTab("residential")}
+            onClick={() => handleTabChange("residential")}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
               activeTab === "residential"
                 ? "bg-slate-900 text-white shadow-sm"
@@ -153,7 +192,7 @@ export default function CategoryCalculator() {
           </button>
 
           <button
-            onClick={() => setActiveTab("commercial")}
+            onClick={() => handleTabChange("commercial")}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
               activeTab === "commercial"
                 ? "bg-slate-900 text-white shadow-sm"
@@ -165,7 +204,7 @@ export default function CategoryCalculator() {
           </button>
 
           <button
-            onClick={() => setActiveTab("bulk")}
+            onClick={() => handleTabChange("bulk")}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
               activeTab === "bulk"
                 ? "bg-slate-900 text-white shadow-sm"
@@ -199,11 +238,11 @@ export default function CategoryCalculator() {
                       <label className="text-xs font-semibold text-slate-700 block">
                         Average Bi-Monthly TNEB Bill
                       </label>
-                      <span className="text-[11px] text-slate-400 font-mono">
+                      <span className="text-[11px] text-slate-500">
                         TANGEDCO Domestic (LT-1A) • 6 cycles / yr
                       </span>
                     </div>
-                    <span className="text-2xl font-black text-slate-900 font-mono">
+                    <span className="text-2xl font-bold text-slate-900">
                       ₹{resBill.toLocaleString("en-IN")}
                     </span>
                   </div>
@@ -214,7 +253,7 @@ export default function CategoryCalculator() {
                     max="20000"
                     step="250"
                     value={resBill}
-                    onChange={(e) => setResBill(Number(e.target.value))}
+                    onChange={(e) => handleResBillChange(Number(e.target.value))}
                     className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-700"
                   />
 
@@ -229,32 +268,33 @@ export default function CategoryCalculator() {
                   <div className="p-3 bg-slate-50 rounded-lg border border-slate-200/60">
                     <div className="text-slate-500">Recommended Size</div>
                     <div className="text-base font-bold text-slate-900 mt-0.5">{resKw} kW Rooftop</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">~{(resKw * 4.2).toFixed(1)} Units / day</div>
                   </div>
                   <div className="p-3 bg-slate-50 rounded-lg border border-slate-200/60">
                     <div className="text-slate-500">Bi-Monthly Units</div>
                     <div className="text-base font-bold text-blue-700 mt-0.5">~{resUnits} Units</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">~{Math.round(resUnits / 2)} Units / mo</div>
                   </div>
                   <div className="p-3 bg-slate-50 rounded-lg border border-slate-200/60">
                     <div className="text-slate-500">Govt Subsidy</div>
                     <div className="text-base font-bold text-emerald-700 mt-0.5">₹{resSubsidy.toLocaleString("en-IN")}</div>
+                    <div className="text-[10px] text-emerald-600 mt-0.5 font-medium">PM Surya Ghar DBT</div>
                   </div>
                   <div className="p-3 bg-slate-50 rounded-lg border border-slate-200/60">
                     <div className="text-slate-500">Solar Generation</div>
                     <div className="text-base font-bold text-amber-600 mt-0.5">~{resSolarBiMonthlyUnits} Units/cycle</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">~{Math.round(resSolarBiMonthlyUnits / 2)} Units / mo</div>
                   </div>
                 </div>
               </div>
 
               {/* Result Summary */}
               <div className="lg:col-span-6 bg-slate-900 text-white p-6 sm:p-8 rounded-xl space-y-6">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div className="border-b border-slate-800 pb-4">
                   <div>
                     <span className="text-xs font-semibold text-slate-400 block">Estimated Financial Benefit</span>
                     <span className="text-[10px] text-slate-500">TNEB Net-Metering • PM Surya Ghar Subsidy</span>
                   </div>
-                  <span className="text-xs font-semibold text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-md border border-emerald-800/40">
-                    Payback: ~{resPaybackYears} Years
-                  </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -353,11 +393,8 @@ export default function CategoryCalculator() {
 
               {/* Result Summary */}
               <div className="lg:col-span-6 bg-slate-900 text-white p-6 sm:p-8 rounded-xl space-y-6">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                  <span className="text-xs font-semibold text-slate-400">Commercial Return Breakdown</span>
-                  <span className="text-xs font-semibold text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-md border border-emerald-800/40">
-                    Payback: ~{commPaybackYears} Years
-                  </span>
+                <div className="border-b border-slate-800 pb-4">
+                  <span className="text-xs font-semibold text-slate-400 block">Commercial Return Breakdown</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
