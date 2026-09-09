@@ -346,12 +346,11 @@ export default function MediaPage() {
               </p>
 
               <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 space-y-2.5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 font-mono">Key Takeaways & Benefits:</h4>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800">Key Takeaways & Benefits:</h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-slate-700 list-disc list-outside pl-5">
                   {selectedPost.highlights.map((h, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-emerald-600 font-bold">✓</span>
-                      <span>{h}</span>
+                    <li key={i}>
+                      {h}
                     </li>
                   ))}
                 </ul>

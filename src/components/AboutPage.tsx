@@ -2,7 +2,7 @@ import { useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 const Solar3DAbout = lazy(() => import("./3d/Solar3DAbout"));
 import LazyCanvasInView from "./3d/LazyCanvasInView";
-import { Plus, CheckCircle2 } from "lucide-react";
+import { Plus } from "lucide-react";
 
 export default function AboutPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
@@ -128,29 +128,25 @@ export default function AboutPage() {
             
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] font-mono block">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] block">
                 OUR SUCCESS
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
                 Our Solar Journey & Achievements
               </h2>
               
-              <ul className="space-y-3.5 text-slate-700 text-xs sm:text-sm md:text-base pt-2">
-                <li className="flex items-start gap-3">
-                  <span className="text-lg">☀️</span>
-                  <span><strong>350+ HPCL Petrol Bunks Solarized</strong> across Tamil Nadu – trusted by leading fuel stations for cutting energy costs.</span>
+              <ul className="space-y-3.5 text-slate-700 text-xs sm:text-sm md:text-base pt-2 list-disc list-outside pl-5">
+                <li>
+                  <strong>350+ HPCL Petrol Bunks Solarized</strong> across Tamil Nadu – trusted by leading fuel stations for cutting energy costs.
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-lg">🏡</span>
-                  <span><strong>200+ Homes Installed</strong> under the <strong>PM Surya Ghar Muft Bijli Yojana</strong> (Government Solar Subsidy).</span>
+                <li>
+                  <strong>200+ Homes Installed</strong> under the <strong>PM Surya Ghar Muft Bijli Yojana</strong> (Government Solar Subsidy).
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-lg">⚡</span>
-                  <span><strong>10+ MW Industrial & Commercial Solar Projects</strong> commissioned – delivering massive power bill reductions.</span>
+                <li>
+                  <strong>10+ MW Industrial & Commercial Solar Projects</strong> commissioned – delivering massive power bill reductions.
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-lg">🌍</span>
-                  <span>Strong local presence in <strong>Namakkal, Karur, Salem, Erode, Tirupur & Coimbatore</strong> with fast installation & service support.</span>
+                <li>
+                  Strong local presence in <strong>Namakkal, Karur, Salem, Erode, Tirupur & Coimbatore</strong> with fast installation & service support.
                 </li>
               </ul>
             </div>
@@ -205,35 +201,30 @@ export default function AboutPage() {
 
           {/* Right Checklist */}
           <div className="lg:col-span-6 space-y-4 sm:space-y-6">
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 font-mono block">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 block">
               PROVEN EXPERIENCE
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
-              🚀 Why Customers Trust Run Hi Tech Solar?
+              Why Customers Trust Run Hi Tech Solar?
             </h2>
             
-            <div className="space-y-3 pt-2 text-xs sm:text-sm md:text-base text-slate-700">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <div><strong>End-to-End Service</strong> – Site survey, custom 3D design, rapid installation & lifetime maintenance</div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <div><strong>Government Subsidy Support</strong> – Complete hassle-free PM Surya Ghar subsidy processing directly to your bank</div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <div><strong>High-Quality Hardware</strong> – MNRE-approved Mono-PERC panels and smart inverters with 30-year performance warranty</div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <div><strong>Local Service Teams</strong> – Fast technical response within 24 hours across all major Tamil Nadu districts</div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <div><strong>5+ Years Experience</strong> – Reliable, verified solar engineering partner for long-term savings</div>
-              </div>
-            </div>
+            <ul className="space-y-3 pt-2 text-xs sm:text-sm md:text-base text-slate-700 list-disc list-outside pl-5">
+              <li>
+                <strong>End-to-End Service</strong> – Site survey, custom 3D design, rapid installation & lifetime maintenance
+              </li>
+              <li>
+                <strong>Government Subsidy Support</strong> – Complete hassle-free PM Surya Ghar subsidy processing directly to your bank
+              </li>
+              <li>
+                <strong>High-Quality Hardware</strong> – MNRE-approved Mono-PERC panels and smart inverters with 30-year performance warranty
+              </li>
+              <li>
+                <strong>Local Service Teams</strong> – Fast technical response within 24 hours across all major Tamil Nadu districts
+              </li>
+              <li>
+                <strong>5+ Years Experience</strong> – Reliable, verified solar engineering partner for long-term savings
+              </li>
+            </ul>
           </div>
 
         </div>
@@ -245,31 +236,19 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 mt-16 sm:mt-24 grid md:grid-cols-2 gap-6 sm:gap-8">
         
         {/* Our Vision */}
-        <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl flex flex-col justify-between shadow-sm">
-          <div>
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-6 font-bold text-xl">
-              🎯
-            </div>
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900">Our Vision</h3>
-            <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-              To become Tamil Nadu’s most trusted solar company, powering <strong>10,000+ homes</strong> and <strong>100+ MW solar projects</strong> by 2030.
-            </p>
-          </div>
-          <span className="text-[10px] text-slate-400 mt-8 tracking-widest uppercase font-mono font-semibold">ESTABLISHED 2019</span>
+        <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900">Our Vision</h3>
+          <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+            To become Tamil Nadu’s most trusted solar company, powering <strong>10,000+ homes</strong> and <strong>100+ MW solar projects</strong> by 2030.
+          </p>
         </div>
 
         {/* Our Mission */}
-        <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl flex flex-col justify-between shadow-sm">
-          <div>
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 mb-6 font-bold text-xl">
-              🌱
-            </div>
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900">Our Mission</h3>
-            <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-              To deliver clean, affordable, and government-subsidized solar energy to every Tamil Nadu home and industry by building <strong>trust, transparency, and quality service</strong>.
-            </p>
-          </div>
-          <span className="text-[10px] text-slate-400 mt-8 tracking-widest uppercase font-mono font-semibold">NAMAKKAL • KARUR • SALEM</span>
+        <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-900">Our Mission</h3>
+          <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+            To deliver clean, affordable, and government-subsidized solar energy to every Tamil Nadu home and industry by building <strong>trust, transparency, and quality service</strong>.
+          </p>
         </div>
 
       </section>
@@ -279,11 +258,11 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════════════════ */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 mt-16 sm:mt-24">
         <div className="text-center mb-8 sm:mb-12">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] mb-2 block font-mono">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] mb-2 block">
             FAQ
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            ❓ Frequently Asked Questions
+            Frequently Asked Questions
           </h2>
         </div>
 

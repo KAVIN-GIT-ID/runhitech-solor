@@ -200,13 +200,10 @@ export default function ServicesPage() {
                   {s.desc}
                 </p>
                 
-                <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
+                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700 list-disc list-outside pl-5">
                   {s.bullets.map((b, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5">
-                      <span className="shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] mt-0.5 font-bold">
-                        ✓
-                      </span>
-                      <span>{b}</span>
+                    <li key={idx}>
+                      {b}
                     </li>
                   ))}
                 </ul>

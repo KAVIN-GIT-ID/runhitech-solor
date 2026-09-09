@@ -77,22 +77,19 @@ export default function QuoteForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
           Request a Free Site Survey
         </h3>
         <p className="text-xs text-slate-500 mt-1">
-          Zero obligation • Full shadow analysis • Direct PM Surya Ghar subsidy estimate
+          Zero obligation shadow analysis and direct PM Surya Ghar subsidy estimate
         </p>
       </div>
 
-      <div className="space-y-4 pt-2">
+      <div className="space-y-3.5 pt-1">
         {/* Full Name */}
         <div>
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            Full Name <span className="text-red-500">*</span>
-          </label>
           <input
             required
             type="text"
@@ -107,16 +104,14 @@ export default function QuoteForm() {
               }
             }}
             className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all"
-            placeholder="e.g. Karthikeyan R"
+            placeholder="Full Name *"
+            aria-label="Full Name"
           />
         </div>
 
         {/* Phone & Location */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-3.5">
           <div>
-            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              Phone Number <span className="text-red-500">*</span>
-            </label>
             <input
               required
               type="tel"
@@ -134,8 +129,9 @@ export default function QuoteForm() {
                   e.preventDefault();
                 }
               }}
-              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all font-mono"
-              placeholder="98765 43210"
+              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all"
+              placeholder="10-Digit Mobile Number *"
+              aria-label="Phone Number"
             />
             {phoneError && (
               <p className="text-[11px] text-red-500 font-semibold mt-1">
@@ -144,16 +140,14 @@ export default function QuoteForm() {
             )}
           </div>
           <div>
-            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              City / District <span className="text-red-500">*</span>
-            </label>
             <select
               required
               value={form.location}
               onChange={update("location")}
+              aria-label="City or District"
               className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all cursor-pointer"
             >
-              <option value="" disabled>Select District</option>
+              <option value="" disabled>Select City / District *</option>
               <option value="Namakkal">Namakkal</option>
               <option value="Karur">Karur</option>
               <option value="Salem">Salem</option>
@@ -172,14 +166,13 @@ export default function QuoteForm() {
 
         {/* System Requirement */}
         <div>
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            System Requirement
-          </label>
           <select
             value={form.type}
             onChange={update("type")}
+            aria-label="System Requirement"
             className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all cursor-pointer"
           >
+            <option value="" disabled>Select System Requirement</option>
             <option>Residential Rooftop (PM Surya Ghar Subsidy)</option>
             <option>Commercial Petrol Bunk (HPCL / Retail Solar)</option>
             <option>Industrial Solar (MW Plants & Factories)</option>
@@ -188,25 +181,7 @@ export default function QuoteForm() {
         </div>
       </div>
 
-      {/* Trust Guarantees */}
-      <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-500 pt-1">
-        <div className="flex items-center gap-1.5">
-          <span className="text-emerald-500 font-bold">✓</span>
-          <span>Up to ₹78,000 Govt Subsidy</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span className="text-emerald-500 font-bold">✓</span>
-          <span>30-Year Linear Warranty</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span className="text-emerald-500 font-bold">✓</span>
-          <span>TNEB Net-Metering Handled</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span className="text-emerald-500 font-bold">✓</span>
-          <span>24h Engineer Response</span>
-        </div>
-      </div>
+
 
       {/* Status Messages */}
       {status === "success" && (

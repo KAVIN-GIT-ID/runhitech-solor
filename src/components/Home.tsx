@@ -9,10 +9,7 @@ import CategoryCalculator from "./CategoryCalculator";
 import { triggerLeadNotification } from "../services/notificationService";
 import {
   Sun,
-  ShieldCheck,
   Home as HomeIcon,
-  Building2,
-  Battery,
   ArrowRight,
   Calculator,
   Play,
@@ -198,9 +195,9 @@ export default function Home() {
             {/* Heading */}
             <h1 data-animate="fade-up" data-delay="100" className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.22] sm:leading-[1.18] mb-3 sm:mb-6">
               <span className="gradient-text-shine text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight">
-                Power Your Home With
+                Power Your Home
                 <br />
-                Sunlight
+                <span className="whitespace-nowrap">With Sunlight</span>
               </span>
             </h1>
 
@@ -378,70 +375,49 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
 
             {/* 1. Mono Solar Panels (For Homes) */}
-            <div className="rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between group overflow-hidden">
-              <div>
-                {/* Visual Module Blueprint Header */}
-                <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white overflow-hidden">
-                  <div className="absolute top-0 right-0 w-28 h-28 bg-blue-500/15 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="relative z-10 flex items-start justify-end gap-2">
-                    <span className="text-xs font-medium text-slate-300">
-                      Mono PERC
-                    </span>
+            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div>
+                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
+                    Mono PERC
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    Mono Solar Panels
+                  </h3>
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="text-xl font-bold text-blue-700">540W – 580W</span>
+                    <span className="text-xs text-slate-500 font-medium">21.8% Peak Yield</span>
                   </div>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    High-power monocrystalline cells engineered for maximum yield on home rooftops. Delivers steady electricity even during Tamil Nadu's peak summer heat.
+                  </p>
+                </div>
 
-                  <div className="relative z-10 mt-4 flex items-baseline justify-between">
-                    <div>
-                      <div className="text-2xl sm:text-3xl font-bold text-white">540W – 580W</div>
-                      <div className="text-xs text-blue-200 font-medium mt-0.5">Half-Cut Cell Tech</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm font-bold text-emerald-400">21.8%</div>
-                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Peak Efficiency</div>
-                    </div>
+                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Govt Subsidy</span>
+                    <span className="font-semibold text-emerald-700">₹78,000 PM Surya Ghar</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Space Layout</span>
+                    <span className="font-semibold text-slate-800">Compact Roof Layout</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">EB Reduction</span>
+                    <span className="font-semibold text-blue-700">Up to 90% Savings</span>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5 sm:p-6 space-y-4">
-                  <div>
-                    <h3 className="font-bold text-slate-900 text-base sm:text-lg group-hover:text-blue-600 transition-colors">
-                      Mono Solar Panels (For Homes)
-                    </h3>
-                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                      High-power monocrystalline cells engineered for maximum yield on home rooftops. Delivers steady electricity even during Tamil Nadu's peak summer heat.
-                    </p>
-                  </div>
-
-                  {/* Curated Spec Highlights */}
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Subsidy Eligibility</span>
-                      <span className="font-bold text-emerald-700">₹78,000 PM Surya Ghar</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Space Efficiency</span>
-                      <span className="font-semibold text-slate-800">Compact Roof Layout</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">EB Bill Reduction</span>
-                      <span className="font-bold text-blue-600">Up to 90% Savings</span>
-                    </div>
-                  </div>
-
-                  {/* Ideal Location */}
-                  <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-600 font-medium">
-                    <HomeIcon className="w-4 h-4 text-blue-600 shrink-0" />
-                    <span>Villas, Individual Houses & Apartments</span>
-                  </div>
+                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                  <HomeIcon className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>Villas, Individual Houses & Apartments</span>
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="p-5 pt-0 sm:p-6 sm:pt-0">
+              <div className="pt-5">
                 <a
                   href="#calculator"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
+                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
                 >
                   <span>Calculate Home Subsidy</span>
                   <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -450,70 +426,49 @@ export default function Home() {
             </div>
 
             {/* 2. Double-Sided Solar Panels */}
-            <div className="rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between group overflow-hidden">
-              <div>
-                {/* Visual Module Blueprint Header */}
-                <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 text-white overflow-hidden">
-                  <div className="absolute top-0 right-0 w-28 h-28 bg-indigo-500/15 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="relative z-10 flex items-start justify-end gap-2">
-                    <span className="text-xs font-medium text-slate-300">
-                      Dual-Glass
-                    </span>
+            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div>
+                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
+                    Dual-Glass
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    Double-Sided Solar Panels
+                  </h3>
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="text-xl font-bold text-indigo-700">550W – 600W</span>
+                    <span className="text-xs text-slate-500 font-medium">22.5% Dual Yield</span>
                   </div>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    Generates power from both the top and underside using ground reflection. Encased in dual tempered glass for 30+ year industrial life.
+                  </p>
+                </div>
 
-                  <div className="relative z-10 mt-4 flex items-baseline justify-between">
-                    <div>
-                      <div className="text-2xl sm:text-3xl font-bold text-white">550W – 600W</div>
-                      <div className="text-xs text-indigo-200 font-medium mt-0.5">Dual-Sided Absorption</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm font-bold text-indigo-400">22.5%</div>
-                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Bifacial Yield</div>
-                    </div>
+                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Rear Boost</span>
+                    <span className="font-semibold text-indigo-700">+10% to +25% Extra kWh</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Glass Build</span>
+                    <span className="font-semibold text-slate-800">2.0mm Dual Tempered</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Degradation</span>
+                    <span className="font-semibold text-blue-700">0.4% Low / Year</span>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5 sm:p-6 space-y-4">
-                  <div>
-                    <h3 className="font-bold text-slate-900 text-base sm:text-lg group-hover:text-blue-600 transition-colors">
-                      Double-Sided Solar Panels
-                    </h3>
-                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                      Generates power from both the top and underside using ground reflection. Encased in dual tempered glass for 30+ year industrial life.
-                    </p>
-                  </div>
-
-                  {/* Curated Spec Highlights */}
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Rear Energy Boost</span>
-                      <span className="font-bold text-indigo-700">+10% to +25% Extra kWh</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Glass Build</span>
-                      <span className="font-semibold text-slate-800">2.0mm Dual Tempered</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Degradation Rate</span>
-                      <span className="font-bold text-blue-600">0.4% Ultra-Low / Year</span>
-                    </div>
-                  </div>
-
-                  {/* Ideal Location */}
-                  <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-600 font-medium">
-                    <Layers className="w-4 h-4 text-indigo-600 shrink-0" />
-                    <span>Petrol Bunks, Flat Terraces & Showrooms</span>
-                  </div>
+                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                  <Layers className="w-4 h-4 text-indigo-600 shrink-0" />
+                  <span>Petrol Bunks, Flat Terraces & Showrooms</span>
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="p-5 pt-0 sm:p-6 sm:pt-0">
+              <div className="pt-5">
                 <a
                   href="#calculator"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
+                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
                 >
                   <span>Estimate Commercial ROI</span>
                   <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -522,70 +477,49 @@ export default function Home() {
             </div>
 
             {/* 3. Factory High-Yield Panels */}
-            <div className="rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between group overflow-hidden">
-              <div>
-                {/* Visual Module Blueprint Header */}
-                <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950 text-white overflow-hidden">
-                  <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-500/15 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="relative z-10 flex items-start justify-end gap-2">
-                    <span className="text-xs font-medium text-slate-300">
-                      TOPCon N-Type
-                    </span>
+            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div>
+                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
+                    TOPCon N-Type
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    High-Power Factory Panels
+                  </h3>
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="text-xl font-bold text-emerald-700">570W – 620W</span>
+                    <span className="text-xs text-slate-500 font-medium">Max Heat Yield</span>
                   </div>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    Next-generation N-type TOPCon panels built for spinning mills and commercial sheds. Maintains heavy power generation during cloudy days and high heat.
+                  </p>
+                </div>
 
-                  <div className="relative z-10 mt-4 flex items-baseline justify-between">
-                    <div>
-                      <div className="text-2xl sm:text-3xl font-bold text-white">570W – 620W</div>
-                      <div className="text-xs text-emerald-200 font-medium mt-0.5">Ultra High Power</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm font-bold text-emerald-400">Max Yield</div>
-                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Heat Tolerant</div>
-                    </div>
+                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Module Power</span>
+                    <span className="font-semibold text-emerald-700">570W to 620W Output</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Overcast Yield</span>
+                    <span className="font-semibold text-slate-800">Superior on Rainy Days</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Mechanical</span>
+                    <span className="font-semibold text-blue-700">5400 Pa Wind/Storm Proof</span>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5 sm:p-6 space-y-4">
-                  <div>
-                    <h3 className="font-bold text-slate-900 text-base sm:text-lg group-hover:text-blue-600 transition-colors">
-                      High-Power Factory Panels
-                    </h3>
-                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                      Next-generation N-type TOPCon panels built for spinning mills and commercial sheds. Maintains heavy power generation during cloudy days and high heat.
-                    </p>
-                  </div>
-
-                  {/* Curated Spec Highlights */}
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Module Capacity</span>
-                      <span className="font-bold text-emerald-700">570W to 620W Output</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Low-Light Yield</span>
-                      <span className="font-semibold text-slate-800">Superior on Overcast Days</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Mechanical Rating</span>
-                      <span className="font-bold text-blue-600">5400 Pa Wind/Storm Proof</span>
-                    </div>
-                  </div>
-
-                  {/* Ideal Location */}
-                  <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-600 font-medium">
-                    <Factory className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>Spinning Mills, Factories & Warehouses</span>
-                  </div>
+                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                  <Factory className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Spinning Mills, Factories & Warehouses</span>
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="p-5 pt-0 sm:p-6 sm:pt-0">
+              <div className="pt-5">
                 <a
                   href="#contact"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
+                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
                 >
                   <span>Request Industrial Audit</span>
                   <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -594,70 +528,49 @@ export default function Home() {
             </div>
 
             {/* 4. Solar with Battery Backup */}
-            <div className="rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 flex flex-col justify-between group overflow-hidden">
-              <div>
-                {/* Visual Module Blueprint Header */}
-                <div className="relative p-5 bg-gradient-to-br from-slate-900 via-slate-950 to-amber-950 text-white overflow-hidden">
-                  <div className="absolute top-0 right-0 w-28 h-28 bg-amber-500/15 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="relative z-10 flex items-start justify-end gap-2">
-                    <span className="text-xs font-medium text-slate-300">
-                      Hybrid Storage
-                    </span>
+            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div>
+                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
+                    Hybrid Storage
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    Solar with Battery Backup
+                  </h3>
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="text-xl font-bold text-amber-700">3.6kW – 15kW+</span>
+                    <span className="text-xs text-slate-500 font-medium">&lt;10ms Cutover</span>
                   </div>
+                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    Powers your lights, motors, fans, and critical equipment non-stop 24/7. When EB power cuts occur, instant switching eliminates expensive diesel generators.
+                  </p>
+                </div>
 
-                  <div className="relative z-10 mt-4 flex items-baseline justify-between">
-                    <div>
-                      <div className="text-2xl sm:text-3xl font-bold text-white">3.6kW – 15kW+</div>
-                      <div className="text-xs text-amber-200 font-medium mt-0.5">Smart LiFePO4 Hub</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm font-bold text-amber-400">&lt;10ms</div>
-                      <div className="text-[11px] text-slate-300 font-medium mt-0.5">Instant Cutover</div>
-                    </div>
+                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Cutover Speed</span>
+                    <span className="font-semibold text-amber-700">&lt;10ms Seamless</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Battery Type</span>
+                    <span className="font-semibold text-slate-800">LiFePO4 6,000+ Cycles</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-500">Diesel Saved</span>
+                    <span className="font-semibold text-emerald-700">100% Fuel Free</span>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-5 sm:p-6 space-y-4">
-                  <div>
-                    <h3 className="font-bold text-slate-900 text-base sm:text-lg group-hover:text-blue-600 transition-colors">
-                      Solar with Battery Backup
-                    </h3>
-                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                      Powers your lights, motors, fans, and critical equipment non-stop 24/7. When EB power cuts occur, instant switching eliminates expensive diesel generators.
-                    </p>
-                  </div>
-
-                  {/* Curated Spec Highlights */}
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Cutover Speed</span>
-                      <span className="font-bold text-amber-700">&lt;10ms Seamless Transfer</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Battery Chemistry</span>
-                      <span className="font-semibold text-slate-800">LiFePO4 6,000+ Cycles</span>
-                    </div>
-                    <div className="flex items-center justify-between text-[11px] py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                      <span className="text-slate-500 font-medium">Fuel Elimination</span>
-                      <span className="font-bold text-emerald-600">100% Diesel Free</span>
-                    </div>
-                  </div>
-
-                  {/* Ideal Location */}
-                  <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-600 font-medium">
-                    <BatteryCharging className="w-4 h-4 text-amber-600 shrink-0" />
-                    <span>Hospitals, CNC Units, Villas & Offices</span>
-                  </div>
+                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                  <BatteryCharging className="w-4 h-4 text-amber-600 shrink-0" />
+                  <span>Hospitals, CNC Units, Villas & Offices</span>
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="p-5 pt-0 sm:p-6 sm:pt-0">
+              <div className="pt-5">
                 <a
                   href="#contact"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
+                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
                 >
                   <span>Design Battery Backup</span>
                   <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -702,9 +615,6 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-5 sm:p-7">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-amber-500/20 transition">
-                  <HomeIcon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600" />
-                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Home Rooftop Solar</h3>
                 <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
                   Built for your house. Get up to ₹78,000 direct government subsidy into your bank account and reduce your EB bill up to 90%.
@@ -725,9 +635,6 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-5 sm:p-7">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-blue-500/20 transition">
-                  <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
-                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Commercial & Petrol Bunks</h3>
                 <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
                   Custom solar setups for petrol bunks, hotels, schools, and shops. Recover full cost in 3 to 4 years and reduce monthly electricity expenses.
@@ -748,9 +655,6 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-5 sm:p-7">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-green-500/20 transition">
-                  <Battery className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
-                </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Solar with Battery Backup</h3>
                 <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
                   Stores daytime solar power in strong batteries to run your lights, fans, and appliances during night and TNEB power cuts without diesel.
@@ -1282,11 +1186,7 @@ export default function Home() {
                 </p>
               )}
 
-              <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 mt-8 font-semibold">
-                <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-600" /> PM Surya Ghar Subsidy</span>
-                <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-600" /> ₹0 EB Bills Guarantee</span>
-                <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-green-600" /> 30-Year Linear Warranty</span>
-              </div>
+
             </div>
 
           </div>
@@ -1360,9 +1260,8 @@ export default function Home() {
                 key={d}
                 data-animate="zoom"
                 data-delay={`${i * 60}`}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-100 bg-slate-50 px-6 py-2.5 text-xs font-semibold text-slate-700 tracking-wide shadow-sm hover:border-[#0f3d75] transition-colors"
+                className="inline-flex items-center justify-center rounded-full border border-slate-100 bg-slate-50 px-6 py-2.5 text-xs font-semibold text-slate-700 tracking-wide shadow-sm hover:border-[#0f3d75] transition-colors"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
                 {d}
               </span>
             ))}

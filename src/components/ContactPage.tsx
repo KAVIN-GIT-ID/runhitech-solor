@@ -1,5 +1,5 @@
 import QuoteForm from "./QuoteForm";
-import { Phone, Mail, MapPin, Clock, ShieldCheck, Zap, Award, Navigation } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Navigation } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -63,8 +63,8 @@ export default function ContactPage() {
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono block">Official Email</span>
-                    <a href="mailto:info@runhitechsolar.com" className="text-sm font-bold text-white hover:text-amber-400 transition-colors font-mono block mt-0.5">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Official Email</span>
+                    <a href="mailto:info@runhitechsolar.com" className="text-sm font-bold text-white hover:text-amber-400 transition-colors block mt-0.5">
                       info@runhitechsolar.com
                     </a>
                   </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono block">Regional Office</span>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Regional Office</span>
                     <p className="text-xs text-slate-300 leading-relaxed mt-0.5">
                       RS Block 1st Floor, Jedarpalayam Main Road, P. Velur, Namakkal (DT) - 638181
                     </p>
@@ -89,7 +89,7 @@ export default function ContactPage() {
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono block">Working Hours</span>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Working Hours</span>
                     <p className="text-xs text-slate-300 mt-0.5">
                       Mon – Sat: 9:00 AM – 6:30 PM
                     </p>
@@ -100,15 +100,6 @@ export default function ContactPage() {
 
             </div>
 
-            {/* Bottom Quick Trust Callout */}
-            <div className="relative z-10 pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
-              <div className="flex items-center gap-4 text-xs text-slate-300">
-                <span className="flex items-center gap-1"><Award className="w-3.5 h-3.5 text-amber-400" /> 550+ Sites</span>
-                <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-blue-400" /> MNRE Approved</span>
-                <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> 30-Yr Linear</span>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -117,7 +108,7 @@ export default function ContactPage() {
         <div className="bg-white rounded-[2.5rem] p-6 sm:p-8 shadow-xl border border-slate-200/80 overflow-hidden">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 font-mono block">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 block">
                 OFFICE LOCATION
               </span>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">
