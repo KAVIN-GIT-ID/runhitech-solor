@@ -50,12 +50,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono block">Direct Helpline</span>
-                    <div className="flex flex-col gap-0.5 mt-0.5">
-                      <a href="tel:+919080557472" className="text-sm font-bold text-white hover:text-amber-400 transition-colors font-mono">
-                        +91 90805 57472
+                    <div className="flex items-center gap-1.5 mt-0.5 text-xs sm:text-sm font-bold text-white font-mono whitespace-nowrap">
+                      <a href="tel:+919080557472" className="hover:text-amber-400 transition-colors">
+                        +919080557472
                       </a>
-                      <a href="tel:+919688830274" className="text-sm font-bold text-white hover:text-amber-400 transition-colors font-mono">
-                        +91 96888 30274
+                      <span className="text-slate-500">/</span>
+                      <a href="tel:+919688830274" className="hover:text-amber-400 transition-colors">
+                        +919688830274
                       </a>
                     </div>
                   </div>

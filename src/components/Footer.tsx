@@ -15,8 +15,8 @@ export default function Footer() {
         {/* Main Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 pb-12 border-b border-slate-200/70">
           
-          {/* Column 1: Brand & Socials (lg:col-span-4) */}
-          <div className="lg:col-span-4 space-y-4">
+          {/* Column 1: Brand & Socials (lg:col-span-3) */}
+          <div className="lg:col-span-3 space-y-4">
             <Link
               to="/"
               onClick={(e) => {
@@ -112,8 +112,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Office (lg:col-span-3) */}
-          <div className="lg:col-span-3 space-y-3">
+          {/* Column 4: Contact & Office (lg:col-span-4) */}
+          <div className="lg:col-span-4 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
               Head Office
             </h4>
@@ -132,20 +132,21 @@ export default function Footer() {
                 </span>
               </a>
 
-              <div className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                <div className="flex flex-col gap-1 font-mono font-bold text-slate-800">
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-blue-600 shrink-0" />
+                <div className="font-mono font-bold text-slate-800 whitespace-nowrap text-xs sm:text-[13px] xl:text-sm">
                   <a
                     href="tel:+919080557472"
-                    className="hover:text-blue-600 transition-colors whitespace-nowrap"
+                    className="hover:text-blue-600 transition-colors"
                   >
-                    +91 90805 57472
+                    +919080557472
                   </a>
+                  <span className="text-slate-400 mx-1">/</span>
                   <a
                     href="tel:+919688830274"
-                    className="hover:text-blue-600 transition-colors whitespace-nowrap"
+                    className="hover:text-blue-600 transition-colors"
                   >
-                    +91 96888 30274
+                    +919688830274
                   </a>
                 </div>
               </div>

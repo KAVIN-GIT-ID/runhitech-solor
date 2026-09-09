@@ -12,8 +12,11 @@ export default function FloatingContact() {
         <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-amber-400 to-amber-500 text-slate-950 flex items-center justify-center shadow-xs shrink-0 group-hover:rotate-12 transition-transform">
           <Phone className="w-3.5 h-3.5 fill-current" />
         </div>
-        <span className="font-mono tracking-tight text-slate-900 font-extrabold">
+        <span className="font-mono tracking-tight text-slate-900 font-extrabold hidden min-[440px]:inline">
           +91 90805 57472
+        </span>
+        <span className="font-sans text-xs text-slate-900 font-bold min-[440px]:hidden">
+          Call
         </span>
       </a>
     </div>
