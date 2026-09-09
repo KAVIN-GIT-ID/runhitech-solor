@@ -1,0 +1,8 @@
+name = "runhitech-solar"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-09-23"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "runhitech_solar_db"
+database_id = "3fc2c324-b6ea-4a8c-9fac-0d8517a1d495"

@@ -344,11 +344,29 @@ export default function SolarPanel3D({
       renderer.render(scene, camera);
     };
 
-    animate();
+    // Pause rendering when offscreen to preserve Safari/WebKit 60fps smoothness
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(mount);
+
+    const safeAnimate = () => {
+      frameId = requestAnimationFrame(safeAnimate);
+      if (isVisible) {
+        animate();
+      }
+    };
+
+    safeAnimate();
 
     // ── 8. Cleanup ──
     return () => {
       cancelAnimationFrame(frameId);
+      observer.disconnect();
       domElement.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);

@@ -223,10 +223,28 @@ export default function Solar3DServices({ className = "", height = "380px" }: So
       renderer.render(scene, camera);
     };
 
-    animate();
+    // Pause rendering when offscreen to preserve Safari/WebKit 60fps smoothness
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(mount);
+
+    const safeAnimate = () => {
+      frameId = requestAnimationFrame(safeAnimate);
+      if (isVisible) {
+        animate();
+      }
+    };
+
+    safeAnimate();
 
     return () => {
       cancelAnimationFrame(frameId);
+      observer.disconnect();
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       renderer.dispose();

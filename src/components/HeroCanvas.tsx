@@ -206,11 +206,29 @@ export default function HeroCanvas() {
       renderer.render(scene, camera);
     };
 
-    animate();
+    // Pause rendering when offscreen to preserve Safari/WebKit 60fps smoothness
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(mount);
+
+    const safeAnimate = () => {
+      frameId = requestAnimationFrame(safeAnimate);
+      if (isVisible) {
+        animate();
+      }
+    };
+
+    safeAnimate();
 
     // ── Cleanup ──
     return () => {
       cancelAnimationFrame(frameId);
+      observer.disconnect();
       window.removeEventListener("resize", onResize);
       window.removeEventListener("mousemove", onMouseMove);
       renderer.dispose();

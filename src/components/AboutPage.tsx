@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
-import Solar3DAbout from "./3d/Solar3DAbout";
+const Solar3DAbout = lazy(() => import("./3d/Solar3DAbout"));
 import { Plus, CheckCircle2 } from "lucide-react";
 
 export default function AboutPage() {
@@ -76,8 +76,16 @@ export default function AboutPage() {
           </div>
 
           {/* Right 3D Solar Panel */}
-          <div className="flex justify-center items-center">
-            <Solar3DAbout height="380px" />
+          <div className="flex justify-center items-center min-h-[380px]">
+            <Suspense
+              fallback={
+                <div className="w-full h-[380px] flex items-center justify-center rounded-3xl bg-slate-900/10 border border-slate-200/50">
+                  <div className="w-7 h-7 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
+                </div>
+              }
+            >
+              <Solar3DAbout height="380px" />
+            </Suspense>
           </div>
 
         </div>

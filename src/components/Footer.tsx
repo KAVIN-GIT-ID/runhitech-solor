@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
 
+import { scrollToTop } from "../hooks/useLenis";
+
 export default function Footer() {
   return (
     <footer className="relative z-10 border-t border-slate-200/80 pt-12 sm:pt-16 pb-12 bg-slate-50/80 text-slate-700 overflow-hidden">
@@ -15,7 +17,19 @@ export default function Footer() {
           
           {/* Column 1: Brand & Socials (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-4">
-            <Link to="/" className="inline-block">
+            <Link
+              to="/"
+              onClick={(e) => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  scrollToTop(true);
+                } else {
+                  scrollToTop(true);
+                }
+              }}
+              className="inline-block cursor-pointer"
+              aria-label="Run Hi Tech Solar Home - Back to Top"
+            >
               <img
                 src="/logo.png"
                 alt="Run Hi Tech Solar"
@@ -106,7 +120,7 @@ export default function Footer() {
             
             <div className="space-y-2.5 text-xs sm:text-sm text-slate-600">
               <a
-                href="https://maps.app.goo.gl/DqbK9Hz9WV2q1wMf7"
+                href="https://maps.app.goo.gl/QUT6naDzq9AMAvvf6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-2.5 hover:text-blue-600 transition-colors group"
@@ -118,12 +132,21 @@ export default function Footer() {
                 </span>
               </a>
 
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-blue-600 shrink-0" />
-                <div className="flex gap-2 font-mono font-bold text-slate-800">
-                  <a href="tel:+919080557472" className="hover:text-blue-600">+91 90805 57472</a>
-                  <span>/</span>
-                  <a href="tel:+919688830274" className="hover:text-blue-600">+91 96888 30274</a>
+              <div className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-1 font-mono font-bold text-slate-800">
+                  <a
+                    href="tel:+919080557472"
+                    className="hover:text-blue-600 transition-colors whitespace-nowrap"
+                  >
+                    +91 90805 57472
+                  </a>
+                  <a
+                    href="tel:+919688830274"
+                    className="hover:text-blue-600 transition-colors whitespace-nowrap"
+                  >
+                    +91 96888 30274
+                  </a>
                 </div>
               </div>
 
@@ -145,8 +168,11 @@ export default function Footer() {
             <span>MNRE Approved Solar Partner • PM Surya Ghar Integrator</span>
           </div>
 
-          <div>
-            © {new Date().getFullYear()} Run Hi Tech Solar. All rights reserved.
+          <div className="flex items-center gap-4">
+            <span>© {new Date().getFullYear()} Run Hi Tech Solar. All rights reserved.</span>
+            <Link to="/admin" className="text-slate-400 hover:text-blue-600 underline text-[11px]">
+              Admin Portal
+            </Link>
           </div>
         </div>
 

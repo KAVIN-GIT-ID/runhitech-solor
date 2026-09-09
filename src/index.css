@@ -35,13 +35,12 @@
 }
 
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100%;
   width: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -54,8 +53,21 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior-x: none;
   touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Smooth native browser scrolling with reduced motion support for low-end devices */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Low-end device rendering optimization */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
 }
 
 #root {
@@ -385,4 +397,30 @@ body.mobile-menu-open .floating-widget-global {
 }
 .glow-border:hover::before { 
   opacity: 1; 
+}
+
+/* Hide all floating buttons and widgets when Auth modal is open */
+body.auth-modal-open .floating-widget-global {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ── Shimmer Animation for Skeleton Loaders ── */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ── Safari WebKit Hardware Layer Promotion ── */
+.gpu-accelerate {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }

@@ -1,0 +1,44 @@
+{
+  "name": "Run Hi Tech Solar — EPC & Subsidies",
+  "short_name": "RunHiTech",
+  "description": "MNRE Approved Solar EPC Integrator in Tamil Nadu. Residential, Commercial & Industrial Solar Installations.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f3d75",
+  "categories": ["business", "utilities", "lifestyle"],
+  "icons": [
+    {
+      "src": "/logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Calculate Savings",
+      "url": "/#calculator",
+      "description": "Calculate your solar ROI and PM Surya Ghar subsidy"
+    },
+    {
+      "name": "Request Survey",
+      "url": "/contact",
+      "description": "Schedule a free technical site inspection"
+    },
+    {
+      "name": "Govt Subsidy",
+      "url": "/subsidy",
+      "description": "Check PM Surya Ghar ₹78,000 subsidy eligibility"
+    }
+  ],
+  "prefer_related_applications": false
+}

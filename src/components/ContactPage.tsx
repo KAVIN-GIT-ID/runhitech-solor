@@ -133,7 +133,7 @@ export default function ContactPage() {
             </div>
             
             <a
-              href="https://maps.app.goo.gl/DqbK9Hz9WV2q1wMf7"
+              href="https://maps.app.goo.gl/QUT6naDzq9AMAvvf6"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-5 py-3 rounded-xl shadow-md transition-all flex items-center gap-2 shrink-0 active:scale-95"
@@ -147,7 +147,7 @@ export default function ContactPage() {
           <div className="rounded-2xl overflow-hidden h-[340px] sm:h-[420px] w-full border border-slate-200 bg-slate-100 shadow-inner relative">
             <iframe
               title="Run Hi Tech Solar Office Location in Namakkal"
-              src="https://maps.google.com/maps?q=Jedarpalayam+Main+Road,+Paramathi+Velur,+Namakkal+638181&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=RUN+HI+TECH+SOLAR,+Jedarpalayam+Main+Road,+Paramathi+Velur&t=&z=16&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

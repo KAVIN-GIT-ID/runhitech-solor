@@ -13,7 +13,7 @@ interface Message {
 // ─── Knowledge Base ───────────────────────────────────────────────────────────
 const KB = {
   company: {
-    name: "Ai",
+    name: "Run Hi Tech Solar",
     founded: "2019",
     tagline: "MNRE Approved Solar EPC Integrator in Tamil Nadu",
     installed: "3.2 MW+ solar installed",
@@ -238,7 +238,7 @@ function getReply(input: string): Omit<Message, "id" | "role" | "time"> {
   // Calculator / Savings estimate
   if (/calculat|estimate|how much.*save|saving|bill|units|kw|kilowatt/.test(q)) {
     return {
-      text: `🧮 **Quick Savings Estimate:**\n\nYour savings depend on your current TNEB bill:\n\n• **₹1,000–2,000/month** → 1–2 kW system → Save ~₹10,000–₹18,000/yr\n• **₹3,000–4,000/month** → 3 kW system → Save ~₹24,000–₹30,000/yr\n• **₹5,000+/month** → 5 kW+ → Save ₹40,000+/yr\n\n💡 Use our interactive **Savings Calculator** on the home page to get a precise estimate!`,
+      text: `🧮 **Quick Solar Savings Estimate (Tamil Nadu TNEB):**\n\nYour savings depend on your current bi-monthly electricity bill:\n\n• **₹1,500–₹2,500 bi-monthly** → 1–2 kW system → Save ~₹9,000–₹15,000/yr\n• **₹3,500–₹5,000 bi-monthly** → 3–4 kW system → Save ~₹21,000–₹30,000/yr\n• **₹7,000+ bi-monthly** → 5 kW+ → Save ₹42,000+/yr\n\n💡 Use our interactive **Solar Financial Estimator** on the home page for exact TNEB LT-1A calculations!`,
       links: [{ label: "Try Savings Calculator →", href: "/#calculator" }],
       chips: ["Check Subsidy", "Talk to an Expert"],
     };
@@ -354,8 +354,8 @@ export default function AIChatbot() {
 
   return (
     <>
-      {/* ── Floating Action Buttons (WhatsApp + AI Chat) ── */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 floating-widget-global">
+      {/* ── Floating Action Buttons (WhatsApp + AI Chat in Apple iOS Frosted Glass Theme) ── */}
+      <div className="fixed bottom-6 right-4 sm:right-6 z-40 flex items-center gap-2.5 sm:gap-3 floating-widget-global">
         {/* WhatsApp Direct 1-Tap Floating Button */}
         <a
           href="https://wa.me/919080557472?text=Hello%20Run%20Hi%20Tech%20Solar%2C%20I%20would%20like%20to%20know%20more%20about%20solar%20installation%20and%20subsidy"
@@ -363,9 +363,10 @@ export default function AIChatbot() {
           rel="noopener noreferrer"
           title="Chat on WhatsApp (+91 90805 57472)"
           aria-label="Chat on WhatsApp"
-          className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 ring-2 ring-white/40 cursor-pointer"
+          className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white backdrop-blur-xl text-emerald-600 shadow-2xl border border-white/80 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+          style={{ boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.8) inset" }}
         >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
           </svg>
         </a>
@@ -374,35 +375,32 @@ export default function AIChatbot() {
         <button
           onClick={() => { setOpen((o) => !o); setPulse(false); }}
           aria-label="Open Solar Support Chat"
-          className="w-13 h-13 sm:w-14 sm:h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 ring-2 ring-white/40 cursor-pointer relative"
-          style={{
-            background: "linear-gradient(135deg, #10B981 0%, #059669 35%, #0284C7 70%, #2563EB 100%)",
-          }}
+          className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white backdrop-blur-xl text-blue-600 shadow-2xl border border-white/80 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer relative"
+          style={{ boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.8) inset" }}
         >
           {open ? (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              <circle cx="9" cy="10" r="1" fill="white" />
-              <circle cx="12" cy="10" r="1" fill="white" />
-              <circle cx="15" cy="10" r="1" fill="white" />
+              <circle cx="9" cy="10" r="1" fill="currentColor" />
+              <circle cx="12" cy="10" r="1" fill="currentColor" />
+              <circle cx="15" cy="10" r="1" fill="currentColor" />
             </svg>
           )}
 
           {/* Pulse notification dot */}
           {pulse && !open && (
-            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-white shadow-md animate-bounce" />
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white shadow-sm animate-bounce" />
           )}
         </button>
       </div>
 
       {/* ── Chat Panel ── */}
       <div
-        data-lenis-prevent
         className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 z-50 w-[calc(100vw-24px)] sm:w-[380px] max-w-[400px] flex flex-col rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 transition-all duration-300 floating-widget-global"
         style={{
           transform: open ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
@@ -419,24 +417,18 @@ export default function AIChatbot() {
           className="flex items-center gap-3 px-4 sm:px-5 py-3.5 sm:py-4 flex-shrink-0"
           style={{ background: "linear-gradient(135deg, #065F46 0%, #059669 35%, #0F3D75 75%, #1E3A8A 100%)" }}
         >
-          <div className="w-9 h-9 rounded-xl bg-emerald-400/20 border border-emerald-400/30 flex items-center justify-center flex-shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#34D399" stroke="#34D399" strokeWidth="0.5">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="4" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-              <line x1="12" y1="20" x2="12" y2="23" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-              <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-              <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-              <line x1="1" y1="12" x2="4" y2="12" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-              <line x1="20" y1="12" x2="23" y2="12" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-              <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-              <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" stroke="#34D399" strokeWidth="2" strokeLinecap="round" />
-            </svg>
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white p-1 flex items-center justify-center flex-shrink-0 shadow-md overflow-hidden border border-white/40">
+            <img
+              src="/logo-icon.png"
+              alt="runhitech Ai"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-sm font-bold text-white leading-tight">Ai</div>
+            <div className="text-sm sm:text-base font-bold text-white leading-tight truncate">runhitech Ai</div>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] text-white/80 font-medium"></span>
+              <span className="text-[10px] text-emerald-100/90 font-medium">AI Solar Assistant • Online</span>
             </div>
           </div>
 
@@ -466,7 +458,6 @@ export default function AIChatbot() {
 
         {/* Messages */}
         <div
-          data-lenis-prevent
           className="flex-1 overflow-y-auto overscroll-contain px-4 py-4 space-y-4 touch-pan-y"
           style={{
             minHeight: 0,
@@ -476,14 +467,12 @@ export default function AIChatbot() {
           {messages.map((msg) => (
             <div key={msg.id} className={`flex gap-2.5 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
               {msg.role === "bot" && (
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#059669] to-[#0284c7] flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                    <circle cx="12" cy="12" r="5" fill="white" />
-                    <line x1="12" y1="2" x2="12" y2="5" stroke="#34D399" strokeWidth="2.5" strokeLinecap="round" />
-                    <line x1="12" y1="19" x2="12" y2="22" stroke="#34D399" strokeWidth="2.5" strokeLinecap="round" />
-                    <line x1="2" y1="12" x2="5" y2="12" stroke="#34D399" strokeWidth="2.5" strokeLinecap="round" />
-                    <line x1="19" y1="12" x2="22" y2="12" stroke="#34D399" strokeWidth="2.5" strokeLinecap="round" />
-                  </svg>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white p-0.5 flex items-center justify-center flex-shrink-0 shadow-xs mt-0.5 overflow-hidden border border-slate-200">
+                  <img
+                    src="/logo-icon.png"
+                    alt="runhitech Ai"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
               )}
               <div className={`max-w-[80%] ${msg.role === "user" ? "items-end" : "items-start"} flex flex-col gap-1.5`}>
@@ -539,12 +528,12 @@ export default function AIChatbot() {
           {/* Typing indicator */}
           {typing && (
             <div className="flex items-end gap-2">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#059669] to-[#0284c7] flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#34D399">
-                  <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="2" x2="12" y2="5" stroke="#34D399" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="19" y1="12" x2="22" y2="12" stroke="#34D399" strokeWidth="2.5" strokeLinecap="round" />
-                </svg>
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white p-0.5 flex items-center justify-center flex-shrink-0 shadow-xs overflow-hidden border border-slate-200">
+                <img
+                  src="/logo-icon.png"
+                  alt="runhitech Ai"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="px-4 py-3 bg-slate-50 border border-slate-100 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1">
                 {[0, 1, 2].map((i) => (

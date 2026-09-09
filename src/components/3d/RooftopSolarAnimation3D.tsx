@@ -22,6 +22,13 @@ export default function RooftopSolarAnimation3D({
     const heightPx = mount.clientHeight || 440;
 
     const isMobile = width < 600;
+    const isLowEnd =
+      isMobile ||
+      (typeof navigator !== "undefined" &&
+        ((navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+          ((navigator as unknown as { deviceMemory?: number }).deviceMemory &&
+            (navigator as unknown as { deviceMemory?: number }).deviceMemory! <= 4)));
+
     // Camera framed so the whole scene (House + Panels + Sun + Rays) is completely visible
     const camera = new THREE.PerspectiveCamera(isMobile ? 48 : 40, width / heightPx, 0.1, 100);
     camera.position.set(isMobile ? 0.1 : 0.6, isMobile ? 2.6 : 2.2, isMobile ? 6.8 : 5.8);
@@ -29,11 +36,12 @@ export default function RooftopSolarAnimation3D({
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
-      antialias: true,
-      powerPreference: "high-performance",
+      antialias: !isLowEnd,
+      powerPreference: isLowEnd ? "low-power" : "default",
+      precision: isLowEnd ? "mediump" : "highp",
     });
     renderer.setSize(width, heightPx);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(isLowEnd ? 1 : Math.min(window.devicePixelRatio, 1.5));
     renderer.setClearColor(0x000000, 0); // 100% Transparent
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.3;
@@ -389,10 +397,28 @@ export default function RooftopSolarAnimation3D({
       renderer.render(scene, camera);
     };
 
-    animate();
+    // Pause rendering when offscreen to preserve Safari/WebKit 60fps smoothness
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(mount);
+
+    const safeAnimate = () => {
+      frameId = requestAnimationFrame(safeAnimate);
+      if (isVisible) {
+        animate();
+      }
+    };
+
+    safeAnimate();
 
     return () => {
       cancelAnimationFrame(frameId);
+      observer.disconnect();
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
 

@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0f3d75" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="RunHiTech" />
+    <link rel="apple-touch-icon" href="/logo-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="MobileOptimized" content="width" />
@@ -25,8 +32,8 @@
     <!-- Geographic Coordinates for Local AI Search -->
     <meta name="geo.region" content="IN-TN" />
     <meta name="geo.placename" content="Namakkal, Paramathi Velur, Tamil Nadu" />
-    <meta name="geo.position" content="11.0506;77.9944" />
-    <meta name="ICBM" content="11.0506, 77.9944" />
+    <meta name="geo.position" content="11.1086;77.9976" />
+    <meta name="ICBM" content="11.1086, 77.9976" />
 
     <!-- Structured Data Graph (JSON-LD) for Generative Engines (Gemini, ChatGPT, Perplexity, Copilot) -->
     <script type="application/ld+json">
@@ -38,6 +45,7 @@
           "@id": "https://runhitechsolar.com/#organization",
           "name": "Run Hi Tech Solar",
           "url": "https://runhitechsolar.com",
+          "hasMap": "https://maps.app.goo.gl/QUT6naDzq9AMAvvf6",
           "logo": "https://runhitechsolar.com/logo.png",
           "image": "https://runhitechsolar.com/logo.png",
           "telephone": "+91-9080557472",
@@ -53,8 +61,8 @@
           },
           "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 11.0506,
-            "longitude": 77.9944
+            "latitude": 11.1086345,
+            "longitude": 77.9976236
           },
           "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
@@ -110,18 +118,36 @@
       ]
     }
     </script>
+    <!-- Enterprise Performance: Preconnect & DNS-Prefetch Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.pexels.com">
+    <link rel="dns-prefetch" href="https://runhitechsolar.com">
+    <link rel="dns-prefetch" href="https://www.clarity.ms">
+
+    <!-- Preload Critical Above-The-Fold LCP Media -->
+    <link rel="preload" as="image" href="/hero-house.jpg" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" as="image" href="/logo.png" type="image/png" fetchpriority="high">
+
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Run Hi Tech Solar | Solar EPC & PM Surya Ghar Subsidy — Namakkal, Tamil Nadu</title>
 
-    <!-- Microsoft Clarity Analytics -->
+    <!-- Microsoft Clarity Analytics (Deferred to idle thread to maximize Core Web Vitals) -->
     <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "ybbwzn3ppo");
+      window.addEventListener('load', function() {
+        var initClarity = function() {
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "ybbwzn3ppo");
+        };
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(initClarity, { timeout: 3000 });
+        } else {
+          setTimeout(initClarity, 1500);
+        }
+      });
     </script>
   </head>
   <body>
