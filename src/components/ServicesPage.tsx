@@ -177,21 +177,13 @@ export default function ServicesPage() {
                     alt={s.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
-                    <span className="text-xs font-semibold text-blue-700">
-                      {s.badge}
-                    </span>
-                  </div>
                 </div>
               </div>
 
               {/* Copy */}
               <div className={`lg:col-span-6 space-y-4 sm:space-y-6 ${isEven ? "" : "lg:col-start-1"}`}>
                 <div>
-                  <span className="text-sm font-semibold text-blue-600 block">
-                    {s.subtitle}
-                  </span>
-                  <h2 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
                     {s.title}
                   </h2>
                 </div>
@@ -256,7 +248,7 @@ export default function ServicesPage() {
 
         {/* 9:16 Vertical Reel Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mt-8">
-          {shorts.map((short, idx) => (
+          {shorts.map((short) => (
             <div
               key={short.id}
               className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group"
@@ -275,14 +267,6 @@ export default function ServicesPage() {
               {/* Card Meta & YouTube Action */}
               <div className="p-3.5 flex-1 flex flex-col justify-between space-y-2.5 bg-white">
                 <div>
-                  <div className="flex items-center justify-between gap-1 mb-1">
-                    <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-mono font-bold">
-                      {short.category}
-                    </span>
-                    <span className="text-[10px] font-mono text-slate-400 font-medium">
-                      Reel #{idx + 1}
-                    </span>
-                  </div>
                   <h4 className="text-xs font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
                     {short.title}
                   </h4>

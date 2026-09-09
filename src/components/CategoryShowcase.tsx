@@ -109,13 +109,10 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
         
         {/* Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-10">
-          <p className="text-xs font-semibold text-blue-700 mb-1.5">
-            Targeted Solar Solutions
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Tailored Engineering for Every Application
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+          <p className="text-slate-600 text-base sm:text-lg mt-2.5 leading-relaxed">
             From residential rooftops benefiting from central subsidies to high-tension captive power plants for heavy manufacturing, we deliver end-to-end turnkey solar EPC services.
           </p>
         </div>
@@ -129,7 +126,7 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
-                className={`flex items-center gap-2 pb-3.5 px-1 text-sm font-semibold transition-all border-b-2 cursor-pointer ${
+                className={`flex items-center gap-2.5 pb-3.5 px-1 text-base font-semibold transition-all border-b-2 cursor-pointer ${
                   isSelected
                     ? "border-blue-600 text-blue-700"
                     : "border-transparent text-slate-600 hover:text-slate-900"
@@ -137,7 +134,6 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
               >
                 <Icon className={`w-4 h-4 ${isSelected ? "text-blue-600" : "text-slate-400"}`} />
                 <span>{cat.shortTitle}</span>
-                <span className="text-xs font-normal text-slate-500">({cat.capacity})</span>
               </button>
             );
           })}
@@ -150,35 +146,26 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
             {/* Left Details */}
             <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-8">
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-800 rounded-md">
-                    {current.badge}
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium">
-                    Sizing: {current.capacity}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                   {current.title}
                 </h3>
-                <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+                <p className="text-slate-600 text-base sm:text-lg mt-2 leading-relaxed">
                   {current.tagline}
                 </p>
 
                 {/* Sizing & Payback Specs */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-6">
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="text-xs text-slate-500">Typical Payback</div>
-                    <div className="text-sm font-bold text-slate-900 mt-0.5">{current.payback}</div>
+                <div className="grid sm:grid-cols-3 gap-4 my-6 p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200/70">
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wider text-slate-600">Typical Payback</div>
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">{current.payback}</div>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="text-xs text-slate-500">Warranty</div>
-                    <div className="text-sm font-bold text-slate-900 mt-0.5">{current.warranty}</div>
+                  <div className="sm:border-l sm:border-slate-200/80 sm:pl-4">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-slate-600">Warranty</div>
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">{current.warranty}</div>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 col-span-2 sm:col-span-1">
-                    <div className="text-xs text-slate-500">Target Segment</div>
-                    <div className="text-xs font-semibold text-slate-800 mt-0.5 truncate" title={current.idealFor}>
+                  <div className="sm:border-l sm:border-slate-200/80 sm:pl-4">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-slate-600">Ideal For</div>
+                    <div className="text-sm font-semibold text-slate-800 mt-1 leading-snug">
                       {current.idealFor}
                     </div>
                   </div>
@@ -186,31 +173,17 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
 
                 {/* Highlights */}
                 <div className="space-y-3 mb-6">
-                  <h4 className="text-xs font-semibold text-slate-600">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-600">
                     Key Financial & Technical Specifications
                   </h4>
-                  <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="grid sm:grid-cols-2 gap-3.5">
                     {current.highlights.map((h, i) => (
-                      <div key={i} className="p-3 rounded-xl bg-slate-50 border border-slate-100">
-                        <div className="text-xs font-bold text-slate-900">{h.label}</div>
-                        <div className="text-xs text-slate-600 mt-0.5">{h.value}</div>
+                      <div key={i} className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
+                        <div className="text-sm font-bold text-slate-900">{h.label}</div>
+                        <div className="text-sm text-slate-600 mt-1 leading-relaxed">{h.value}</div>
                       </div>
                     ))}
                   </div>
-                </div>
-
-                {/* Deliverables Checklist */}
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-600 mb-2.5">
-                    Scope of Work & Deliverables
-                  </h4>
-                  <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-xs text-slate-700 list-disc pl-4">
-                    {current.features.map((feat, idx) => (
-                      <li key={idx}>
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
 
@@ -252,18 +225,18 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 
-              <div className="relative z-10 space-y-2">
-                <div className="text-xs font-semibold text-blue-300">
+              <div className="relative z-10 space-y-2.5">
+                <div className="text-xs font-bold uppercase tracking-wider text-blue-300">
                   Track Record Across Tamil Nadu
                 </div>
-                <div className="text-xl font-bold text-white">
+                <div className="text-xl sm:text-2xl font-extrabold text-white leading-tight">
                   {activeTab === "residential"
                     ? "2,500+ Homes Powered by Solar"
                     : activeTab === "commercial"
                     ? "350+ HPCL & Retail Petrol Stations"
                     : "10+ MW High-Tension Solar Plants"}
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-sm text-slate-200 leading-relaxed">
                   {activeTab === "residential"
                     ? "End-to-end liaison with TNEB distribution circles in Namakkal, Salem, Karur, Erode, Tirupur, and Coimbatore."
                     : activeTab === "commercial"

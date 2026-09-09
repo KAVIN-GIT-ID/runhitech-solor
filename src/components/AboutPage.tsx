@@ -50,9 +50,6 @@ export default function AboutPage() {
           
           {/* Left Text */}
           <div className="space-y-4 sm:space-y-6">
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-600 font-mono block">
-              ABOUT US
-            </span>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
               <span className="gradient-text-shine">Leading Clean Energy in Tamil Nadu Since 2019</span>
             </h1>

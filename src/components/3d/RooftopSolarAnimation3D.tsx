@@ -347,7 +347,6 @@ export default function RooftopSolarAnimation3D({
     const clock = new THREE.Clock();
 
     const animate = () => {
-      frameId = requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
       // Gentle floating bob
@@ -397,24 +396,43 @@ export default function RooftopSolarAnimation3D({
       renderer.render(scene, camera);
     };
 
-    // Pause rendering when offscreen to preserve Safari/WebKit 60fps smoothness
-    let isVisible = true;
+    // Pause rendering completely when offscreen to preserve 60fps and avoid lag on form pages
+    let isVisible = false;
+    let isRunning = false;
+
+    const startLoop = () => {
+      if (isRunning) return;
+      isRunning = true;
+      const loop = () => {
+        if (!isVisible) {
+          isRunning = false;
+          return;
+        }
+        animate();
+        frameId = requestAnimationFrame(loop);
+      };
+      frameId = requestAnimationFrame(loop);
+    };
+
+    const stopLoop = () => {
+      isRunning = false;
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
+        if (isVisible) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
       },
       { threshold: 0.05 }
     );
     observer.observe(mount);
-
-    const safeAnimate = () => {
-      frameId = requestAnimationFrame(safeAnimate);
-      if (isVisible) {
-        animate();
-      }
-    };
-
-    safeAnimate();
 
     return () => {
       cancelAnimationFrame(frameId);

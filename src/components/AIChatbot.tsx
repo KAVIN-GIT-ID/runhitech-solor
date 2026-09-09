@@ -296,7 +296,6 @@ export default function AIChatbot() {
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
-  const [pulse, setPulse] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -310,17 +309,10 @@ export default function AIChatbot() {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
 
-  // Pulse notification after 4s if chat hasn't been opened
-  useEffect(() => {
-    const t = setTimeout(() => setPulse(true), 4000);
-    return () => clearTimeout(t);
-  }, []);
-
   // Listen for global open event (e.g. from header)
   useEffect(() => {
     const handleOpenEvent = () => {
       setOpen(true);
-      setPulse(false);
     };
     window.addEventListener("open-solarbot", handleOpenEvent);
     return () => window.removeEventListener("open-solarbot", handleOpenEvent);
@@ -329,7 +321,6 @@ export default function AIChatbot() {
   const sendMessage = useCallback(
     async (text: string) => {
       if (!text.trim()) return;
-      setPulse(false);
       setInput("");
 
       const userMsg: Message = { id: uid(), role: "user", text, time: now() };
@@ -373,7 +364,7 @@ export default function AIChatbot() {
 
         {/* AI Chat Floating Button */}
         <button
-          onClick={() => { setOpen((o) => !o); setPulse(false); }}
+          onClick={() => setOpen((o) => !o)}
           aria-label="Open Solar Support Chat"
           className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-white/98 hover:bg-white text-blue-600 shadow-xl border border-slate-200/90 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer relative"
           style={{ boxShadow: "0 10px 25px -5px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.9) inset" }}
@@ -390,11 +381,6 @@ export default function AIChatbot() {
               <circle cx="12" cy="10" r="1" fill="currentColor" />
               <circle cx="15" cy="10" r="1" fill="currentColor" />
             </svg>
-          )}
-
-          {/* Pulse notification dot */}
-          {pulse && !open && (
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white shadow-sm animate-bounce" />
           )}
         </button>
       </div>

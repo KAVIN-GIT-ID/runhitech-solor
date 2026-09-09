@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Eye, Calendar, ArrowRight, Share2, BookOpen } from "lucide-react";
+import { ArrowRight, Share2, BookOpen } from "lucide-react";
 
 interface MediaPost {
   id: string;
   title: string;
-  category: "All" | "Subsidy" | "Engineering" | "Guides" | "Posters";
+  category: "All" | "Subsidy" | "Engineering" | "Posters";
   categoryLabel: string;
   date: string;
   views: string;
@@ -108,67 +108,6 @@ export default function MediaPage() {
         "Shield factory from TNEB peak hour surcharge penalties",
         "Increase corporate ESG and clean sustainability ratings"
       ]
-    },
-    {
-      id: "how-to-apply-subsidy",
-      title: "How to Apply for PM Suryaghar Yojana Solar Subsidy in Tamil Nadu",
-      category: "Subsidy",
-      categoryLabel: "Application Step-by-Step",
-      date: "August 21, 2025",
-      views: "718 Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-21-at-15.54.48-890x664.jpeg",
-      desc: "A simplified, step-by-step walkthrough of registering on the national portal, selecting Run Hi Tech Solar as your approved vendor, and claiming your subsidy.",
-      highlights: [
-        "Step 1: National Portal Consumer Registration",
-        "Step 2: Technical Feasibility & Solar Design",
-        "Step 3: Installation & Bi-directional Net Meter",
-        "Step 4: Inspection & Direct Bank Credit"
-      ]
-    },
-    {
-      id: "maximize-output",
-      title: "Tips to Maximize Solar System Output & Panel Efficiency",
-      category: "Guides",
-      categoryLabel: "Maintenance",
-      date: "April 21, 2020",
-      views: "130 Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2020/04/img-38-copyright-890x664.jpg",
-      desc: "Practical maintenance advice on cleaning schedules, tilt angle optimization, shading elimination, and inverter health monitoring.",
-      highlights: [
-        "Clean panels every 15 days in early morning hours",
-        "Maintain optimum 11° - 15° south-facing tilt in Tamil Nadu",
-        "Use mobile app to track daily unit generation"
-      ]
-    },
-    {
-      id: "payback-period",
-      title: "What is the Payback Period for Rooftop Solar Panels in Tamil Nadu?",
-      category: "Guides",
-      categoryLabel: "Financial ROI",
-      date: "April 21, 2020",
-      views: "145 Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2020/04/img-76-copyright-890x664.jpg",
-      desc: "Clear financial calculation breakdown showing how home solar pays for itself in under 3.5 years and yields free electricity for the remaining 21+ years.",
-      highlights: [
-        "Average 3 to 4 years to recover full capital cost",
-        "20+ years of 100% free electricity post-payback",
-        "Internal Rate of Return (IRR) exceeding 28%"
-      ]
-    },
-    {
-      id: "offgrid-hybrid",
-      title: "How Solar Panels Can Be Used to Power Off-Grid Homes & Petrol Bunks",
-      category: "Engineering",
-      categoryLabel: "Hybrid & Battery",
-      date: "April 21, 2020",
-      views: "151 Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2020/04/img-97-copyright-890x664.jpg",
-      desc: "How hybrid solar systems with Lithium-ion batteries provide uninterruptible 24/7 power for remote areas, hospitals, and high-frequency petrol bunks.",
-      highlights: [
-        "Instant automatic cutover during grid outages",
-        "Zero diesel generator fuel and smoke expense",
-        "Modular battery expansion options"
-      ]
     }
   ];
 
@@ -176,7 +115,6 @@ export default function MediaPage() {
     { id: "All", label: "All Media" },
     { id: "Subsidy", label: "Govt Subsidy" },
     { id: "Engineering", label: "Engineering & MW" },
-    { id: "Guides", label: "Guides & ROI" },
     { id: "Posters", label: "Regional Posters" }
   ];
 
@@ -258,18 +196,6 @@ export default function MediaPage() {
 
                   {/* Body Content */}
                   <div className="p-5 sm:p-6">
-                    {/* Date & Views */}
-                    <div className="flex items-center justify-between text-xs text-slate-600 mb-3 font-semibold">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-slate-500" />
-                        {post.date}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <Eye className="w-3.5 h-3.5 text-slate-500" />
-                        {post.views}
-                      </span>
-                    </div>
-
                     {/* Title */}
                     <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
                       {post.title}
@@ -331,10 +257,6 @@ export default function MediaPage() {
                 <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-mono uppercase font-bold">
                   {selectedPost.categoryLabel}
                 </span>
-                <span>•</span>
-                <span>{selectedPost.date}</span>
-                <span>•</span>
-                <span>{selectedPost.views}</span>
               </div>
 
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
@@ -379,28 +301,7 @@ export default function MediaPage() {
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════ */}
-      {/*  BOTTOM CTA                                        */}
-      {/* ══════════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 mt-20">
-        <div className="rounded-3xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white p-8 sm:p-12 flex flex-col md:flex-row justify-between items-center gap-8 shadow-xl border border-slate-800">
-          <div className="space-y-2 text-center md:text-left">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-              Want a customized solar feasibility report?
-            </h2>
-            <p className="text-slate-300 text-xs sm:text-sm max-w-lg">
-              Contact our certified engineering team in Namakkal, Karur, Salem, or Erode for a free on-site roof analysis.
-            </p>
-          </div>
 
-          <Link
-            to="/contact"
-            className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs sm:text-sm px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95 shrink-0"
-          >
-            Get Free Consultation
-          </Link>
-        </div>
-      </section>
 
     </div>
   );

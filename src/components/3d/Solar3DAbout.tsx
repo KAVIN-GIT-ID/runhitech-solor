@@ -180,7 +180,6 @@ export default function Solar3DAbout({ className = "", height = "380px" }: Solar
     const clock = new THREE.Clock();
 
     const animate = () => {
-      frameId = requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
       // Floating wave motion
@@ -201,24 +200,43 @@ export default function Solar3DAbout({ className = "", height = "380px" }: Solar
       renderer.render(scene, camera);
     };
 
-    // Pause rendering when offscreen to preserve Safari/WebKit 60fps smoothness
-    let isVisible = true;
+    // Pause rendering completely when offscreen to free CPU/GPU for form pages
+    let isVisible = false;
+    let isRunning = false;
+
+    const startLoop = () => {
+      if (isRunning) return;
+      isRunning = true;
+      const loop = () => {
+        if (!isVisible) {
+          isRunning = false;
+          return;
+        }
+        animate();
+        frameId = requestAnimationFrame(loop);
+      };
+      frameId = requestAnimationFrame(loop);
+    };
+
+    const stopLoop = () => {
+      isRunning = false;
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
+        if (isVisible) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
       },
       { threshold: 0.05 }
     );
     observer.observe(mount);
-
-    const safeAnimate = () => {
-      frameId = requestAnimationFrame(safeAnimate);
-      if (isVisible) {
-        animate();
-      }
-    };
-
-    safeAnimate();
 
     return () => {
       cancelAnimationFrame(frameId);

@@ -57,7 +57,6 @@ export default function Services() {
     <section id="services" className="bg-paper py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.18em] uppercase text-gold-deep">What we do</p>
           <h2 className="font-display mt-3 text-3xl sm:text-4xl font-semibold text-ink tracking-tight">
             End-to-end solar, from survey to switch-on.
           </h2>

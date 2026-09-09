@@ -28,8 +28,7 @@ export default function SubsidyPage() {
       <section className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div>
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neon-cyan font-mono">GOVERNMENT SCHEME</p>
-            <h1 className="font-display mt-4 text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
+            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
               <span className="gradient-text-shine">PM Surya Ghar Muft Bijli Yojana Subsidy</span>
             </h1>
             <p className="mt-6 text-base sm:text-lg text-slate leading-relaxed">
@@ -63,14 +62,6 @@ export default function SubsidyPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-600/90 backdrop-blur-md text-[10px] font-mono font-bold uppercase tracking-wider">
-                    Govt Subsidy: Up to ₹78,000
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-blue-600/90 backdrop-blur-md text-[10px] font-mono font-bold uppercase tracking-wider">
-                    MNRE Empanelled
-                  </span>
-                </div>
                 <h4 className="text-sm font-bold tracking-tight text-white drop-shadow-sm">
                   Residential Rooftop Solar System — PM Surya Ghar Yojana
                 </h4>

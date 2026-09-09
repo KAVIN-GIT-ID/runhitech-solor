@@ -98,12 +98,7 @@ export default function QuoteForm() {
             title="Please enter only letters (no numbers allowed)"
             value={form.name}
             onChange={update("name")}
-            onKeyDown={(e) => {
-              if (e.key >= "0" && e.key <= "9") {
-                e.preventDefault();
-              }
-            }}
-            className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all"
+            className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors duration-150"
             placeholder="Full Name *"
             aria-label="Full Name"
           />
@@ -121,15 +116,7 @@ export default function QuoteForm() {
               title="Please enter a 10-digit mobile number (no letters allowed)"
               value={form.phone}
               onChange={update("phone")}
-              onKeyDown={(e) => {
-                if (
-                  !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key) &&
-                  !/^[0-9]$/.test(e.key)
-                ) {
-                  e.preventDefault();
-                }
-              }}
-              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all"
+              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors duration-150"
               placeholder="10-Digit Mobile Number *"
               aria-label="Phone Number"
             />
@@ -145,7 +132,7 @@ export default function QuoteForm() {
               value={form.location}
               onChange={update("location")}
               aria-label="City or District"
-              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all cursor-pointer"
+              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors duration-150 cursor-pointer"
             >
               <option value="" disabled>Select City / District *</option>
               <option value="Namakkal">Namakkal</option>

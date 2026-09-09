@@ -1,50 +1,20 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
-const RooftopSolarAnimation3D = lazy(() => import("./3d/RooftopSolarAnimation3D"));
-import LazyCanvasInView from "./3d/LazyCanvasInView";
 import CategoryShowcase from "./CategoryShowcase";
 import CategoryCalculator from "./CategoryCalculator";
 import { triggerLeadNotification } from "../services/notificationService";
 import {
-  Sun,
-  Home as HomeIcon,
   ArrowRight,
   Calculator,
   Play,
-  Quote,
   Plus,
-  Layers,
-  Factory,
-  BatteryCharging,
   CheckCircle2,
-  ChevronRight,
   X
 } from "lucide-react";
 
 const districts = ["Namakkal", "Karur", "Salem", "Erode", "Tirupur", "Coimbatore"];
-
-const testimonials = [
-  {
-    name: "R. Karthik",
-    role: "Homeowner, Namakkal",
-    text: "Our electric bill went from ₹3,400/month to ₹180. The installation team was professional and finished in just one day. Best investment we've ever made!",
-    initials: "RK"
-  },
-  {
-    name: "M. Selvan",
-    role: "HPCL Station, Karur",
-    text: "Run Hi Tech Solar made going solar completely hassle-free. The 30-year warranty gives us peace of mind, and the monitoring app is so easy to use.",
-    initials: "MS"
-  },
-  {
-    name: "S. Meenakshi",
-    role: "Hotel Owner, Salem",
-    text: "We added battery storage with our solar system. During the last grid cut, we were the only hotel on the block with canopy lights on. Incredible!",
-    initials: "SM"
-  }
-];
 
 const faqList = [
   {
@@ -65,9 +35,8 @@ const faqList = [
   }
 ];
 
-export default function Home() {
-  useScrollReveal();
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+// Dedicated memoized assessment form to isolate typing re-renders from the parent Home page
+function HomeAssessmentForm() {
   const [surveyName, setSurveyName] = useState("");
   const [surveyPhone, setSurveyPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
@@ -119,6 +88,113 @@ export default function Home() {
     setSurveyPhone("");
     setTimeout(() => setSurveySuccess(false), 8000);
   };
+
+  return (
+    <>
+      <form onSubmit={handleSurveySubmit} className="max-w-2xl mx-auto mb-4 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4 items-end">
+          <div className="sm:col-span-5">
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Your Name
+            </label>
+            <input
+              type="text"
+              inputMode="text"
+              pattern="[a-zA-Z\s.-]+"
+              title="Please enter only letters (no numbers allowed)"
+              placeholder="Your Full Name"
+              value={surveyName}
+              onChange={handleNameChange}
+              className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 shadow-xs transition-colors duration-150"
+              required
+            />
+          </div>
+
+          <div className="sm:col-span-4">
+            <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+              Mobile Number
+            </label>
+            <input
+              type="tel"
+              inputMode="numeric"
+              pattern="[0-9]{10}"
+              maxLength={10}
+              title="Please enter a 10-digit mobile number (no letters allowed)"
+              placeholder="10-digit number"
+              value={surveyPhone}
+              onChange={handlePhoneChange}
+              className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 shadow-xs transition-colors duration-150"
+              required
+            />
+          </div>
+
+          <div className="sm:col-span-3">
+            <button
+              type="submit"
+              disabled={surveySuccess}
+              className="w-full bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-colors duration-150 shadow-sm active:scale-95 text-center flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              {surveySuccess ? "Requested ✓" : "Request Free Call"}
+            </button>
+          </div>
+        </div>
+      </form>
+
+      {phoneError && (
+        <p className="text-xs text-red-500 font-semibold mb-3">
+          ⚠ {phoneError}
+        </p>
+      )}
+
+      {showPopup && typeof document !== "undefined" && createPortal(
+        <div
+          className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-slate-950/45 backdrop-blur-xs animate-in fade-in duration-200"
+          onClick={() => setShowPopup(false)}
+        >
+          <div
+            className="bg-white rounded-3xl p-6 sm:p-7 max-w-sm w-full shadow-2xl border border-emerald-100 text-center relative animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowPopup(false)}
+              className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Close"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto mb-3.5 shadow-sm">
+              <CheckCircle2 className="w-8 h-8 stroke-[2.2]" />
+            </div>
+
+            <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
+              Success! Request Logged
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+              Our engineering liaison will call you shortly to plan the survey.
+            </p>
+
+            <div className="mt-5">
+              <button
+                type="button"
+                onClick={() => setShowPopup(false)}
+                className="w-full py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md cursor-pointer"
+              >
+                OK, Got It
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+    </>
+  );
+}
+
+export default function Home() {
+  useScrollReveal();
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const toggleFaq = (idx: number) => {
     setActiveFaq(activeFaq === idx ? null : idx);
@@ -257,9 +333,6 @@ export default function Home() {
 
             {/* Left Content & Bullets */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-              <span className="text-xs font-bold text-blue-700 block">
-                Run Hi Tech Solar
-              </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
                 Why Tamil Nadu Families Are Choosing Solar in 2025!
               </h2>
@@ -285,13 +358,13 @@ export default function Home() {
               <div className="pt-2 sm:pt-4 flex flex-wrap gap-2.5 sm:gap-4">
                 <Link
                   to="/subsidy"
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-xl shadow-sm transition-all text-center flex-1 sm:flex-none"
+                  className="bg-slate-950 hover:bg-slate-800 text-white font-bold text-xs px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl shadow-sm transition-all text-center flex-1 sm:flex-none"
                 >
                   Check Subsidy
                 </Link>
                 <Link
                   to="/about"
-                  className="bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 font-bold text-xs px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-xl transition-all shadow-sm text-center flex-1 sm:flex-none"
+                  className="bg-white hover:bg-slate-50 border border-slate-300 text-slate-900 font-bold text-xs px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl transition-all shadow-sm text-center flex-1 sm:flex-none"
                 >
                   About Us
                 </Link>
@@ -306,7 +379,7 @@ export default function Home() {
                     <span className="text-xs font-semibold text-slate-500 block">Real Savings Benchmark</span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">Bi-Monthly EB Bill</h3>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[11px] sm:text-xs border border-emerald-200">
+                  <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-900 font-bold text-[11px] sm:text-xs border border-slate-200">
                     Save ~93%
                   </span>
                 </div>
@@ -316,10 +389,10 @@ export default function Home() {
                   <div>
                     <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-600 mb-1.5 sm:mb-2">
                       <span>Before Solar</span>
-                      <span className="text-red-600">₹3,000 / bill</span>
+                      <span className="text-slate-900 font-bold">₹3,000 / bill</span>
                     </div>
                     <div className="w-full h-3.5 sm:h-4 bg-slate-100 rounded-full overflow-hidden p-0.5">
-                      <div className="h-full bg-gradient-to-r from-red-400 to-red-500 rounded-full w-[85%] flex items-center justify-end pr-2 text-[8px] sm:text-[9px] font-bold text-white">
+                      <div className="h-full bg-slate-800 rounded-full w-[85%] flex items-center justify-end pr-2 text-[8px] sm:text-[9px] font-bold text-white">
                         85%
                       </div>
                     </div>
@@ -329,10 +402,10 @@ export default function Home() {
                   <div>
                     <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-600 mb-1.5 sm:mb-2">
                       <span>After Solar (Run Hi Tech)</span>
-                      <span className="text-emerald-600">₹200 / bill</span>
+                      <span className="text-slate-900 font-bold">₹200 / bill</span>
                     </div>
                     <div className="w-full h-3.5 sm:h-4 bg-slate-100 rounded-full overflow-hidden p-0.5">
-                      <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full w-[12%] flex items-center justify-end pr-1 text-[8px] sm:text-[9px] font-bold text-white">
+                      <div className="h-full bg-slate-400 rounded-full w-[12%] flex items-center justify-end pr-1 text-[8px] sm:text-[9px] font-bold text-slate-900">
                         ₹200
                       </div>
                     </div>
@@ -341,7 +414,7 @@ export default function Home() {
 
                 <div className="mt-5 sm:mt-8 pt-3 sm:pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] sm:text-xs text-slate-500">
                   <span>Average family savings:</span>
-                  <span className="font-bold text-emerald-700 text-xs sm:text-sm">₹16,800 / year</span>
+                  <span className="font-bold text-slate-900 text-xs sm:text-sm">₹16,800 / year</span>
                 </div>
               </div>
             </div>
@@ -355,233 +428,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════ */}
       <CategoryShowcase />
 
-      {/* ══════════════════════════════════════════════════ */}
-      {/*        TYPES OF SOLAR PANELS WE INSTALL           */}
-      {/* ══════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-24 border-y border-slate-200 bg-slate-50/50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-          {/* Section Header */}
-          <div className="max-w-2xl mb-10 sm:mb-14">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
-              Types of Solar Panels We Install
-            </h2>
-            <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
-              Precision-engineered solar modules tested for Tamil Nadu's high ambient heat. Every installation includes CEIG & TNEB net-metering approvals with a 30-year linear performance guarantee.
-            </p>
-          </div>
-
-          {/* 4 Technology Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-
-            {/* 1. Mono Solar Panels (For Homes) */}
-            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className="space-y-4">
-                <div>
-                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
-                    Mono PERC
-                  </span>
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    Mono Solar Panels
-                  </h3>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-xl font-bold text-blue-700">540W – 580W</span>
-                    <span className="text-xs text-slate-500 font-medium">21.8% Peak Yield</span>
-                  </div>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                    High-power monocrystalline cells engineered for maximum yield on home rooftops. Delivers steady electricity even during Tamil Nadu's peak summer heat.
-                  </p>
-                </div>
-
-                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Govt Subsidy</span>
-                    <span className="font-semibold text-emerald-700">₹78,000 PM Surya Ghar</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Space Layout</span>
-                    <span className="font-semibold text-slate-800">Compact Roof Layout</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">EB Reduction</span>
-                    <span className="font-semibold text-blue-700">Up to 90% Savings</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
-                  <HomeIcon className="w-4 h-4 text-blue-600 shrink-0" />
-                  <span>Villas, Individual Houses & Apartments</span>
-                </div>
-              </div>
-
-              <div className="pt-5">
-                <a
-                  href="#calculator"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
-                >
-                  <span>Calculate Home Subsidy</span>
-                  <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                </a>
-              </div>
-            </div>
-
-            {/* 2. Double-Sided Solar Panels */}
-            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className="space-y-4">
-                <div>
-                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
-                    Dual-Glass
-                  </span>
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    Double-Sided Solar Panels
-                  </h3>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-xl font-bold text-indigo-700">550W – 600W</span>
-                    <span className="text-xs text-slate-500 font-medium">22.5% Dual Yield</span>
-                  </div>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                    Generates power from both the top and underside using ground reflection. Encased in dual tempered glass for 30+ year industrial life.
-                  </p>
-                </div>
-
-                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Rear Boost</span>
-                    <span className="font-semibold text-indigo-700">+10% to +25% Extra kWh</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Glass Build</span>
-                    <span className="font-semibold text-slate-800">2.0mm Dual Tempered</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Degradation</span>
-                    <span className="font-semibold text-blue-700">0.4% Low / Year</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
-                  <Layers className="w-4 h-4 text-indigo-600 shrink-0" />
-                  <span>Petrol Bunks, Flat Terraces & Showrooms</span>
-                </div>
-              </div>
-
-              <div className="pt-5">
-                <a
-                  href="#calculator"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
-                >
-                  <span>Estimate Commercial ROI</span>
-                  <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                </a>
-              </div>
-            </div>
-
-            {/* 3. Factory High-Yield Panels */}
-            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className="space-y-4">
-                <div>
-                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
-                    TOPCon N-Type
-                  </span>
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    High-Power Factory Panels
-                  </h3>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-xl font-bold text-emerald-700">570W – 620W</span>
-                    <span className="text-xs text-slate-500 font-medium">Max Heat Yield</span>
-                  </div>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                    Next-generation N-type TOPCon panels built for spinning mills and commercial sheds. Maintains heavy power generation during cloudy days and high heat.
-                  </p>
-                </div>
-
-                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Module Power</span>
-                    <span className="font-semibold text-emerald-700">570W to 620W Output</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Overcast Yield</span>
-                    <span className="font-semibold text-slate-800">Superior on Rainy Days</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Mechanical</span>
-                    <span className="font-semibold text-blue-700">5400 Pa Wind/Storm Proof</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
-                  <Factory className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Spinning Mills, Factories & Warehouses</span>
-                </div>
-              </div>
-
-              <div className="pt-5">
-                <a
-                  href="#contact"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
-                >
-                  <span>Request Industrial Audit</span>
-                  <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                </a>
-              </div>
-            </div>
-
-            {/* 4. Solar with Battery Backup */}
-            <div className="rounded-2xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className="space-y-4">
-                <div>
-                  <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 mb-3">
-                    Hybrid Storage
-                  </span>
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    Solar with Battery Backup
-                  </h3>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-xl font-bold text-amber-700">3.6kW – 15kW+</span>
-                    <span className="text-xs text-slate-500 font-medium">&lt;10ms Cutover</span>
-                  </div>
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                    Powers your lights, motors, fans, and critical equipment non-stop 24/7. When EB power cuts occur, instant switching eliminates expensive diesel generators.
-                  </p>
-                </div>
-
-                <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Cutover Speed</span>
-                    <span className="font-semibold text-amber-700">&lt;10ms Seamless</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Battery Type</span>
-                    <span className="font-semibold text-slate-800">LiFePO4 6,000+ Cycles</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-500">Diesel Saved</span>
-                    <span className="font-semibold text-emerald-700">100% Fuel Free</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
-                  <BatteryCharging className="w-4 h-4 text-amber-600 shrink-0" />
-                  <span>Hospitals, CNC Units, Villas & Offices</span>
-                </div>
-              </div>
-
-              <div className="pt-5">
-                <a
-                  href="#contact"
-                  className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-blue-600 text-slate-800 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-200 group/btn"
-                >
-                  <span>Design Battery Backup</span>
-                  <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════ */}
       {/*               SERVICES                            */}
@@ -590,16 +437,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
 
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-16">
-            <div data-animate="fade-left">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] mb-2 block">What We Do</span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-slate-900">
-                Complete Solar Services
-              </h2>
-            </div>
-            <p data-animate="fade-right" className="text-slate-500 max-w-md text-xs sm:text-sm md:text-base leading-relaxed">
-              From roof inspection to government subsidy and TNEB meter connection — we take care of everything so you start saving money from day one.
-            </p>
+          <div className="mb-8 sm:mb-16" data-animate="fade-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-slate-900">
+              Complete Solar Services
+            </h2>
           </div>
 
           {/* Services Grid */}
@@ -610,18 +451,12 @@ export default function Home() {
               <div className="relative h-44 sm:h-52 overflow-hidden">
                 <img src="https://runhitechsolar.com/wp-content/uploads/2025/08/Residential-Solar.jpg" alt="Residential Solar" loading="lazy" decoding="async" className="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/90 backdrop-blur-md border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm">
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-600">PM Surya Ghar</span>
-                </div>
               </div>
               <div className="p-5 sm:p-7">
                 <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Home Rooftop Solar</h3>
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
+                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                   Built for your house. Get up to ₹78,000 direct government subsidy into your bank account and reduce your EB bill up to 90%.
                 </p>
-                <Link to="/services" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0f3d75] hover:gap-2.5 transition-all">
-                  See Details <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                </Link>
               </div>
             </div>
 
@@ -630,18 +465,12 @@ export default function Home() {
               <div className="relative h-44 sm:h-52 overflow-hidden">
                 <img src="https://runhitechsolar.com/wp-content/uploads/2025/08/🏢-Commercial-Solar-copy.jpg" alt="Commercial Solar" loading="lazy" decoding="async" className="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/90 backdrop-blur-md border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm">
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-blue-600">350+ Bunks</span>
-                </div>
               </div>
               <div className="p-5 sm:p-7">
                 <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Commercial & Petrol Bunks</h3>
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
+                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                   Custom solar setups for petrol bunks, hotels, schools, and shops. Recover full cost in 3 to 4 years and reduce monthly electricity expenses.
                 </p>
-                <Link to="/services" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-blue-600 hover:gap-2.5 transition-all">
-                  See Details <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                </Link>
               </div>
             </div>
 
@@ -650,18 +479,12 @@ export default function Home() {
               <div className="relative h-44 sm:h-52 overflow-hidden">
                 <img src="https://runhitechsolar.com/wp-content/uploads/2025/08/🌗-Hybrid-Solar-copy.jpg" alt="Battery Storage" loading="lazy" decoding="async" className="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/90 backdrop-blur-md border border-slate-200 px-2.5 py-1 rounded-lg shadow-sm">
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-600">24/7 Backup</span>
-                </div>
               </div>
               <div className="p-5 sm:p-7">
                 <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Solar with Battery Backup</h3>
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
+                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                   Stores daytime solar power in strong batteries to run your lights, fans, and appliances during night and TNEB power cuts without diesel.
                 </p>
-                <Link to="/services" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-green-600 hover:gap-2.5 transition-all">
-                  See Details <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                </Link>
               </div>
             </div>
 
@@ -726,70 +549,6 @@ export default function Home() {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════ */}
-      {/*        3D SOLAR HARDWARE INSPECTION                */}
-      {/* ══════════════════════════════════════════════════ */}
-      <section className="pt-16 pb-12 sm:py-20 md:py-28 px-4 sm:px-6 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
-        <div className="max-w-7xl mx-auto relative z-10">
-
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div data-animate="fade-right" className="lg:col-span-5 space-y-4 sm:space-y-6">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                How Sunlight Powers Your Home with Solar
-              </h2>
-
-              <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
-                Watch high-intensity sunlight photon beams hit the rooftop solar panels, converting solar energy into clean electricity that directly powers your home and feeds excess power into the TNEB grid.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-1">
-                <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/80 border border-slate-700/80 text-center sm:text-left">
-                  <div className="text-xl sm:text-2xl font-black text-amber-400">100%</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400 mt-0.5">Clean Solar Power</div>
-                </div>
-                <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/80 border border-slate-700/80 text-center sm:text-left">
-                  <div className="text-xl sm:text-2xl font-black text-emerald-400">₹0 Bills</div>
-                  <div className="text-[10px] sm:text-xs text-slate-400 mt-0.5">Under PM Surya Ghar</div>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-                <a
-                  href="#calculator"
-                  className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs px-5 sm:px-6 py-3.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all active:scale-95 text-center"
-                >
-                  Calculate Yield
-                </a>
-                <Link
-                  to="/subsidy"
-                  className="border border-slate-700 hover:border-blue-500 bg-slate-800/40 text-slate-300 hover:text-white font-bold text-xs px-5 sm:px-6 py-3.5 rounded-xl transition-all text-center"
-                >
-                  Subsidy Scheme
-                </Link>
-              </div>
-            </div>
-
-            {/* Right 3D Canvas Seamless (Deferred until within 300px of viewport) */}
-            <div data-animate="zoom" className="lg:col-span-7 flex justify-center items-center w-full mt-4 lg:mt-0 min-h-[340px]">
-              <LazyCanvasInView height="340px">
-                <Suspense
-                  fallback={
-                    <div className="w-full h-[340px] flex items-center justify-center rounded-3xl bg-slate-900/10 border border-slate-200/50">
-                      <div className="w-7 h-7 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
-                    </div>
-                  }
-                >
-                  <RooftopSolarAnimation3D height="340px" />
-                </Suspense>
-              </LazyCanvasInView>
-            </div>
-          </div>
-
         </div>
       </section>
 
@@ -867,43 +626,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════ */}
-      {/*             TESTIMONIALS                           */}
-      {/* ══════════════════════════════════════════════════ */}
-      <section id="testimonials" className="py-12 sm:py-24 px-4 sm:px-6 relative overflow-hidden bg-slate-50">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-blue-500/5 blur-[150px] pointer-events-none" />
-        <div className="max-w-7xl mx-auto relative">
 
-          <div data-animate="fade-up" className="text-center mb-8 sm:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] mb-2 sm:mb-3 block">Testimonials</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">What Homeowners Say</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {testimonials.map((t, idx) => (
-              <div key={idx} data-animate="fade-up" data-delay={`${idx * 130}`} className="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-5 sm:p-8 relative shadow-sm backdrop-blur-md">
-                <div className="absolute top-5 right-5 sm:top-6 sm:right-6">
-                  <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500/10" />
-                </div>
-                <div className="flex items-center gap-1 mb-3 sm:mb-4">
-                  <span className="text-amber-500 text-xs sm:text-sm">★★★★★</span>
-                </div>
-                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">"{t.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-amber-400 to-[#0f3d75] flex items-center justify-center text-white font-bold text-xs sm:text-sm">
-                    {t.initials}
-                  </div>
-                  <div>
-                    <div className="text-xs sm:text-sm font-semibold text-slate-900">{t.name}</div>
-                    <div className="text-[11px] sm:text-xs text-slate-400">{t.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════ */}
       {/*        LATEST SOLAR GUIDES & BLOG (MIGRATED)       */}
@@ -911,24 +634,13 @@ export default function Home() {
       <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-50 border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto">
 
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-14">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] mb-1 sm:mb-2 block">
-                Knowledge Base & District Guides
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-                Latest Solar Insights & Case Studies
-              </h2>
-              <p className="text-slate-500 text-xs sm:text-sm max-w-xl mt-1 sm:mt-2">
-                Official guides on PM Surya Ghar subsidies, net-metering rules, and industrial MW solar execution in Tamil Nadu.
-              </p>
-            </div>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors"
-            >
-              Request Custom Case Study →
-            </Link>
+          <div className="mb-8 sm:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+              Latest Solar Insights & Case Studies
+            </h2>
+            <p className="text-slate-500 text-xs sm:text-sm max-w-xl mt-1 sm:mt-2">
+              Official guides on PM Surya Ghar subsidies, net-metering rules, and industrial MW solar execution in Tamil Nadu.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -944,9 +656,6 @@ export default function Home() {
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-blue-600/90 text-white font-bold text-[10px] tracking-wide uppercase shadow-sm">
-                    PM Surya Ghar
-                  </div>
                 </div>
                 <div className="p-4 sm:p-5">
                   <div className="text-[11px] font-medium text-slate-400 mb-1.5">February 23, 2026</div>
@@ -974,9 +683,6 @@ export default function Home() {
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-emerald-600/90 text-white font-bold text-[10px] tracking-wide uppercase shadow-sm">
-                    Textile Solar
-                  </div>
                 </div>
                 <div className="p-4 sm:p-5">
                   <div className="text-[11px] font-medium text-slate-400 mb-1.5">February 14, 2026</div>
@@ -1004,9 +710,6 @@ export default function Home() {
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-amber-600/90 text-white font-bold text-[10px] tracking-wide uppercase shadow-sm">
-                    Regional HQ
-                  </div>
                 </div>
                 <div className="p-4 sm:p-5">
                   <div className="text-[11px] font-medium text-slate-400 mb-1.5">August 21, 2025</div>
@@ -1034,9 +737,6 @@ export default function Home() {
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-purple-600/90 text-white font-bold text-[10px] tracking-wide uppercase shadow-sm">
-                    Industrial Solar
-                  </div>
                 </div>
                 <div className="p-4 sm:p-5">
                   <div className="text-[11px] font-medium text-slate-400 mb-1.5">August 21, 2025</div>
@@ -1103,140 +803,25 @@ export default function Home() {
       <section id="contact" className="py-12 sm:py-24 md:py-32 px-4 sm:px-6 relative overflow-hidden bg-slate-50/55">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent pointer-events-none" />
         <div className="max-w-4xl mx-auto relative">
-          <div data-animate="zoom" className="glass rounded-2xl sm:rounded-[2rem] p-6 sm:p-12 md:p-16 text-center relative overflow-hidden border border-slate-200/60 shadow-sm">
+          <div data-animate="zoom" className="bg-white rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-12 md:p-16 text-center relative overflow-hidden border border-slate-200/80 shadow-xl">
 
-            {/* Decorative sun ring */}
-            <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full border border-blue-500/10 spin-slow pointer-events-none" />
-            <div className="absolute -bottom-24 -left-24 w-48 h-48 rounded-full border border-blue-500/10 spin-slow pointer-events-none" style={{ animationDirection: "reverse" }} />
+            {/* Static decorative corner rings (zero GPU repaint) */}
+            <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full border border-blue-500/10 pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-48 h-48 rounded-full border border-amber-500/10 pointer-events-none" />
 
             <div className="relative z-10">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 rounded-xl sm:rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 shadow-sm">
-                <Sun className="w-6 h-6 sm:w-8 sm:h-8 text-amber-600" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 rounded-2xl bg-white flex items-center justify-center border border-slate-200 shadow-sm p-2 sm:p-2.5">
+                <img src="/logo-icon.png" alt="Run Hi Tech Solar" className="w-full h-full object-contain" />
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-slate-950 mb-2 sm:mb-4">Ready to Go Solar?</h2>
               <p className="text-slate-500 max-w-md mx-auto mb-6 sm:mb-10 text-xs sm:text-base md:text-lg">Request a free site assessment in Namakkal, Karur, Salem & Erode. No commitment.</p>
 
-              {/* Form */}
-              <form onSubmit={handleSurveySubmit} className="max-w-2xl mx-auto mb-4 text-left">
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4 items-end">
-                  <div className="sm:col-span-5">
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      inputMode="text"
-                      pattern="[a-zA-Z\s.-]+"
-                      title="Please enter only letters (no numbers allowed)"
-                      placeholder="Your Full Name"
-                      value={surveyName}
-                      onChange={handleNameChange}
-                      onKeyDown={(e) => {
-                        if (e.key >= "0" && e.key <= "9") {
-                          e.preventDefault();
-                        }
-                      }}
-                      className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 shadow-xs transition-all"
-                      required
-                    />
-                  </div>
-
-                  <div className="sm:col-span-4">
-                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Mobile Number
-                    </label>
-                    <input
-                      type="tel"
-                      inputMode="numeric"
-                      pattern="[0-9]{10}"
-                      maxLength={10}
-                      title="Please enter a 10-digit mobile number (no letters allowed)"
-                      placeholder="10-digit number"
-                      value={surveyPhone}
-                      onChange={handlePhoneChange}
-                      onKeyDown={(e) => {
-                        if (
-                          !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key) &&
-                          !/^[0-9]$/.test(e.key)
-                        ) {
-                          e.preventDefault();
-                        }
-                      }}
-                      className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 shadow-xs transition-all"
-                      required
-                    />
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <button
-                      type="submit"
-                      disabled={surveySuccess}
-                      className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm px-4 py-3 rounded-xl transition-all shadow-sm active:scale-95 text-center flex items-center justify-center gap-1.5 cursor-pointer"
-                    >
-                      {surveySuccess ? "Requested ✓" : "Request Free Call"}
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              {/* Validation Warning */}
-              {phoneError && (
-                <p className="text-xs text-red-500 font-semibold mb-3">
-                  ⚠ {phoneError}
-                </p>
-              )}
-
-
+              {/* Form isolated to subcomponent for zero-latency instant typing */}
+              <HomeAssessmentForm />
             </div>
 
           </div>
         </div>
-
-        {/* ── Interactive Pop-Up Message for Confirmation ── */}
-        {showPopup && typeof document !== "undefined" && createPortal(
-          <div
-            className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-slate-950/45 backdrop-blur-xs animate-in fade-in duration-200"
-            onClick={() => setShowPopup(false)}
-          >
-            <div
-              className="bg-white rounded-3xl p-6 sm:p-7 max-w-sm w-full shadow-2xl border border-emerald-100 text-center relative animate-in zoom-in-95 duration-200"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={() => setShowPopup(false)}
-                className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Close"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              {/* Status Checkmark */}
-              <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto mb-3.5 shadow-sm">
-                <CheckCircle2 className="w-8 h-8 stroke-[2.2]" />
-              </div>
-
-              <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-                Success! Request Logged
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-                Our engineering liaison will call you shortly to plan the survey.
-              </p>
-
-              <div className="mt-5">
-                <button
-                  type="button"
-                  onClick={() => setShowPopup(false)}
-                  className="w-full py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md cursor-pointer"
-                >
-                  OK, Got It
-                </button>
-              </div>
-            </div>
-          </div>,
-          document.body
-        )}
       </section>
 
       {/* ══════════════════════════════════════════════════ */}
