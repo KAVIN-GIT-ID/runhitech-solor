@@ -17,18 +17,18 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
   const categories = [
     {
       id: "residential" as CategoryKey,
-      title: "Residential Rooftop Solar",
+      title: "Residential Solar",
       shortTitle: "Residential Homes",
-      tagline: "Generate your own clean solar power and reduce bi-monthly TNEB bills to near-zero with central government subsidies.",
+      tagline: "Turn your roof into an asset. We install premium home systems and process your PM Surya Ghar subsidy smoothly, with zero headache for you.",
       payback: "3 to 4 Years",
       warranty: "30 Years",
       statHighlight: "Up to ₹78,000",
       statLabel: "Direct Bank Subsidy",
       highlights: [
+        { label: "Hybrid Solar (Solar + Battery)", value: "Never lose power again. Enjoy 24/7 uninterrupted power backup during grid cuts and nighttime." },
         { label: "Central Subsidy", value: "Direct credit into your bank account under PM Surya Ghar Muft Bijli Yojana." },
         { label: "100% Bill Offset", value: "Bi-directional smart net-metering synchronization with TANGEDCO LT-1A grid." },
-        { label: "Elevated Roof Mounting", value: "Custom non-penetrative structures that protect your terrace waterproofing." },
-        { label: "Battery Backup Ready", value: "Optional high-efficiency LiFePO4 battery storage for uninterrupted power during cuts." }
+        { label: "Elevated Roof Mounting", value: "Custom non-penetrative structures that protect your terrace waterproofing." }
       ],
       image: "/solar_home_hero.jpg",
       ctaText: "Check Subsidy & Get Free Survey",
@@ -36,9 +36,9 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
     },
     {
       id: "commercial" as CategoryKey,
-      title: "Commercial Solar & Petrol Bunks",
+      title: "Commercial Solar",
       shortTitle: "Commercial & Petrol Bunks",
-      tagline: "Eliminate peak daytime commercial tariffs and slash expensive diesel generator fuel consumption for your business.",
+      tagline: "Boost your bottom line. We design custom, high-ROI solar solutions for hospitals, hotels, retail shops, and petrol bunks.",
       payback: "2.5 to 3.5 Years",
       warranty: "30 Years",
       statHighlight: "40% Write-Off",
@@ -55,9 +55,9 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
     },
     {
       id: "bulk" as CategoryKey,
-      title: "Industrial HT & Megawatt Plants",
+      title: "MW Solar Projects",
       shortTitle: "Industrial & Solar Farms",
-      tagline: "Captive megawatt power plants for high-tension consumers to hedge against escalating industrial grid tariffs.",
+      tagline: "Captive, Group Captive, and PPA installations engineered for massive, long-term industrial energy savings.",
       payback: "3 to 4 Years",
       warranty: "30 Years",
       statHighlight: "~₹3.80 / unit",
@@ -83,7 +83,7 @@ export default function CategoryShowcase({ initialCategory = "residential" }: Ca
         {/* Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-10">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Tailored Engineering for Every Application
+            Powerful Energy Solutions for Homes and Businesses
           </h2>
           <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
             Turnkey solar EPC services engineered for residential rooftops, commercial establishments, and heavy industrial facilities across Tamil Nadu.

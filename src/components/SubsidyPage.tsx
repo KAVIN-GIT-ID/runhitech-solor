@@ -22,7 +22,7 @@ export default function SubsidyPage() {
   ];
 
   return (
-    <div className="bg-dark-950 text-ink min-h-screen pt-32 pb-20 relative z-10 font-sans antialiased" style={{ fontFamily: "var(--font-sans)" }}>
+    <div className="bg-dark-950 text-ink min-h-screen pt-32 pb-10 relative z-10 font-sans antialiased" style={{ fontFamily: "var(--font-sans)" }}>
       
       {/* Introduction with High-Resolution Image */}
       <section className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -72,7 +72,7 @@ export default function SubsidyPage() {
       </section>
 
       {/* Subsidy Matrix Grid */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-20 font-sans antialiased" style={{ fontFamily: "var(--font-sans)" }}>
+      <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-12 sm:mt-14 font-sans antialiased" style={{ fontFamily: "var(--font-sans)" }}>
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight font-sans">
           Subsidy Matrix & Estimated Yields
         </h2>
@@ -160,14 +160,14 @@ export default function SubsidyPage() {
       </section>
 
       {/* Subsidy Process Workflow */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-28">
+      <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-14 sm:mt-16">
         <div className="text-center max-w-xl mx-auto">
           <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900">
             How We Handle the Process
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 sm:mt-10">
           {steps.map((s, idx) => (
             <div key={idx} className="bg-white border border-slate-200/90 p-6 sm:p-7 rounded-2xl flex flex-col justify-between shadow-xs hover:border-slate-300 hover:shadow-sm transition-all">
               <div>
@@ -181,32 +181,9 @@ export default function SubsidyPage() {
       </section>
 
       {/* Embedded FAQ Accordion */}
-      <section className="mt-28">
+      <div className="mt-8 sm:mt-10">
         <Faq />
-      </section>
-
-      {/* Check Eligibility Callout */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-20">
-        <div className="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm">
-          <h3 className="font-display text-2xl sm:text-3xl font-bold text-slate-900">
-            Check your roof size and subsidy potential
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
-            Our engineering team will assess your roof dimensions and guide you on the exact TNEB/TANGEDCO subsidy requirements.
-          </p>
-          <div>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3.5 shadow-sm transition-all"
-            >
-              Get Free Survey Consultation
-              <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M1 5h12M9 1l4 4-4 4" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
+      </div>
 
     </div>
   );

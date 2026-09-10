@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import Faq from "./Faq";
+
 
 export default function ServicesPage() {
 
@@ -288,10 +288,7 @@ export default function ServicesPage() {
 
       </section>
 
-      {/* Embedded FAQ Accordion */}
-      <section className="mt-20 sm:mt-28">
-        <Faq />
-      </section>
+
 
     </div>
   );

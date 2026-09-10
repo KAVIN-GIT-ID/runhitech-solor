@@ -31,7 +31,7 @@ export default function Faq() {
   };
 
   return (
-    <section id="faq" className="bg-slate-50 py-24 lg:py-32 border-t border-slate-200/60 relative z-10">
+    <section id="faq" className="bg-slate-50 py-12 sm:py-16 border-t border-slate-200/60 relative z-10">
       <div className="max-w-4xl mx-auto px-6 lg:px-10">
         <div className="text-center max-w-2xl mx-auto">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-neon-cyan">FAQ</p>
@@ -43,7 +43,7 @@ export default function Faq() {
           </p>
         </div>
 
-        <div className="mt-16 space-y-4">
+        <div className="mt-10 space-y-3.5">
           {FAQS.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (

@@ -297,18 +297,18 @@ export default function Home() {
             {/* Trust Stats */}
             <div data-animate="fade-up" data-delay="420" className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-8 md:gap-12 bg-white/60 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none p-3 sm:p-0 rounded-2xl border border-slate-200/50 sm:border-0">
               <div className="text-center sm:text-left">
-                <div className="text-xl sm:text-3xl md:text-4xl font-black gradient-text-cool">3.2 MW+</div>
-                <div className="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5 sm:mt-1">Solar Installed</div>
+                <div className="text-xl sm:text-3xl md:text-4xl font-black gradient-text-cool">350+</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5 sm:mt-1">HPCL Bunks Solarized</div>
               </div>
               <div className="hidden sm:block w-px h-10 bg-slate-300/60" />
               <div className="text-center sm:text-left">
-                <div className="text-xl sm:text-3xl md:text-4xl font-black gradient-text-cool">550+</div>
-                <div className="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5 sm:mt-1">Homes Powered</div>
+                <div className="text-xl sm:text-3xl md:text-4xl font-black gradient-text-cool">200+</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5 sm:mt-1">PM Surya Ghar Homes</div>
               </div>
               <div className="hidden sm:block w-px h-10 bg-slate-300/60" />
               <div className="text-center sm:text-left">
-                <div className="text-xl sm:text-3xl md:text-4xl font-black gradient-text-cool">30yr</div>
-                <div className="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5 sm:mt-1">Linear Warranty</div>
+                <div className="text-xl sm:text-3xl md:text-4xl font-black gradient-text-cool">10+ MW</div>
+                <div className="text-[10px] sm:text-xs text-slate-500 font-semibold mt-0.5 sm:mt-1">Industrial Solar</div>
               </div>
             </div>
 
@@ -334,24 +334,21 @@ export default function Home() {
             {/* Left Content & Bullets */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-6">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
-                Why Tamil Nadu Families Are Choosing Solar in 2025!
+                Why Tamil Nadu Families Are Switching to Solar in 2025
               </h2>
 
               <ul className="space-y-2.5 text-slate-700 text-xs sm:text-sm md:text-base pt-1 list-disc pl-5">
                 <li>
-                  <strong>₹30,000–₹78,000 Govt Subsidy</strong> (PM Surya Ghar)
+                  <strong>Claim Free Money:</strong> We process the PM Surya Ghar Yojana paperwork so you can easily secure your ₹30,000 – ₹78,000 government subsidy.
                 </li>
                 <li>
-                  <strong>Up to 90% reduction</strong> in electricity (EB) bills
+                  <strong>Massive Savings:</strong> Watch your EB bills drop by up to 90% from day one.
                 </li>
                 <li>
-                  <strong>One-time investment</strong> for 30+ years of free power
+                  <strong>Fast Installation:</strong> Your system is professionally installed and running in just 7–10 days.
                 </li>
                 <li>
-                  <strong>Hybrid & Grid systems</strong> with battery backup
-                </li>
-                <li>
-                  <strong>Fast installation</strong> within 7 to 10 days
+                  <strong>Lifetime ROI:</strong> Make a one-time investment that pays you back for over 25 years.
                 </li>
               </ul>
 
@@ -377,7 +374,7 @@ export default function Home() {
                 <div className="flex items-center justify-between pb-4 sm:pb-6 border-b border-slate-100 mb-4 sm:mb-6">
                   <div>
                     <span className="text-xs font-semibold text-slate-500 block">Real Savings Benchmark</span>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">Bi-Monthly EB Bill</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">The Run Hi Tech Difference</h3>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-900 font-bold text-[11px] sm:text-xs border border-slate-200">
                     Save ~93%
@@ -388,8 +385,8 @@ export default function Home() {
                   {/* Before */}
                   <div>
                     <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-600 mb-1.5 sm:mb-2">
-                      <span>Before Solar</span>
-                      <span className="text-slate-900 font-bold">₹3,000 / bill</span>
+                      <span>Before: Average EB Bill</span>
+                      <span className="text-slate-900 font-bold">₹3,000/month</span>
                     </div>
                     <div className="w-full h-3.5 sm:h-4 bg-slate-100 rounded-full overflow-hidden p-0.5">
                       <div className="h-full bg-slate-800 rounded-full w-[85%] flex items-center justify-end pr-2 text-[8px] sm:text-[9px] font-bold text-white">
@@ -401,8 +398,8 @@ export default function Home() {
                   {/* After */}
                   <div>
                     <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-600 mb-1.5 sm:mb-2">
-                      <span>After Solar (Run Hi Tech)</span>
-                      <span className="text-slate-900 font-bold">₹200 / bill</span>
+                      <span>After: Average EB Bill</span>
+                      <span className="text-slate-900 font-bold">₹200/month</span>
                     </div>
                     <div className="w-full h-3.5 sm:h-4 bg-slate-100 rounded-full overflow-hidden p-0.5">
                       <div className="h-full bg-slate-400 rounded-full w-[12%] flex items-center justify-end pr-1 text-[8px] sm:text-[9px] font-bold text-slate-900">
@@ -682,7 +679,7 @@ export default function Home() {
 
           <div className="mb-8 sm:mb-14">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-              Latest Solar Insights & Case Studies
+              Learn More About Your Solar Options
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm max-w-xl mt-1 sm:mt-2">
               Official guides on PM Surya Ghar subsidies, net-metering rules, and industrial MW solar execution in Tamil Nadu.
@@ -706,7 +703,7 @@ export default function Home() {
                 <div className="p-4 sm:p-5">
                   <div className="text-[11px] font-medium text-slate-400 mb-1.5">February 23, 2026</div>
                   <h3 className="font-bold text-slate-900 text-sm sm:text-base group-hover:text-blue-600 transition-colors leading-snug">
-                    Best Solar Company in Salem – PM Surya Ghar Subsidy Rooftop Installation
+                    How to Claim Your PM Surya Ghar Subsidy: Expert Installation Guides for Salem, Karur & Namakkal.
                   </h3>
                   <p className="text-xs text-slate-500 mt-1.5 sm:mt-2 leading-relaxed line-clamp-2">
                     Step-by-step roadmap for Salem homeowners to claim ₹78,000 government subsidy and eliminate high summer bi-monthly TNEB bills.
@@ -730,7 +727,7 @@ export default function Home() {
                 <div className="p-4 sm:p-5">
                   <div className="text-[11px] font-medium text-slate-400 mb-1.5">February 14, 2026</div>
                   <h3 className="font-bold text-slate-900 text-sm sm:text-base group-hover:text-blue-600 transition-colors leading-snug">
-                    Best Solar Company in Karur – PM Surya Ghar Subsidy Solar Installation
+                    Why 2025 is the Best Time to Switch to Solar: Breaking Down the Government Subsidies.
                   </h3>
                   <p className="text-xs text-slate-500 mt-1.5 sm:mt-2 leading-relaxed line-clamp-2">
                     Detailed guide on rooftop feasibility, load increase, and net-metering approvals across Karur textile hubs.
@@ -778,7 +775,7 @@ export default function Home() {
                 <div className="p-4 sm:p-5">
                   <div className="text-[11px] font-medium text-slate-400 mb-1.5">August 21, 2025</div>
                   <h3 className="font-bold text-slate-900 text-sm sm:text-base group-hover:text-blue-600 transition-colors leading-snug">
-                    MW Solar Power Plant in Tamil Nadu – Captive & PPA Explained
+                    MW Solar Power Plants in Tamil Nadu: The 2025 Guide to Captive, Group Captive & PPA.
                   </h3>
                   <p className="text-xs text-slate-500 mt-1.5 sm:mt-2 leading-relaxed line-clamp-2">
                     Financial savings for spinning mills, foundries, and heavy manufacturing units across Tamil Nadu.
@@ -864,13 +861,13 @@ export default function Home() {
       <section className="py-20 border-t border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col items-center text-center">
           <span data-animate="fade-up" className="text-xs font-bold uppercase tracking-wider text-[#0f3d75] mb-3 block">
-            Regional Operations
+            Why Run Hi Tech Solar?
           </span>
           <h2 data-animate="fade-up" data-delay="80" className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-            Actively Servicing Six Major Districts in Tamil Nadu
+            Powered 550+ Customers Since 2019. Here is Why They Trust Us.
           </h2>
           <p data-animate="fade-up" data-delay="160" className="mt-3 text-sm text-slate-500 max-w-xl">
-            Our engineers are stationed locally to complete structural validations and net-metering approvals rapidly.
+            We don't just install solar panels; we build long-term energy independence. We are proud to be the trusted solar partner across Namakkal, Karur, Salem, Erode, Tirupur, and Coimbatore.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-3.5 max-w-3xl">

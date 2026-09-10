@@ -1,18 +1,18 @@
 const REVIEWS = [
   {
-    quote: "We solarized our fuel station with Run Hi Tech Solar. With our 24/7 power requirements, our electricity bills dropped by nearly 65% from the first month. ROI is excellent, and their installation quality is top-notch.",
-    name: "M. Kathirvel",
-    role: "HPCL Petrol Bunk Owner, Namakkal",
+    quote: "Run Hi Tech Solar made the PM Surya Ghar subsidy process completely effortless. My monthly EB bills have dropped drastically!",
+    name: "Tom Anders",
+    role: "Homeowner",
   },
   {
-    quote: "Switching to home rooftop solar was very smooth. The Run Hi Tech team handled all the PM Surya Ghar subsidy paperwork and net-metering approvals. Highly recommend them for a hassle-free residential setup.",
-    name: "Rajesh Kumar",
-    role: "Homeowner, Karur",
+    quote: "On-time execution and highly professional. Switching to solar was the best investment I've made this year.",
+    name: "David Martinez",
+    role: "Investor",
   },
   {
-    quote: "We commissioned a 150 kW system for our spinning mill. The engineering design, safety protocols during installation, and after-sales maintenance response have been exceptional. Savings are substantial.",
-    name: "S. Srinivasan",
-    role: "Spinning Mill Director, Salem",
+    quote: "Great team and flawless installation. We haven't worried about a power cut since they installed our system.",
+    name: "Molly Brown & Bobby Fischer",
+    role: "Clients",
   },
 ];
 
@@ -22,7 +22,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <p className="text-xs font-semibold tracking-[0.18em] uppercase text-gold-deep">Testimonials</p>
         <h2 className="font-display mt-3 text-3xl sm:text-4xl font-semibold text-ink tracking-tight max-w-xl">
-          Trusted by over 550+ homes, petrol bunks, and industries.
+          Don't Just Take Our Word For It
         </h2>
 
         <div className="mt-12 grid md:grid-cols-3 gap-6">
