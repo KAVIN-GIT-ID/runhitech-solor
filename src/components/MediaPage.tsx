@@ -21,93 +21,93 @@ export default function MediaPage() {
 
   const posts: MediaPost[] = [
     {
-      id: "salem-solar",
-      title: "Best Solar Company in Salem – PM Surya Ghar Subsidy Rooftop Installation",
+      id: "pm-surya-ghar-subsidy-guide",
+      title: "The PM Surya Ghar Subsidy Guide",
+      category: "Subsidy",
+      categoryLabel: "Subsidy Guide",
+      date: "February 2026",
+      views: "1.2K Views",
+      image: "https://runhitechsolar.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-21-at-16.50.26-890x664.jpeg",
+      desc: "Avoid common TANGEDCO paperwork traps. Learn the exact, step-by-step process to secure your ₹78,000 Direct Benefit Transfer (DBT) without delays.",
+      highlights: [
+        "Avoid common TANGEDCO paperwork traps and registration delays",
+        "Step-by-step process to secure ₹78,000 Direct Benefit Transfer (DBT)",
+        "End-to-end site survey, net-metering and bank credit guide"
+      ]
+    },
+    {
+      id: "regional-project-posters",
+      title: "Regional Project Posters (Salem, Karur & Namakkal)",
       category: "Posters",
-      categoryLabel: "Salem Guide",
-      date: "February 23, 2026",
-      views: "99 Views",
+      categoryLabel: "Regional Posters",
+      date: "February 2026",
+      views: "890 Views",
+      image: "https://runhitechsolar.com/wp-content/uploads/2026/02/Salem-Blog-Poster-890x664.jpg",
+      desc: "See what solar looks like in your own neighborhood. Browse real roof layouts, installation galleries, and setup configurations from local homes and businesses.",
+      highlights: [
+        "Real roof layouts and installation galleries across Salem, Karur & Namakkal",
+        "Setup configurations for local homes, fuel bunks, and commercial rooftops",
+        "Rapid-response engineering and localized service support"
+      ]
+    },
+    {
+      id: "before-after-case-studies",
+      title: "Genuine \"Before & After\" Case Studies",
+      category: "Subsidy",
+      categoryLabel: "Case Studies",
+      date: "January 2026",
+      views: "1.5K Views",
+      image: "https://runhitechsolar.com/wp-content/uploads/2026/02/karur-ads-poster-1-890x664.jpg",
+      desc: "Read the exact stories of how Tamil Nadu homeowners and HPCL petrol bunk operators permanently slashed their monthly EB bills to zero.",
+      highlights: [
+        "Real homeowner stories dropping monthly EB bills from ₹3,000+ to ₹200",
+        "350+ HPCL petrol bunk operators solarized for maximum efficiency",
+        "Demonstrated 3 to 4 year complete investment payback period"
+      ]
+    },
+    {
+      id: "mw-industrial-blueprints",
+      title: "MW Industrial Engineering Blueprints",
+      category: "Engineering",
+      categoryLabel: "Industrial MW",
+      date: "January 2026",
+      views: "2.1K Views",
+      image: "https://runhitechsolar.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-21-at-16.50.27-890x664.jpeg",
+      desc: "Deep-dive insights for facility managers. Discover high-ROI strategies for Captive, Group Captive, and PPA solar plants, including grid integration and Tier-1 module selection.",
+      highlights: [
+        "High-ROI blueprints for Captive, Group Captive, and PPA solar plants",
+        "Substation grid integration & TNEB open access regulations",
+        "Tier-1 Mono PERC and TOPCon module selection for 25+ year performance"
+      ]
+    },
+    {
+      id: "salem-solar",
+      title: "Salem Rooftop Solar Installation Guide",
+      category: "Posters",
+      categoryLabel: "Salem Hub",
+      date: "February 2026",
+      views: "640 Views",
       image: "https://runhitechsolar.com/wp-content/uploads/2026/02/Salem-Blog-Poster-890x664.jpg",
       desc: "Complete rooftop solar installation guide for Salem homeowners and businesses under the PM Surya Ghar government subsidy scheme with ₹78,000 direct bank subsidy.",
       highlights: [
         "Up to ₹78,000 government subsidy credited to bank",
-        "Quick 3-day installation across Salem & surrounding taluks",
+        "Quick 7 to 10 day turnkey installation across Salem & surrounding taluks",
         "Full TNEB net-metering synchronization handled"
       ]
     },
     {
-      id: "karur-solar",
-      title: "Best Solar Company in Karur – PM Surya Ghar Subsidy Solar Installation",
-      category: "Posters",
-      categoryLabel: "Karur Guide",
-      date: "February 14, 2026",
-      views: "48 Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2026/02/karur-ads-poster-1-890x664.jpg",
-      desc: "Why Karur textile factories, individual homes, and HPCL fuel bunks are switching to Run Hi Tech Solar to eliminate high EB electricity tariffs.",
-      highlights: [
-        "Cut monthly power bills by 80% to 90%",
-        "30-Year linear performance warranty on mono-PERC panels",
-        "Dedicated local Karur service response team"
-      ]
-    },
-    {
-      id: "namakkal-solar",
-      title: "Best Solar Company in Namakkal – Run Hi Tech Solar | PM Suryaghar Yojana 2025",
-      category: "Subsidy",
-      categoryLabel: "Namakkal Hub",
-      date: "August 21, 2025",
-      views: "243 Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-21-at-17.54.23-890x664.jpeg",
-      desc: "Headquartered in Velur, Namakkal, Run Hi Tech Solar is the most trusted local integrator for residential rooftop and agricultural solar power.",
-      highlights: [
-        "Direct local installation team in Velur & Namakkal",
-        "Over 550+ verified installations across Western Tamil Nadu",
-        "Zero-hassle paperwork and TNEB meter commissioning"
-      ]
-    },
-    {
-      id: "mw-solar-projects",
-      title: "MW Solar Power Plant in Tamil Nadu – Captive, Group Captive & PPA Explained",
-      category: "Engineering",
-      categoryLabel: "MW Power Plants",
-      date: "August 21, 2025",
-      views: "1.0K Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-21-at-16.50.27-890x664.jpeg",
-      desc: "Detailed engineering guide on setting up 1 MW to 10+ MW captive solar farms, group captive models, and Power Purchase Agreements (PPA) for Tamil Nadu industries.",
-      highlights: [
-        "10+ MW track record across spinning mills & foundries",
-        "Accelerated tax depreciation (40%) and GST input benefits",
-        "Fast 3 to 4 year complete project payback period"
-      ]
-    },
-    {
-      id: "pm-suryaghar-top-10",
-      title: "Top 10 Questions About PM Surya Ghar Yojana Solar Subsidy – Tamil Nadu Guide",
-      category: "Subsidy",
-      categoryLabel: "Subsidy FAQ",
-      date: "August 21, 2025",
-      views: "496 Views",
-      image: "https://runhitechsolar.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-21-at-16.50.26-890x664.jpeg",
-      desc: "Everything you need to know about applying for government solar subsidy in Tamil Nadu: eligibility, documents needed, slab rates, and bank transfer timeline.",
-      highlights: [
-        "1 kW: ₹30,000 subsidy | 2 kW: ₹60,000 | 3 kW+: ₹78,000",
-        "Required documents: Aadhaar, EB Bill & Bank Passbook",
-        "Net metering approval and billing adjustments explained"
-      ]
-    },
-    {
       id: "industrial-rooftop-savings",
-      title: "Top 5 Benefits of Industrial Rooftop Solar for Tamil Nadu Factories",
+      title: "Industrial & Commercial Rooftop Solar Guide for Factories",
       category: "Engineering",
-      categoryLabel: "Factory Solar",
-      date: "August 21, 2025",
-      views: "175 Views",
+      categoryLabel: "Commercial MW",
+      date: "January 2026",
+      views: "1.1K Views",
       image: "https://runhitechsolar.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-21-at-16.50.28-890x664.jpeg",
-      desc: "How industrial units in Coimbatore, Tirupur, and Salem protect their business from rising peak-hour TNEB tariffs with on-site solar plants.",
+      desc: "How industrial units in Coimbatore, Tirupur, Karur, and Salem protect their business from rising peak-hour TNEB tariffs with on-site solar plants.",
       highlights: [
         "Reduce operational overheads by up to 70%",
         "Shield factory from TNEB peak hour surcharge penalties",
-        "Increase corporate ESG and clean sustainability ratings"
+        "Over 10+ MW successfully commissioned across Tamil Nadu"
       ]
     }
   ];
@@ -148,14 +148,33 @@ export default function MediaPage() {
       {/* ══════════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          <span className="gradient-text-shine">Solar Guides, Subsidy News & Project Posters</span>
+          <span className="gradient-text-shine">Don't Navigate Your Solar Switch Blind. Get the Facts.</span>
         </h1>
         <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-          Explore genuine case studies, regional installation posters in Salem, Karur & Namakkal, government subsidy guides, and MW industrial engineering insights.
+          Navigating government portals, choosing the right inverter capacity, and understanding grid regulations can feel overwhelming. You shouldn't have to be an electrical engineer to lower your EB bill.
+        </p>
+        <p className="mt-3 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          We have stripped away the complex jargon. Explore our free library of regional success stories, step-by-step subsidy guides, and heavy-duty engineering blueprints to make your solar transition completely frictionless.
         </p>
 
+        {/* Action Buttons */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="#articles"
+            className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-sm transition-all text-center"
+          >
+            Read the Latest Articles
+          </a>
+          <Link
+            to="/contact"
+            className="bg-white hover:bg-slate-100 text-slate-800 text-xs font-bold px-6 py-3.5 rounded-xl border border-slate-200 transition-all text-center"
+          >
+            Download the Free Subsidy Application Checklist
+          </Link>
+        </div>
+
         {/* Category Filter Tabs */}
-        <div className="mt-8 sm:mt-10 max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2">
+        <div id="articles" className="mt-8 sm:mt-10 max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2">
           {categories.map((c) => (
             <button
               key={c.id}

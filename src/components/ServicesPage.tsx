@@ -45,67 +45,59 @@ export default function ServicesPage() {
   const services = [
     {
       id: "residential",
-      title: "Home Solar Installation",
+      title: "🏠 Residential Solar: Slash Your Home EB Bill by 90%",
       subtitle: "PM Surya Ghar Govt Subsidy Scheme",
-      desc: "Installing solar on your home roof in Tamil Nadu is now very simple with the PM Surya Ghar government subsidy. Run Hi Tech Solar helps you get up to ₹78,000 subsidy directly into your bank account, and we take care of all TNEB paperwork for you.",
+      desc: "Turn your roof into an asset that pays you back for over 25 years. We make the transition to solar completely frictionless for homeowners by handling the installation and the government paperwork.",
       bullets: [
-        "Government subsidy up to ₹78,000 directly to your bank account",
-        "1 kW to 10 kW rooftop solar with 30 years panel warranty",
-        "Save ₹15,000 to ₹35,000 every year on electricity bills",
-        "Our local team handles roof survey, installation & all subsidy papers"
+        "Maximize Your Subsidy: We secure your ₹30,000 to ₹78,000 subsidy under the PM Surya Ghar Yojana.",
+        "Immediate Savings: Experience up to a 90% drop in your monthly EB bills.",
+        "Lightning-Fast Setup: Your system is professionally installed and operational within 7 to 10 days."
       ],
       ideal: "💡 Best for: Individual houses, villas, and apartments.",
       image: "https://runhitechsolar.com/wp-content/uploads/2025/08/Residential-Solar.jpg",
       badge: "Govt Subsidy Eligible",
-      cta: "Check Your Subsidy Amount"
+      cta: "Get a Free Custom Quote for Your Property Today"
     },
     {
       id: "commercial",
-      title: "Solar for Petrol Bunks & Shops",
+      title: "🏢 Commercial Solar: Cut Overhead, Boost Profit",
       subtitle: "Reduce EB Bills for Businesses",
-      desc: "High electricity bills take away your business profits. Our commercial solar systems are proven on 350+ petrol bunks, hotels, schools, hospitals, and shopping stores across Tamil Nadu.",
+      desc: "High utility bills eat directly into your margins. We design tailored commercial solar installations designed to drastically reduce operational overhead for hospitals, hotels, educational institutions, retail shops, and corporate warehouses.",
       bullets: [
-        "350+ HPCL and private petrol bunks running on our solar across Tamil Nadu",
-        "Save 50% to 70% on monthly electricity bills",
-        "Recover your full solar investment in just 3 to 4 years",
-        "Income tax and depreciation benefits for business owners"
+        "Proven Track Record: Trusted by over 350+ HPCL petrol bunks solarized across Tamil Nadu."
       ],
       ideal: "💡 Best for: Petrol bunks, hotels, schools, hospitals & grocery supermarkets.",
       image: "https://runhitechsolar.com/wp-content/uploads/2025/08/🏢-Commercial-Solar-copy.jpg",
       badge: "350+ Bunks Solarized",
-      cta: "Request Free Site Survey"
+      cta: "Get a Free Custom Quote for Your Property Today"
     },
     {
       id: "industrial",
-      title: "Solar for Spinning Mills & Factories",
+      title: "🌍 MW Solar Projects: Heavy-Duty Power for Heavy Industry",
       subtitle: "Big Solar Power Plants for Industries",
-      desc: "Heavy industries and textile mills face huge electricity costs every month. Our large-scale solar power plants give you low-cost, reliable green electricity for 30+ years.",
+      desc: "Scale your energy savings to match your production. We engineer large-scale utility and industrial-grade solar power plants built for maximum efficiency and long-term durability.",
       bullets: [
-        "Over 10+ MW industrial solar projects successfully running in Tamil Nadu",
-        "Own your own solar power plant (Captive Solar) and save maximum money",
-        "Zero-investment solar plan available (PPA – pay only for units used)",
-        "Save taxes with accelerated depreciation and GST benefits"
+        "Specialized Execution: Expert deployment of Captive, Group Captive, and PPA (Power Purchase Agreement) setups for heavy industries.",
+        "Demonstrated Scale: Over 10+ MW of industrial solar plants successfully commissioned across the state."
       ],
       ideal: "💡 Best for: Textile mills, foundries, poultry farms, paper mills & factories.",
       image: "https://runhitechsolar.com/wp-content/uploads/2025/08/MW-Solar-Projects-copy.jpg",
       badge: "10+ MW Installed",
-      cta: "Talk to Solar Engineer"
+      cta: "Get a Free Custom Quote for Your Property Today"
     },
     {
       id: "hybrid",
-      title: "Solar with Battery Backup",
+      title: "🌗 Hybrid Solar: 24/7 Power, Zero Interruptions",
       subtitle: "24-Hour Non-Stop Electricity",
-      desc: "Stop power cut problems for your home or business. Our solar systems with strong Lithium batteries give you electricity non-stop even during TNEB power cuts. No diesel fuel needed.",
+      desc: "Never let a grid outage stop your day or disrupt your night. Our advanced Hybrid Solar + Battery systems combine grid-tied efficiency with independent energy storage.",
       bullets: [
-        "Automatically switches on in seconds during power cuts",
-        "Long-lasting Lithium (LiFePO4) battery with 15+ years lifespan",
-        "Uses stored solar power at night to save extra electricity charges",
-        "Easy mobile phone app to see your power generation daily"
+        "Always On: Enjoy a seamless, uninterrupted 24/7 power supply.",
+        "Total Security: Safely handle grid power cuts and easily power your nighttime electricity needs with stored solar energy."
       ],
       ideal: "💡 Best for: Homes, clinics, and businesses that need non-stop power.",
       image: "https://runhitechsolar.com/wp-content/uploads/2025/08/🌗-Hybrid-Solar-copy.jpg",
       badge: "Non-Stop Power",
-      cta: "Get Battery Backup Quote"
+      cta: "Get a Free Custom Quote for Your Property Today"
     }
   ];
 
@@ -117,25 +109,25 @@ export default function ServicesPage() {
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
           <div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-              <span className="gradient-text-shine">Our Solar Services in Tamil Nadu</span>
+              <span className="gradient-text-shine">Our Services: Energy Solutions Engineered for Your Independence</span>
             </h1>
             <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
-              At Run Hi Tech Solar, we believe in powering Tamil Nadu with clean, affordable, and reliable solar energy. Since 2019, we have completed 550+ successful solar installations covering homes, petrol bunks, commercial spaces, and industries.
+              We provide comprehensive, end-to-end solar installations tailored for homes, businesses, and large-scale industrial requirements across Tamil Nadu. Whatever your energy needs, we have a proven blueprint to lower your costs and secure your power supply.
             </p>
             
             <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+              <Link
+                to="/contact"
+                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-sm transition-all text-center flex-1 sm:flex-none"
+              >
+                Get a Free Custom Quote for Your Property Today
+              </Link>
               <a
                 href="#residential"
-                className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-sm transition-all text-center flex-1 sm:flex-none"
+                className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold px-6 py-3.5 rounded-xl transition-all text-center flex-1 sm:flex-none"
               >
                 View Services
               </a>
-              <Link
-                to="/subsidy"
-                className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold px-6 py-3.5 rounded-xl transition-all text-center flex-1 sm:flex-none"
-              >
-                PM Surya Ghar Subsidies
-              </Link>
             </div>
           </div>
 

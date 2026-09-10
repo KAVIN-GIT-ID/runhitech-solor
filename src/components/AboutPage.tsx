@@ -8,10 +8,10 @@ export default function AboutPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
   const stats = [
-    { value: "550+", label: "Total Solar Systems", desc: "Across homes, commercial stations, and spinning mills." },
-    { value: "350+", label: "HPCL Petrol Bunks", desc: "Trusted solar partner for leading fuel stations in TN." },
-    { value: "200+", label: "PM Surya Ghar Homes", desc: "Rooftop subsidy systems successfully commissioned." },
-    { value: "10+ MW", label: "Industrial Projects", desc: "Helping manufacturers achieve grid independence." }
+    { value: "550+", label: "Projects Powered", desc: "Proven authority across Western and Central Tamil Nadu since 2019." },
+    { value: "350+", label: "HPCL Retail Petrol Bunks", desc: "Solarized for maximum efficiency across Tamil Nadu." },
+    { value: "200+", label: "Residential Rooftops", desc: "Commissioned under government subsidy schemes." },
+    { value: "10+ MW", label: "Industrial & Commercial", desc: "Utility-scale solar plants deployed." }
   ];
 
   const aboutFaqs = [
@@ -51,10 +51,13 @@ export default function AboutPage() {
           {/* Left Text */}
           <div className="space-y-4 sm:space-y-6">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-              <span className="gradient-text-shine">Leading Clean Energy in Tamil Nadu Since 2019</span>
+              <span className="gradient-text-shine">Stop Renting Your Power. Claim Your Energy Independence Today.</span>
             </h1>
             <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed">
-              Since <strong>2019</strong>, <strong>Run Hi Tech Solar</strong> has been a trusted name in <strong>Tamil Nadu’s solar industry</strong>, powering <strong>homes, petrol bunks, and industries</strong> with clean and affordable energy. With <strong>550+ successful installations</strong>, we are proud to be one of the <strong>fastest-growing solar companies in Tamil Nadu</strong>.
+              You shouldn't have to deal with endless EB bill hikes, unpredictable power cuts, or confusing government paperwork just to keep your lights on. At Run Hi Tech Solar, we believe clean, affordable, and reliable energy should be completely stress-free.
+            </p>
+            <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed">
+              Since 2019, we have served as the trusted EPC (Engineering, Procurement, and Construction) solar guide for families and industries across Tamil Nadu. As a government-approved vendor under the PM Surya Ghar: Muft Bijli Yojana, we provide 100% end-to-end solar deployment. From the first site survey to securing your net-metering approvals and maintaining your panels for decades, we handle the heavy lifting so you don't have to.
             </p>
             
             <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -62,7 +65,7 @@ export default function AboutPage() {
                 to="/contact"
                 className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-3.5 rounded-xl shadow-sm transition-all text-center flex-1 sm:flex-none"
               >
-                Contact Us
+                Get Your Free Feasibility Survey & Quote Today
               </Link>
               <Link
                 to="/services"
@@ -129,21 +132,24 @@ export default function AboutPage() {
                 OUR SUCCESS
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
-                Our Solar Journey & Achievements
+                Proven Authority: 550+ Projects Powered Since 2019
               </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                We don't just promise results; we engineer them. Our track record across Western and Central Tamil Nadu speaks for itself:
+              </p>
               
               <ul className="space-y-3.5 text-slate-700 text-xs sm:text-sm md:text-base pt-2 list-disc list-outside pl-5">
                 <li>
-                  <strong>350+ HPCL Petrol Bunks Solarized</strong> across Tamil Nadu – trusted by leading fuel stations for cutting energy costs.
+                  <strong>350+ HPCL Retail Petrol Bunks</strong> solarized for maximum efficiency.
                 </li>
                 <li>
-                  <strong>200+ Homes Installed</strong> under the <strong>PM Surya Ghar Muft Bijli Yojana</strong> (Government Solar Subsidy).
+                  <strong>200+ Residential Rooftops</strong> commissioned under government subsidy schemes.
                 </li>
                 <li>
-                  <strong>10+ MW Industrial & Commercial Solar Projects</strong> commissioned – delivering massive power bill reductions.
+                  <strong>10+ MW of Industrial and Commercial</strong> utility-scale solar plants deployed.
                 </li>
                 <li>
-                  Strong local presence in <strong>Namakkal, Karur, Salem, Erode, Tirupur & Coimbatore</strong> with fast installation & service support.
+                  <strong>Our Local Support Network Covers:</strong> Namakkal | Karur | Salem | Erode | Tirupur | Coimbatore
                 </li>
               </ul>
             </div>
@@ -198,24 +204,24 @@ export default function AboutPage() {
           {/* Right Checklist */}
           <div className="lg:col-span-6 space-y-4 sm:space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
-              Why Customers Trust Run Hi Tech Solar?
+              Why Choose Us? (The Run Hi Tech Advantage)
             </h2>
             
             <ul className="space-y-3 pt-2 text-xs sm:text-sm md:text-base text-slate-700 list-disc list-outside pl-5">
               <li>
-                <strong>End-to-End Service</strong> – Site survey, custom 3D design, rapid installation & lifetime maintenance
+                <strong>Zero-Hassle Execution:</strong> A single-window experience covering 3D design, component supply, TANGEDCO/EB approvals, and direct subsidy disbursements.
               </li>
               <li>
-                <strong>Government Subsidy Support</strong> – Complete hassle-free PM Surya Ghar subsidy processing directly to your bank
+                <strong>Guaranteed Subsidy Support:</strong> We provide dedicated, step-by-step assistance to secure your central government subsidy of up to ₹78,000.
               </li>
               <li>
-                <strong>High-Quality Hardware</strong> – MNRE-approved Mono-PERC panels and smart inverters with 30-year performance warranty
+                <strong>Tier-1 Equipment for Lifetime ROI:</strong> We install only high-efficiency Mono PERC and TOPCon modules, backed by a 25+ year performance warranty.
               </li>
               <li>
-                <strong>Local Service Teams</strong> – Fast technical response within 24 hours across all major Tamil Nadu districts
+                <strong>Lightning-Fast Turnaround:</strong> Your residential rooftop system is fully installed and operational within 7 to 10 days.
               </li>
               <li>
-                <strong>5+ Years Experience</strong> – Reliable, verified solar engineering partner for long-term savings
+                <strong>Localized, Rapid-Response Maintenance:</strong> Our regional technicians provide panel cleaning, inverter diagnostics, and Annual Maintenance Contracts (AMC) to ensure your system runs at peak capacity.
               </li>
             </ul>
           </div>
