@@ -430,67 +430,7 @@ export default function Home() {
 
 
 
-      {/* ══════════════════════════════════════════════════ */}
-      {/*               SERVICES                            */}
-      {/* ══════════════════════════════════════════════════ */}
-      <section id="services" className="py-12 sm:py-24 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
 
-          {/* Section Header */}
-          <div className="mb-8 sm:mb-16" data-animate="fade-left">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-slate-900">
-              Complete Solar Services
-            </h2>
-          </div>
-
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-
-            {/* Service 1 */}
-            <div data-animate="fade-up" data-delay="0" className="card-hover group bg-white border border-slate-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
-              <div className="relative h-44 sm:h-52 overflow-hidden">
-                <img src="https://runhitechsolar.com/wp-content/uploads/2025/08/Residential-Solar.jpg" alt="Residential Solar" loading="lazy" decoding="async" className="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-              <div className="p-5 sm:p-7">
-                <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Home Rooftop Solar</h3>
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-                  Built for your house. Get up to ₹78,000 direct government subsidy into your bank account and reduce your EB bill up to 90%.
-                </p>
-              </div>
-            </div>
-
-            {/* Service 2 */}
-            <div data-animate="fade-up" data-delay="120" className="card-hover group bg-white border border-slate-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
-              <div className="relative h-44 sm:h-52 overflow-hidden">
-                <img src="https://runhitechsolar.com/wp-content/uploads/2025/08/🏢-Commercial-Solar-copy.jpg" alt="Commercial Solar" loading="lazy" decoding="async" className="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-              <div className="p-5 sm:p-7">
-                <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Commercial & Petrol Bunks</h3>
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-                  Custom solar setups for petrol bunks, hotels, schools, and shops. Recover full cost in 3 to 4 years and reduce monthly electricity expenses.
-                </p>
-              </div>
-            </div>
-
-            {/* Service 3 */}
-            <div data-animate="fade-up" data-delay="240" className="card-hover group bg-white border border-slate-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
-              <div className="relative h-44 sm:h-52 overflow-hidden">
-                <img src="https://runhitechsolar.com/wp-content/uploads/2025/08/🌗-Hybrid-Solar-copy.jpg" alt="Battery Storage" loading="lazy" decoding="async" className="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-              </div>
-              <div className="p-5 sm:p-7">
-                <h3 className="text-lg sm:text-xl font-bold mb-1.5 sm:mb-2 text-slate-900">Solar with Battery Backup</h3>
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-                  Stores daytime solar power in strong batteries to run your lights, fans, and appliances during night and TNEB power cuts without diesel.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════ */}
       {/*        SMART 3-CATEGORY SAVINGS CALCULATOR        */}
@@ -500,54 +440,81 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════ */}
       {/*              PROCESS                               */}
       {/* ══════════════════════════════════════════════════ */}
-      <section id="process" className="py-12 sm:py-24 px-4 sm:px-6 bg-white">
+      <section id="process" className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div data-animate="fade-up" className="text-center mb-8 sm:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] mb-2 sm:mb-3 block">How It Works</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">4 Simple Steps</h2>
-            <p className="text-slate-500 text-xs sm:text-sm max-w-lg mx-auto mt-2 sm:mt-4">From initial call to first kilowatt — we make solar integrations effortless.</p>
+          <div data-animate="fade-up" className="text-center mb-10 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">4 Simple Steps</h2>
+            <p className="text-slate-600 text-sm sm:text-base max-w-lg mx-auto mt-2.5">From initial call to first kilowatt — we make solar integrations effortless.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 relative">
-            {/* Connector line (desktop) */}
-            <div className="hidden md:block absolute top-16 left-[12.5%] right-[12.5%] h-px bg-slate-200"></div>
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 1 */}
-            <div data-animate="fade-up" data-delay="0" className="text-center group p-4 sm:p-0">
-              <div className="relative mx-auto w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-[#0f3d75] group-hover:text-white transition-all duration-300">
-                <span className="text-base sm:text-lg font-black text-amber-600 group-hover:text-white">1</span>
+            <div
+              data-animate="fade-up"
+              data-delay="0"
+              className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm transition-all"
+            >
+              <div>
+                <div className="w-11 h-11 rounded-xl bg-slate-900 text-white font-bold text-sm flex items-center justify-center mb-5 shadow-xs">
+                  01
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Free Consultation</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  We assess your roof structure, shadow factors, and monthly bill patterns.
+                </p>
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-1.5 sm:mb-2 text-slate-900">Free Consultation</h3>
-              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">We assess your roof structure, shadow factors, and monthly bill patterns.</p>
             </div>
 
             {/* Step 2 */}
-            <div data-animate="fade-up" data-delay="120" className="text-center group p-4 sm:p-0">
-              <div className="relative mx-auto w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-[#0f3d75] group-hover:text-white transition-all duration-300">
-                <span className="text-base sm:text-lg font-black text-amber-600 group-hover:text-white">2</span>
+            <div
+              data-animate="fade-up"
+              data-delay="120"
+              className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm transition-all"
+            >
+              <div>
+                <div className="w-11 h-11 rounded-xl bg-slate-900 text-white font-bold text-sm flex items-center justify-center mb-5 shadow-xs">
+                  02
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Custom Design</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  3D engineering models mapped to maximize panel performance efficiency.
+                </p>
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-1.5 sm:mb-2 text-slate-900">Custom Design</h3>
-              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">3D engineering models mapped to maximize panel performance efficiency.</p>
             </div>
 
             {/* Step 3 */}
-            <div data-animate="fade-up" data-delay="240" className="text-center group p-4 sm:p-0">
-              <div className="relative mx-auto w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-[#0f3d75] group-hover:text-white transition-all duration-300">
-                <span className="text-base sm:text-lg font-black text-amber-600 group-hover:text-white">3</span>
+            <div
+              data-animate="fade-up"
+              data-delay="240"
+              className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm transition-all"
+            >
+              <div>
+                <div className="w-11 h-11 rounded-xl bg-slate-900 text-white font-bold text-sm flex items-center justify-center mb-5 shadow-xs">
+                  03
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Expert Install</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Certified local technicians deploy the panels and configure structures in 1-2 days.
+                </p>
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-1.5 sm:mb-2 text-slate-900">Expert Install</h3>
-              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Certified local technicians deploy the panels and configure structures in 1-2 days.</p>
             </div>
 
             {/* Step 4 */}
-            <div data-animate="fade-up" data-delay="360" className="text-center group p-4 sm:p-0">
-              <div className="relative mx-auto w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-[#0f3d75] group-hover:text-white transition-all duration-300">
-                <span className="text-base sm:text-lg font-black text-amber-600 group-hover:text-white">4</span>
+            <div
+              data-animate="fade-up"
+              data-delay="360"
+              className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm transition-all"
+            >
+              <div>
+                <div className="w-11 h-11 rounded-xl bg-slate-900 text-white font-bold text-sm flex items-center justify-center mb-5 shadow-xs">
+                  04
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Start Saving</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Connect to the grid! Net metering goes live and your electricity bills zero out.
+                </p>
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-1.5 sm:mb-2 text-slate-900">Start Saving</h3>
-              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Connect to the grid! Net metering goes live and your electricity bills zero out.</p>
             </div>
-
           </div>
         </div>
       </section>
@@ -555,70 +522,149 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════ */}
       {/*            PROJECTS GALLERY                        */}
       {/* ══════════════════════════════════════════════════ */}
-      <section id="projects" className="py-12 sm:py-24 px-4 sm:px-6 content-visibility-auto">
+      <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6 bg-slate-50/50 content-visibility-auto border-t border-slate-200/70">
         <div className="max-w-7xl mx-auto">
 
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14">
             <div data-animate="fade-left">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0f3d75] mb-2 block">Our Work</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Recent Installations</h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Recent Installations</h2>
+              <p className="text-slate-600 text-sm sm:text-base mt-2">
+                Real rooftop and commercial solar installations delivered across Tamil Nadu.
+              </p>
             </div>
-            <Link to="/services" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0f3d75] hover:gap-2.5 transition-all">
-              View All Projects <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Link to="/services" className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-900 hover:text-blue-600 hover:gap-2.5 transition-all shrink-0">
+              View All Projects <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 auto-rows-auto sm:auto-rows-[200px] lg:auto-rows-[240px]">
+          {/* Clean 2020s Project Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {/* Big Card */}
-            <div data-animate="fade-up" data-delay="0" className="card-hover relative rounded-2xl overflow-hidden sm:col-span-2 sm:row-span-2 group cursor-pointer border border-slate-100 shadow-sm min-h-[240px]">
-              <img src="https://images.pexels.com/photos/9875441/pexels-photo-9875441.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Solar installation" loading="lazy" decoding="async" className="card-img w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Residential</span>
-                <h3 className="text-sm sm:text-base font-semibold mt-1 text-white">Modern Home — 8.2 kWp Rooftop System</h3>
-                <p className="text-white/70 text-xs sm:text-sm mt-0.5">Salem, TN</p>
+            {/* Project 1: Residential */}
+            <div
+              data-animate="fade-up"
+              data-delay="0"
+              className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col"
+            >
+              <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+                <img
+                  src="https://images.pexels.com/photos/9875441/pexels-photo-9875441.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Modern Home Rooftop Solar"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3.5 left-3.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md shadow-xs border border-slate-200/80">
+                    Residential
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 flex flex-col justify-between flex-1">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                    Modern Home 8.2 kWp Rooftop System
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1.5">
+                    Salem, TN • Net-Metered
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Small Card 1 */}
-            <div data-animate="fade-up" data-delay="100" className="card-hover relative rounded-2xl overflow-hidden group cursor-pointer border border-slate-100 shadow-sm min-h-[160px]">
-              <img src="https://images.pexels.com/photos/8853512/pexels-photo-8853512.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Battery storage" loading="lazy" decoding="async" className="card-img w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4">
-                <span className="text-[10px] font-semibold text-green-400 uppercase tracking-wider">Battery</span>
-                <h3 className="text-xs sm:text-sm font-medium mt-0.5 text-white">Hybrid LiFePO4 Install</h3>
+            {/* Project 2: Commercial Bunk */}
+            <div
+              data-animate="fade-up"
+              data-delay="100"
+              className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col"
+            >
+              <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+                <img
+                  src="https://images.pexels.com/photos/9875416/pexels-photo-9875416.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="HPCL Petrol Bunk Solar"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3.5 left-3.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md shadow-xs border border-slate-200/80">
+                    Commercial Bunk
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 flex flex-col justify-between flex-1">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                    HPCL Retail Outlet Net-Metered Solar
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1.5">
+                    Karur, TN • 20 kW Canopy
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Small Card 2 */}
-            <div data-animate="fade-up" data-delay="200" className="card-hover relative rounded-2xl overflow-hidden group cursor-pointer border border-slate-100 shadow-sm min-h-[160px]">
-              <img src="https://images.pexels.com/photos/9875414/pexels-photo-9875414.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Commercial solar" loading="lazy" decoding="async" className="card-img w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4">
-                <span className="text-[10px] font-semibold text-blue-400 uppercase tracking-wider">Commercial</span>
-                <h3 className="text-xs sm:text-sm font-medium mt-0.5 text-white">Retail Canopy Solar</h3>
+            {/* Project 3: Industrial */}
+            <div
+              data-animate="fade-up"
+              data-delay="200"
+              className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col"
+            >
+              <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+                <img
+                  src="https://images.pexels.com/photos/9875421/pexels-photo-9875421.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Industrial Factory Rooftop"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3.5 left-3.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md shadow-xs border border-slate-200/80">
+                    Industrial
+                  </span>
+                </div>
+              </div>
+              <div className="p-5 flex flex-col justify-between flex-1">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                    Textile Mill High-Tension Solar Array
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1.5">
+                    Erode, TN • 150 kW Shed Mount
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Small Card 3 */}
-            <div data-animate="fade-up" data-delay="300" className="card-hover relative rounded-2xl overflow-hidden group cursor-pointer border border-slate-100 shadow-sm min-h-[160px]">
-              <img src="https://images.pexels.com/photos/9875421/pexels-photo-9875421.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Industrial rooftop" loading="lazy" decoding="async" className="card-img w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4">
-                <span className="text-[10px] font-semibold text-amber-400 uppercase tracking-wider">Industrial</span>
-                <h3 className="text-xs sm:text-sm font-medium mt-0.5 text-white">Factory Rooftop System</h3>
+            {/* Project 4: Retail Canopy */}
+            <div
+              data-animate="fade-up"
+              data-delay="300"
+              className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col"
+            >
+              <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100">
+                <img
+                  src="https://images.pexels.com/photos/9875414/pexels-photo-9875414.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Retail Canopy Solar"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-3.5 left-3.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md shadow-xs border border-slate-200/80">
+                    Commercial
+                  </span>
+                </div>
               </div>
-            </div>
-
-            {/* Small Card 4 */}
-            <div data-animate="fade-up" data-delay="400" className="card-hover relative rounded-2xl overflow-hidden group cursor-pointer border border-slate-100 shadow-sm min-h-[160px]">
-              <img src="https://images.pexels.com/photos/9875416/pexels-photo-9875416.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Petrol bunk solar" loading="lazy" decoding="async" className="card-img w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-4">
-                <span className="text-[10px] font-semibold text-blue-400 uppercase tracking-wider">Commercial Bunk</span>
-                <h3 className="text-xs sm:text-sm font-medium mt-0.5 text-white">HPCL Net-Metered Setup</h3>
+              <div className="p-5 flex flex-col justify-between flex-1">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                    Retail Commercial Complex Solar Roof
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1.5">
+                    Namakkal, TN • 40 kW Grid-Tied
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -646,7 +692,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 
             {/* Blog Post 1: Salem */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col group">
               <div>
                 <div className="h-44 sm:h-48 overflow-hidden relative">
                   <img
@@ -667,13 +713,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
-                <Link to="/subsidy" className="hover:underline">Read Scheme Details →</Link>
-              </div>
             </div>
 
             {/* Blog Post 2: Karur */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col group">
               <div>
                 <div className="h-44 sm:h-48 overflow-hidden relative">
                   <img
@@ -694,13 +737,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
-                <Link to="/subsidy" className="hover:underline">Read Scheme Details →</Link>
-              </div>
             </div>
 
             {/* Blog Post 3: Namakkal */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col group">
               <div>
                 <div className="h-44 sm:h-48 overflow-hidden relative">
                   <img
@@ -721,13 +761,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
-                <Link to="/about" className="hover:underline">Our Story →</Link>
-              </div>
             </div>
 
             {/* Blog Post 4: MW Scale Tamil Nadu */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col group">
               <div>
                 <div className="h-44 sm:h-48 overflow-hidden relative">
                   <img
@@ -747,9 +784,6 @@ export default function Home() {
                     Financial savings for spinning mills, foundries, and heavy manufacturing units across Tamil Nadu.
                   </p>
                 </div>
-              </div>
-              <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
-                <Link to="/services" className="hover:underline">Industrial Solar →</Link>
               </div>
             </div>
 

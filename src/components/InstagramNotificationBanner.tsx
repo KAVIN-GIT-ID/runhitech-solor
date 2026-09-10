@@ -71,7 +71,7 @@ export default function InstagramNotificationBanner() {
             {activeLead.name}
           </div>
           <div className="text-xs text-slate-600 mt-0.5 font-medium flex items-center gap-1.5">
-            <span className="text-blue-700 font-bold font-mono">{activeLead.phone}</span>
+            <span className="text-blue-700 font-bold">{activeLead.phone}</span>
             <span>•</span>
             <span className="capitalize text-slate-500">{activeLead.category} Solar</span>
           </div>

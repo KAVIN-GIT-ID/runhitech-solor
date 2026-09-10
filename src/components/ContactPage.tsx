@@ -3,118 +3,123 @@ import { Phone, Mail, MapPin, Clock, Navigation } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="bg-slate-100/70 text-slate-900 min-h-screen pt-28 sm:pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+    <div className="bg-slate-50 text-slate-900 min-h-screen pt-28 sm:pt-32 pb-20 px-4 sm:px-6 lg:px-8 font-sans antialiased">
       
-      <div className="max-w-6xl mx-auto w-full space-y-10 sm:space-y-12">
+      <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12">
         
-        {/* Unified Modern Dual-Panel Card */}
-        <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-xl border border-slate-200/80 overflow-hidden grid lg:grid-cols-12 min-h-[640px]">
+        {/* Page Header */}
+        <div className="max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Contact Us
+          </h1>
+          <p className="text-slate-600 text-base sm:text-lg mt-3 leading-relaxed">
+            Get in touch with our team for a free site visit, quotation, or visit our office in Paramathi Velur, Namakkal.
+          </p>
+        </div>
+
+        {/* Two-Column 2020s SaaS/Corporate Grid */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* ── Top on Mobile / Right on Desktop: Free Survey Request Form ── */}
-          <div className="order-1 lg:order-2 lg:col-span-7 p-6 sm:p-10 lg:p-12 bg-white flex flex-col justify-center">
-            <QuoteForm />
-          </div>
-
-          {/* ── Bottom on Mobile / Left on Desktop: Brand & Contact Info (Deep Blue Gradient) ── */}
-          <div className="order-2 lg:order-1 lg:col-span-5 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-950 text-white p-6 sm:p-10 lg:p-12 flex flex-col justify-between relative overflow-hidden">
+          {/* ── Left Column (5 cols): Direct Contact Channels & Headquarters ── */}
+          <div className="lg:col-span-5 space-y-4">
             
-            {/* Ambient solar decorative blobs */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 space-y-6">
-              
-
-              {/* Title & Subtitle */}
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-snug">
-                  Let's Power Your Property with Solar
-                </h1>
-                <p className="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed">
-                  Run Hi Tech Solar has commissioned 550+ rooftop solar systems in Namakkal, Salem, Karur, and Coimbatore since 2019.
-                </p>
-              </div>
-
-              {/* Contact Channels List */}
-              <div className="space-y-4 pt-2">
-                
-                {/* Phone */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-300 shrink-0 mt-0.5">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono block">Direct Helpline</span>
-                    <div className="flex items-center gap-1.5 mt-0.5 text-xs sm:text-sm font-bold text-white font-mono whitespace-nowrap">
-                      <a href="tel:+919080557472" className="hover:text-amber-400 transition-colors">
-                        +919080557472
-                      </a>
-                      <span className="text-slate-500">/</span>
-                      <a href="tel:+919688830274" className="hover:text-amber-400 transition-colors">
-                        +919688830274
-                      </a>
-                    </div>
-                  </div>
+            {/* Phone Card */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm hover:border-slate-300 transition-colors">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 shrink-0 mt-0.5">
+                  <Phone className="w-5 h-5 text-slate-700" />
                 </div>
-
-                {/* Email */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-300 shrink-0 mt-0.5">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Official Email</span>
-                    <a href="mailto:info@runhitechsolar.com" className="text-sm font-bold text-white hover:text-amber-400 transition-colors block mt-0.5">
-                      info@runhitechsolar.com
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Call Us</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mt-1">
+                    <a href="tel:+919080557472" className="text-base sm:text-lg font-bold text-slate-900 hover:text-emerald-700 transition-colors">
+                      +91 90805 57472
+                    </a>
+                    <span className="hidden sm:inline text-slate-300">/</span>
+                    <a href="tel:+919688830274" className="text-base sm:text-lg font-bold text-slate-900 hover:text-emerald-700 transition-colors">
+                      +91 96888 30274
                     </a>
                   </div>
                 </div>
-
-                {/* Address */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-300 shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Regional Office</span>
-                    <p className="text-xs text-slate-300 leading-relaxed mt-0.5">
-                      RS Block 1st Floor, Jedarpalayam Main Road, P. Velur, Namakkal (DT) - 638181
-                    </p>
-                  </div>
-                </div>
-
-                {/* Working Hours */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-300 shrink-0 mt-0.5">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Working Hours</span>
-                    <p className="text-xs text-slate-300 mt-0.5">
-                      Mon – Sat: 9:00 AM – 6:30 PM
-                    </p>
-                  </div>
-                </div>
-
               </div>
+            </div>
 
+            {/* Email Card */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm hover:border-slate-300 transition-colors">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 shrink-0 mt-0.5">
+                  <Mail className="w-5 h-5 text-slate-700" />
+                </div>
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Email Us</span>
+                  <a href="mailto:info@runhitechsolar.com" className="text-base sm:text-lg font-bold text-slate-900 hover:text-emerald-700 transition-colors block mt-1">
+                    info@runhitechsolar.com
+                  </a>
+                  <p className="text-xs text-slate-500 mt-1">Send us your requirements or queries anytime</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Address Card */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm hover:border-slate-300 transition-colors">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 shrink-0 mt-0.5">
+                  <MapPin className="w-5 h-5 text-slate-700" />
+                </div>
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Office Address</span>
+                  <p className="text-sm font-semibold text-slate-800 mt-1 leading-relaxed">
+                    RS Block 1st Floor, Jedarpalayam Main Road, Paramathi Velur, Namakkal District, Tamil Nadu – 638181
+                  </p>
+                  <a
+                    href="https://maps.app.goo.gl/QUT6naDzq9AMAvvf6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 mt-2.5 transition-colors"
+                  >
+                    <span>View on Google Maps</span>
+                    <Navigation className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Working Hours Card */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm hover:border-slate-300 transition-colors">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 shrink-0 mt-0.5">
+                  <Clock className="w-5 h-5 text-slate-700" />
+                </div>
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Office Timings</span>
+                  <p className="text-sm font-bold text-slate-900 mt-1">
+                    Monday – Saturday: 9:00 AM – 6:30 PM
+                  </p>
+                  <p className="text-xs text-slate-500 mt-1">Sunday: Closed (Site visits on appointment)</p>
+                </div>
+              </div>
             </div>
 
           </div>
 
+          {/* ── Right Column (7 cols): Free Site Survey Request Form ── */}
+          <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-10 lg:p-12">
+            <QuoteForm />
+          </div>
+
         </div>
 
-        {/* ── Interactive Google Map Section ── */}
-        <div className="bg-white rounded-[2.5rem] p-6 sm:p-8 shadow-xl border border-slate-200/80 overflow-hidden">
+        {/* ── Full-Width Office Location & Map Card ── */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 overflow-hidden">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 block">
-                OFFICE LOCATION
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
+                Our Location
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">
-                Visit Run Hi Tech Solar in P. Velur, Namakkal
+              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
+                Visit Our Office in Paramathi Velur, Namakkal
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              <p className="text-xs sm:text-sm text-slate-600 mt-1">
                 RS Block 1st Floor, Jedarpalayam Main Road, Paramathi Velur, Namakkal District, Tamil Nadu – 638181
               </p>
             </div>
@@ -123,10 +128,10 @@ export default function ContactPage() {
               href="https://maps.app.goo.gl/QUT6naDzq9AMAvvf6"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-5 py-3 rounded-xl shadow-md transition-all flex items-center gap-2 shrink-0 active:scale-95"
+              className="bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl shadow-sm transition-all flex items-center gap-2 shrink-0 active:scale-98"
             >
               <Navigation className="w-4 h-4" />
-              Get Directions ↗
+              <span>Get Directions ↗</span>
             </a>
           </div>
 

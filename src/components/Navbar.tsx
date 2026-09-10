@@ -284,11 +284,11 @@ export default function Navbar() {
               <a
                 href="tel:+919080557472"
                 style={{ backgroundColor: "oklch(0.55 0.24 267.88 / 1)" }}
-                className="h-9 sm:h-10 px-3.5 sm:px-5 rounded-full hover:brightness-110 active:scale-95 text-white flex items-center gap-1.5 text-xs sm:text-sm font-bold shadow-sm transition-all font-mono"
+                className="h-9 sm:h-10 px-3.5 sm:px-5 rounded-full hover:brightness-110 active:scale-95 text-white flex items-center gap-1.5 text-xs sm:text-sm font-bold shadow-sm transition-all font-sans"
                 aria-label="Call Run Hi Tech Solar"
               >
                 <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current text-white" />
-                <span className="hidden sm:inline">Call Now</span>
+                <span className="hidden sm:inline tracking-normal">Call Now</span>
               </a>
 
               {/* Mobile Dropdown Hamburger Button */}

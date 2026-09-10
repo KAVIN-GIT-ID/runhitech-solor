@@ -387,7 +387,7 @@ export default function AIChatbot() {
 
       {/* ── Chat Panel ── */}
       <div
-        className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 z-50 w-[calc(100vw-24px)] sm:w-[380px] max-w-[400px] flex flex-col rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 transition-all duration-300 floating-widget-global"
+        className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 z-50 w-[calc(100vw-24px)] sm:w-[380px] max-w-[400px] flex flex-col rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 transition-all duration-300 floating-widget-global font-sans antialiased"
         style={{
           transform: open ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
           opacity: open ? 1 : 0,

@@ -99,16 +99,16 @@ export default function AboutPage() {
           {stats.map((s, idx) => (
             <div 
               key={idx}
-              className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-200 bg-white relative overflow-hidden transition-all duration-300 shadow-sm"
+              className="p-6 sm:p-8 rounded-2xl border border-slate-200 bg-white relative overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md hover:border-slate-300"
             >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-500/5 to-transparent rounded-tr-3xl" />
-              <span className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-600 block font-mono">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-500/5 to-transparent rounded-tr-2xl" />
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-blue-600 block tracking-tight">
                 {s.value}
               </span>
-              <h3 className="font-display mt-2 sm:mt-3 text-sm sm:text-base font-semibold text-slate-900">
+              <h3 className="mt-3 text-base sm:text-lg font-bold text-slate-900">
                 {s.label}
               </h3>
-              <p className="mt-1 text-xs text-slate-500 leading-relaxed">
+              <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
                 {s.desc}
               </p>
             </div>
@@ -180,8 +180,7 @@ export default function AboutPage() {
                 allowFullScreen
               ></iframe>
             </div>
-            <div className="flex items-center justify-between px-2 text-xs">
-              <span className="text-slate-500 font-medium">Official Run Hi Tech Solar Channel</span>
+            <div className="flex items-center justify-end px-2 text-xs">
               <a
                 href="https://youtube.com/@runhitechsolar6700?si=MRND1Y3BAhokuwYg"
                 target="_blank"
@@ -198,9 +197,6 @@ export default function AboutPage() {
 
           {/* Right Checklist */}
           <div className="lg:col-span-6 space-y-4 sm:space-y-6">
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 block">
-              PROVEN EXPERIENCE
-            </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
               Why Customers Trust Run Hi Tech Solar?
             </h2>

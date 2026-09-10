@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import { ArrowRight, Share2, BookOpen } from "lucide-react";
+import { ArrowRight, Share2, BookOpen, X } from "lucide-react";
 
 interface MediaPost {
   id: string;
@@ -122,8 +123,25 @@ export default function MediaPage() {
     return selectedCategory === "All" || p.category === selectedCategory;
   });
 
+  // Lock body scroll and handle Escape key when modal is open
+  useEffect(() => {
+    if (selectedPost) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setSelectedPost(null);
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [selectedPost]);
+
   return (
-    <div className="bg-dark-950 text-ink min-h-screen pt-28 sm:pt-32 pb-24 relative z-10">
+    <div className="bg-dark-950 text-ink min-h-screen pt-28 sm:pt-32 pb-24 font-sans antialiased" style={{ fontFamily: "var(--font-sans)" }}>
       
       {/* ══════════════════════════════════════════════════ */}
       {/*  HEADER BANNER                                     */}
@@ -187,11 +205,6 @@ export default function MediaPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute top-3.5 left-3.5">
-                      <span className="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold font-mono uppercase tracking-wider shadow-sm">
-                        {post.categoryLabel}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Body Content */}
@@ -224,64 +237,67 @@ export default function MediaPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════ */}
-      {/*  ARTICLE DETAIL MODAL                              */}
+      {/*  ARTICLE DETAIL MODAL (PORTAL)                     */}
       {/* ══════════════════════════════════════════════════ */}
-      {selectedPost && (
+      {selectedPost && typeof document !== "undefined" && createPortal(
         <div 
-          className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
           onClick={() => setSelectedPost(null)}
         >
           <div 
-            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative animate-in fade-in zoom-in-95 duration-200"
+            className="bg-white rounded-3xl max-w-2xl w-full max-h-[88vh] overflow-hidden shadow-2xl border border-slate-200/90 relative my-auto flex flex-col font-sans animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Image */}
-            <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
+            {/* Modal Image Header with Gradient & Close Button */}
+            <div className="relative h-48 sm:h-64 w-full overflow-hidden bg-slate-900 shrink-0">
               <img
                 src={selectedPost.image}
                 alt={selectedPost.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover opacity-95"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 pointer-events-none" />
               <button
                 onClick={() => setSelectedPost(null)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center font-bold hover:bg-black transition-colors"
+                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white flex items-center justify-center backdrop-blur-md shadow-lg transition-all z-20 cursor-pointer active:scale-95 border border-white/20"
                 aria-label="Close"
               >
-                ✕
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Modal Details */}
-            <div className="p-6 sm:p-8 space-y-4">
-              <div className="flex items-center gap-3 text-xs text-slate-500 font-semibold">
-                <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-mono uppercase font-bold">
+            {/* Scrollable Modal Content */}
+            <div className="p-6 sm:p-8 space-y-4 overflow-y-auto">
+              <div className="flex items-center gap-2.5 text-xs text-slate-500 font-semibold">
+                <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-semibold uppercase tracking-wider text-[11px]">
                   {selectedPost.categoryLabel}
                 </span>
+                <span>•</span>
+                <span>{selectedPost.date}</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug tracking-tight">
                 {selectedPost.title}
               </h2>
 
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 {selectedPost.desc}
               </p>
 
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 space-y-2.5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800">Key Takeaways & Benefits:</h4>
+              <div className="bg-slate-50 rounded-2xl p-4 sm:p-5 border border-slate-200/80 space-y-2.5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 font-sans">
+                  Key Takeaways & Benefits:
+                </h4>
                 <ul className="space-y-2 text-xs sm:text-sm text-slate-700 list-disc list-outside pl-5">
                   {selectedPost.highlights.map((h, i) => (
-                    <li key={i}>
-                      {h}
-                    </li>
+                    <li key={i}>{h}</li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-4 flex flex-col sm:flex-row items-center gap-3">
+              <div className="pt-3 flex flex-col sm:flex-row items-center gap-3">
                 <Link
                   to="/contact"
-                  className="w-full sm:flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 text-center text-xs font-bold py-3.5 px-6 rounded-xl shadow-md transition-all"
+                  className="w-full sm:flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center text-xs sm:text-sm font-bold py-3.5 px-6 rounded-xl shadow-sm transition-all"
                   onClick={() => setSelectedPost(null)}
                 >
                   Request Survey for This Solution
@@ -291,14 +307,15 @@ export default function MediaPage() {
                     navigator.clipboard?.writeText(window.location.href);
                     alert("Article link copied!");
                   }}
-                  className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-3.5 px-5 rounded-xl transition-all"
+                  className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold py-3.5 px-5 rounded-xl transition-all"
                 >
                   Share Link
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
 

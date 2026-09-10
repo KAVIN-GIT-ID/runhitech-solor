@@ -22,7 +22,7 @@ export default function SubsidyPage() {
   ];
 
   return (
-    <div className="bg-dark-950 text-ink min-h-screen pt-32 pb-20 relative z-10">
+    <div className="bg-dark-950 text-ink min-h-screen pt-32 pb-20 relative z-10 font-sans antialiased" style={{ fontFamily: "var(--font-sans)" }}>
       
       {/* Introduction with High-Resolution Image */}
       <section className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -72,57 +72,87 @@ export default function SubsidyPage() {
       </section>
 
       {/* Subsidy Matrix Grid */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-20">
-        <h2 className="font-display text-2xl font-semibold text-ink tracking-tight">
+      <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-20 font-sans antialiased" style={{ fontFamily: "var(--font-sans)" }}>
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight font-sans">
           Subsidy Matrix & Estimated Yields
         </h2>
-        <p className="text-xs text-slate mt-1 max-w-xl">
-          *Exact figures depend on panel brand choices, structural elevations, and net-metering processing approvals.
-        </p>
 
         <div className="grid md:grid-cols-3 gap-6 mt-8">
           
           {/* 1 kW */}
-          <div className="card-3d glow-border p-8 rounded-3xl border border-slate-200 bg-white relative overflow-hidden transition-all duration-300 shadow-sm">
-            <span className="text-xs font-bold uppercase tracking-wider text-neon-blue font-mono">1 kW System</span>
-            <span className="block font-display text-4xl font-bold text-ink mt-3 font-mono">₹30,000</span>
-            <span className="block text-xs text-neon-cyan font-semibold mt-1">Direct Govt Subsidy</span>
+          <div className="bg-white p-7 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between font-sans">
+            <div>
+              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 block">1 kW System</span>
+              <span className="block text-3xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tight tabular-nums">₹30,000</span>
+              <span className="block text-xs sm:text-sm text-slate-600 font-medium mt-1">Direct Govt Subsidy</span>
+            </div>
             
-            <ul className="mt-6 space-y-2 text-xs text-slate border-t border-slate-100 pt-6">
-              <li>• Roof space needed: ~100 sq.ft</li>
-              <li>• Daily Generation: ~4-5 Units</li>
-              <li>• Ideal for: Small homes (monthly EB bill ~₹1,000)</li>
+            <ul className="mt-6 space-y-3 text-xs sm:text-sm text-slate-600 border-t border-slate-100 pt-6">
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                <span>Roof space needed: <strong className="text-slate-900 font-semibold">~100 sq.ft</strong></span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                <span>Daily Generation: <strong className="text-slate-900 font-semibold">~4-5 Units</strong></span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                <span>Ideal for: <strong className="text-slate-900 font-semibold">Small homes (EB ~₹1,000)</strong></span>
+              </li>
             </ul>
           </div>
 
           {/* 2 kW */}
-          <div className="card-3d glow-border p-8 rounded-3xl border border-slate-200 bg-white relative overflow-hidden transition-all duration-300 shadow-sm">
-            <span className="text-xs font-bold uppercase tracking-wider text-neon-blue font-mono">2 kW System</span>
-            <span className="block font-display text-4xl font-bold text-ink mt-3 font-mono">₹60,000</span>
-            <span className="block text-xs text-neon-cyan font-semibold mt-1">Direct Govt Subsidy</span>
+          <div className="bg-white p-7 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between font-sans">
+            <div>
+              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 block">2 kW System</span>
+              <span className="block text-3xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tight tabular-nums">₹60,000</span>
+              <span className="block text-xs sm:text-sm text-slate-600 font-medium mt-1">Direct Govt Subsidy</span>
+            </div>
             
-            <ul className="mt-6 space-y-2 text-xs text-slate border-t border-slate-100 pt-6">
-              <li>• Roof space needed: ~200 sq.ft</li>
-              <li>• Daily Generation: ~8-10 Units</li>
-              <li>• Ideal for: Moderate homes (monthly EB bill ~₹2,500)</li>
+            <ul className="mt-6 space-y-3 text-xs sm:text-sm text-slate-600 border-t border-slate-100 pt-6">
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                <span>Roof space needed: <strong className="text-slate-900 font-semibold">~200 sq.ft</strong></span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                <span>Daily Generation: <strong className="text-slate-900 font-semibold">~8-10 Units</strong></span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 shrink-0" />
+                <span>Ideal for: <strong className="text-slate-900 font-semibold">Moderate homes (EB ~₹2,500)</strong></span>
+              </li>
             </ul>
           </div>
 
           {/* 3 kW+ */}
-          <div className="card-3d glow-border p-8 rounded-3xl border border-neon-cyan/20 bg-gradient-to-tr from-neon-cyan/10 to-transparent relative overflow-hidden transition-all duration-300 shadow-sm">
-            <div className="absolute top-4 right-4 z-10">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-gradient-to-r from-neon-cyan to-neon-blue px-2.5 py-1 rounded shadow-sm font-mono">
+          <div className="bg-white p-7 sm:p-8 rounded-3xl border-2 border-slate-900 shadow-md hover:shadow-lg transition-all relative flex flex-col justify-between font-sans">
+            <div className="absolute top-6 right-6">
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white bg-slate-900 px-3 py-1 rounded-full shadow-xs">
                 MAX SUBSIDY
               </span>
             </div>
-            <span className="text-xs font-bold uppercase tracking-wider text-neon-cyan font-mono">3 kW to 10 kW System</span>
-            <span className="block font-display text-4xl font-bold text-ink mt-3 font-mono">₹78,000</span>
-            <span className="block text-xs text-neon-cyan font-semibold mt-1">Direct Govt Subsidy (Max)</span>
+            <div>
+              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 block">3 kW to 10 kW System</span>
+              <span className="block text-3xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tight tabular-nums">₹78,000</span>
+              <span className="block text-xs sm:text-sm text-slate-600 font-medium mt-1">Direct Govt Subsidy (Max)</span>
+            </div>
             
-            <ul className="mt-6 space-y-2 text-xs text-slate border-t border-slate-100 pt-6">
-              <li>• Roof space needed: ~300+ sq.ft</li>
-              <li>• Daily Generation: ~12-15 Units (per 3kW)</li>
-              <li>• Ideal for: Large homes (monthly EB bill ~₹4,000+)</li>
+            <ul className="mt-6 space-y-3 text-xs sm:text-sm text-slate-600 border-t border-slate-100 pt-6">
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-900 mt-1.5 shrink-0" />
+                <span>Roof space needed: <strong className="text-slate-900 font-semibold">~300+ sq.ft</strong></span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-900 mt-1.5 shrink-0" />
+                <span>Daily Generation: <strong className="text-slate-900 font-semibold">~12-15 Units (per 3kW)</strong></span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-900 mt-1.5 shrink-0" />
+                <span>Ideal for: <strong className="text-slate-900 font-semibold">Large homes (EB ~₹4,000+)</strong></span>
+              </li>
             </ul>
           </div>
 
@@ -132,20 +162,19 @@ export default function SubsidyPage() {
       {/* Subsidy Process Workflow */}
       <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-28">
         <div className="text-center max-w-xl mx-auto">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neon-cyan font-mono">STEP-BY-STEP FLOW</p>
-          <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-ink">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900">
             How We Handle the Process
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
           {steps.map((s, idx) => (
-            <div key={idx} className="card-3d bg-white border border-slate-200 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div key={idx} className="bg-white border border-slate-200/90 p-6 sm:p-7 rounded-2xl flex flex-col justify-between shadow-xs hover:border-slate-300 hover:shadow-sm transition-all">
               <div>
-                <h3 className="font-display font-semibold text-ink text-base">{s.title}</h3>
-                <p className="mt-3 text-xs text-slate leading-relaxed">{s.desc}</p>
+                <h3 className="font-bold text-slate-900 text-base">{s.title}</h3>
+                <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">{s.desc}</p>
               </div>
-              <span className="text-xs font-display font-bold text-neon-cyan/30 mt-6 block text-right font-mono">0{idx + 1}</span>
+              <span className="text-xs font-bold text-slate-400 mt-6 block text-right">0{idx + 1}</span>
             </div>
           ))}
         </div>
@@ -159,16 +188,16 @@ export default function SubsidyPage() {
       {/* Check Eligibility Callout */}
       <section className="max-w-7xl mx-auto px-6 lg:px-10 mt-20">
         <div className="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm">
-          <h3 className="font-display text-2xl font-bold text-ink">
+          <h3 className="font-display text-2xl sm:text-3xl font-bold text-slate-900">
             Check your roof size and subsidy potential
           </h3>
-          <p className="text-xs text-slate max-w-lg mx-auto">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
             Our engineering team will assess your roof dimensions and guide you on the exact TNEB/TANGEDCO subsidy requirements.
           </p>
           <div>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded bg-gradient-to-r from-neon-cyan to-neon-blue text-white font-bold px-8 py-4 hover:shadow-lg transition-all duration-300"
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-3.5 shadow-sm transition-all"
             >
               Get Free Survey Consultation
               <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">

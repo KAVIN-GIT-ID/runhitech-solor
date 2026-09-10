@@ -34,7 +34,7 @@ export default function Faq() {
     <section id="faq" className="bg-slate-50 py-24 lg:py-32 border-t border-slate-200/60 relative z-10">
       <div className="max-w-4xl mx-auto px-6 lg:px-10">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs font-semibold tracking-[0.18em] uppercase text-neon-cyan font-mono">FAQ</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-neon-cyan">FAQ</p>
           <h2 className="font-display mt-3 text-3xl sm:text-4xl font-semibold text-ink tracking-tight">
             Frequently Asked Questions
           </h2>

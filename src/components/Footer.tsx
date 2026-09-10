@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 import { scrollToTop } from "../hooks/useLenis";
 
@@ -85,7 +85,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-sans">
               Quick Links
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
@@ -100,7 +100,7 @@ export default function Footer() {
 
           {/* Column 3: Solar Services (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-sans">
               Solar Solutions
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
@@ -114,7 +114,7 @@ export default function Footer() {
 
           {/* Column 4: Contact & Office (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-sans">
               Head Office
             </h4>
             
@@ -134,26 +134,26 @@ export default function Footer() {
 
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-blue-600 shrink-0" />
-                <div className="font-mono font-bold text-slate-800 whitespace-nowrap text-xs sm:text-[13px] xl:text-sm">
+                <div className="font-bold text-slate-800 whitespace-nowrap text-xs sm:text-[13px] xl:text-sm">
                   <a
                     href="tel:+919080557472"
                     className="hover:text-blue-600 transition-colors"
                   >
-                    +919080557472
+                    +91 90805 57472
                   </a>
                   <span className="text-slate-400 mx-1">/</span>
                   <a
                     href="tel:+919688830274"
                     className="hover:text-blue-600 transition-colors"
                   >
-                    +919688830274
+                    +91 96888 30274
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-blue-600 shrink-0" />
-                <a href="mailto:info@runhitechsolar.com" className="font-mono text-slate-800 hover:text-blue-600">
+                <a href="mailto:info@runhitechsolar.com" className="text-slate-800 hover:text-blue-600 font-medium">
                   info@runhitechsolar.com
                 </a>
               </div>
@@ -163,18 +163,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Strip */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs text-slate-500 font-medium">
-          <div className="flex items-center gap-1.5 justify-center">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>MNRE Approved Solar Partner • PM Surya Ghar Integrator</span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span>© {new Date().getFullYear()} Run Hi Tech Solar. All rights reserved.</span>
-            <Link to="/admin" className="text-slate-400 hover:text-blue-600 underline text-[11px]">
-              Admin Portal
-            </Link>
-          </div>
+        <div className="pt-6 text-center text-xs text-slate-500 font-medium">
+          <span>© {new Date().getFullYear()} Run Hi Tech Solar. All rights reserved.</span>
         </div>
 
       </div>

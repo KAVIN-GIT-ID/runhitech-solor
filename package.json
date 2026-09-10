@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "test": "npx tsx src/utils/solarCalculations.test.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "deploy": "wrangler pages deploy dist --project-name=runhitech-solar --branch=main",

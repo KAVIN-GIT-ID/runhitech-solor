@@ -3,6 +3,47 @@ import { createPortal } from "react-dom";
 import { CheckCircle2, X } from "lucide-react";
 import { triggerLeadNotification } from "../services/notificationService";
 
+const TAMIL_NADU_DISTRICTS = [
+  "Ariyalur",
+  "Chengalpattu",
+  "Chennai",
+  "Coimbatore",
+  "Cuddalore",
+  "Dharmapuri",
+  "Dindigul",
+  "Erode",
+  "Kallakurichi",
+  "Kanchipuram",
+  "Kanyakumari",
+  "Karur",
+  "Krishnagiri",
+  "Madurai",
+  "Mayiladuthurai",
+  "Nagapattinam",
+  "Namakkal",
+  "Nilgiris",
+  "Perambalur",
+  "Pudukkottai",
+  "Ramanathapuram",
+  "Ranipet",
+  "Salem",
+  "Sivaganga",
+  "Tenkasi",
+  "Thanjavur",
+  "Theni",
+  "Thoothukudi (Tuticorin)",
+  "Tiruchirappalli (Trichy)",
+  "Tirunelveli",
+  "Tirupathur",
+  "Tiruppur (Tirupur)",
+  "Tiruvallur",
+  "Tiruvannamalai",
+  "Tiruvarur",
+  "Vellore",
+  "Viluppuram",
+  "Virudhunagar"
+];
+
 export default function QuoteForm() {
   const [form, setForm] = useState({
     name: "",
@@ -77,13 +118,13 @@ export default function QuoteForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5 font-sans antialiased">
       <div>
-        <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
-          Request a Free Site Survey
+        <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Request a Free Site Visit
         </h3>
-        <p className="text-xs text-slate-500 mt-1">
-          Zero obligation shadow analysis and direct PM Surya Ghar subsidy estimate
+        <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
+          Free rooftop inspection and complete PM Surya Ghar subsidy guidance for your home or business.
         </p>
       </div>
 
@@ -98,7 +139,7 @@ export default function QuoteForm() {
             title="Please enter only letters (no numbers allowed)"
             value={form.name}
             onChange={update("name")}
-            className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors duration-150"
+            className="w-full rounded-xl bg-slate-50 border border-slate-200/90 px-4 py-3.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-colors duration-150"
             placeholder="Full Name *"
             aria-label="Full Name"
           />
@@ -116,9 +157,9 @@ export default function QuoteForm() {
               title="Please enter a 10-digit mobile number (no letters allowed)"
               value={form.phone}
               onChange={update("phone")}
-              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors duration-150"
+              className="w-full rounded-xl bg-slate-50 border border-slate-200/90 px-4 py-3.5 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-colors duration-150"
               placeholder="10-Digit Mobile Number *"
-              aria-label="Phone Number"
+              aria-label="10-Digit Mobile Number"
             />
             {phoneError && (
               <p className="text-[11px] text-red-500 font-semibold mt-1">
@@ -132,21 +173,15 @@ export default function QuoteForm() {
               value={form.location}
               onChange={update("location")}
               aria-label="City or District"
-              className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-colors duration-150 cursor-pointer"
+              className="w-full rounded-xl bg-slate-50 border border-slate-200/90 px-4 py-3.5 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-colors duration-150 cursor-pointer"
             >
               <option value="" disabled>Select City / District *</option>
-              <option value="Namakkal">Namakkal</option>
-              <option value="Karur">Karur</option>
-              <option value="Salem">Salem</option>
-              <option value="Erode">Erode</option>
-              <option value="Tirupur">Tirupur</option>
-              <option value="Coimbatore">Coimbatore</option>
-              <option value="Tiruchirappalli">Tiruchirappalli (Trichy)</option>
-              <option value="Dindigul">Dindigul</option>
-              <option value="Madurai">Madurai</option>
-              <option value="Dharmapuri">Dharmapuri</option>
-              <option value="Krishnagiri">Krishnagiri</option>
-              <option value="Other District">Other District (Tamil Nadu)</option>
+              {TAMIL_NADU_DISTRICTS.map((district) => (
+                <option key={district} value={district}>
+                  {district}
+                </option>
+              ))}
+              <option value="Other District (Outside TN)">Other District (Outside Tamil Nadu)</option>
             </select>
           </div>
         </div>
@@ -157,7 +192,7 @@ export default function QuoteForm() {
             value={form.type}
             onChange={update("type")}
             aria-label="System Requirement"
-            className="w-full rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all cursor-pointer"
+            className="w-full rounded-xl bg-slate-50 border border-slate-200/90 px-4 py-3.5 text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-all cursor-pointer"
           >
             <option value="" disabled>Select System Requirement</option>
             <option>Residential Rooftop (PM Surya Ghar Subsidy)</option>
@@ -167,8 +202,6 @@ export default function QuoteForm() {
           </select>
         </div>
       </div>
-
-
 
       {/* Status Messages */}
       {status === "success" && (
@@ -188,18 +221,18 @@ export default function QuoteForm() {
       <button
         type="submit"
         disabled={status === "loading" || status === "success"}
-        className="w-full rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold py-3.5 text-sm tracking-wide shadow-md hover:shadow-lg transition-all disabled:opacity-60 cursor-pointer flex items-center justify-center gap-1.5"
+        className="w-full rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white font-bold py-3.5 text-sm sm:text-base tracking-tight shadow-sm transition-all disabled:opacity-60 cursor-pointer flex items-center justify-center gap-2"
       >
         {status === "loading"
           ? "Submitting Request…"
           : status === "success"
-          ? "Requested ✓"
+          ? "Request Received ✓"
           : "Request Free Site Survey →"}
       </button>
 
-      <p className="text-center text-xs text-slate-400">
+      <p className="text-center text-xs text-slate-500 pt-1">
         Prefer calling directly?{" "}
-        <a href="tel:+919080557472" className="text-blue-600 font-bold hover:underline font-mono">
+        <a href="tel:+919080557472" className="text-slate-900 font-bold hover:underline">
           +91 90805 57472
         </a>
       </p>
